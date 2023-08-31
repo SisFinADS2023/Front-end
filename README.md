@@ -1,6 +1,34 @@
-# Proposta de Projeto - Turma de ADS, 2023 - 6º módulo
-## Tema: Sistema de Controle Financeiro Pessoal - Multiusuário
-#### Disciplina Projeto Integrador II
-Os alunos, sob a supervisão do _Prof. Denny Paulista Azevedo Filho_, vão projetar e desenvolver um sistema no tema proposto.  
-Vão trabalhar em equipes (squads) e terão total responsabilidade na criação e desenvolvimento. O objetivo é colocar os alunos em uma situação real de desenvolvimento, permitindo a atuação em equipes, que devem interagir para concluir o projeto. 
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
