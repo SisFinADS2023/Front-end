@@ -1,5 +1,6 @@
 'use client'
 
+
 import { useState } from 'react'
 import {Roboto}from 'next/font/google'
 import Link from 'next/link'
@@ -68,7 +69,7 @@ const roboto = Roboto(
     }
 )
 
-const SideMenu = ({ children }) => {
+const SideMenu = () => {
 
     const [dropDownOn, setDropDownOn] = useState(false)
 
@@ -79,32 +80,31 @@ const SideMenu = ({ children }) => {
     return (
         <div className={roboto.className}>
 
-        
         <div className='flex relative'>
             <div className='relative w-80 h-screen p-4 bg-white border-r-[1px] flex flex-col justify-between'>
                 <div className='flex flex-col items-start ml-10'>
 
                     <header>
-                        <Logo src="././logo.svg" alt="Logo with Conic" />
+                        <Logo src="../logo.svg" alt="Logo with Conic"/>
                     </header>
 
                     <nav>
-                        <MenuLink Icon={Category} href="/" text="Dashboards" />
-                        <MenuLink Icon={Card} href="/" text="Contas" />
-                        <MenuLinkGroup Icon={ArrangeHorizontal} href="/" text="Transações">
-                            <MenuLink className="hover:text-yellow-400 mb-0" Icon={CardSend} href="/" text="Receitas" />
-                            <MenuLink className="hover:text-yellow-400 mb-0" Icon={CardReceive} href="/" text="Despesas" />
+                        <MenuLink Icon={Category} href="/user/dashboards" text="Dashboards" />
+                        <MenuLink Icon={Card} href="/user/contas" text="Contas" />
+                        <MenuLinkGroup Icon={ArrangeHorizontal} href="/user/transacoes" text="Transações">
+                            <MenuLink className="hover:text-yellow-400 mb-0" Icon={CardSend} href="/user/transacoes/receitas" text="Receitas" />
+                            <MenuLink className="hover:text-yellow-400 mb-0" Icon={CardReceive} href="/user/transacoes/despesas" text="Despesas" />
                         </MenuLinkGroup>
-                        <MenuLink Icon={TickCircle} href="/" text="Planejamento" />
-                        <MenuLink Icon={EmptyWallet} href="/" text="Carteira" />
-                        <MenuLink Icon={DocumentDownload} href="/" text="Relatórios" />
-                        <MenuLink Icon={Star1} href="/" text="Metas" />
+                        <MenuLink Icon={TickCircle} href="/user/planejamento" text="Planejamento" />
+                        <MenuLink Icon={EmptyWallet} href="/user/carteira" text="Carteira" />
+                        <MenuLink Icon={DocumentDownload} href="/user/relatorios" text="Relatórios" />
+                        <MenuLink Icon={Star1} href="/user/metas" text="Metas" />
                         <span className="flex border-b h-0.5 bg-gray-100 w-56 my-5"></span>
-                        <MenuLink Icon={Setting} href="/" text="Configurações" />
+                        <MenuLink Icon={Setting} href="/user/configuracoes" text="Configurações" />
                     </nav>
 
                     <footer className="flex text-zinc-400 absolute bottom-12">
-                        <MenuLink Icon={MessageQuestion} href="/" text="Central de ajuda" />
+                        <MenuLink Icon={MessageQuestion} href="/user/central-ajuda" text="Central de ajuda" />
                     </footer>
 
                 </div>
