@@ -9,13 +9,9 @@ export const metadata = {
   export default function RootLayout({ children }) {
     return (
       <html lang="en">
-        <body>
-            <div>
+        <body className="w-screen flex bg-main">
             <SideMenu/>
-            </div>
-            <div>
             {children}
-            </div>
         </body>
       </html>
     )
