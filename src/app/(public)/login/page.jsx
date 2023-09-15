@@ -20,7 +20,7 @@ const Login = () => {
             
 
             <Link href="/"> Voltar</Link>
-            <Link href="user/dashboards"> <button>Entrar</button> </Link>
+            <Link href="/user/dashboard"> <button>Entrar</button> </Link>
 
         </form>
     </div>

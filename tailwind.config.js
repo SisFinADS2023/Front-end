@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         main: '#F3F4F7',
         title: '#3C5060',
+        logo: '#EEBD00',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
