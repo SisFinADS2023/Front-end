@@ -32,7 +32,7 @@ const Dashboard = () => {
     ];
 
     new Chart(
-      document.getElementById('acquisitions'),
+      document.getElementById('1'),
       {
         type: 'bar',
         data: {
@@ -46,6 +46,156 @@ const Dashboard = () => {
         }
       }
     );
+  })
+
+  useEffect(() => {
+    const data = [
+      { year: 2010, count: 10 },
+      { year: 2011, count: 20 },
+      { year: 2012, count: 15 },
+      { year: 2013, count: 25 },
+      { year: 2014, count: 22 },
+      { year: 2015, count: 30 },
+      { year: 2016, count: 28 },
+    ];
+
+    new Chart(
+      document.getElementById('2'),
+      {
+        type: 'bar',
+        data: {
+          labels: data.map(row => row.year),
+          datasets: [
+            {
+              label: 'Acquisitions by year',
+              data: data.map(row => row.count)
+            }
+          ]
+        }
+      }
+    );
+
+    
+  })
+
+  useEffect(() => {
+    const data = [
+      { year: 2010, count: 10 },
+      { year: 2011, count: 20 },
+      { year: 2012, count: 15 },
+      { year: 2013, count: 25 },
+      { year: 2014, count: 22 },
+      { year: 2015, count: 30 },
+      { year: 2016, count: 28 },
+    ];
+
+    new Chart(
+      document.getElementById('3'),
+      {
+        type: 'bar',
+        data: {
+          labels: data.map(row => row.year),
+          datasets: [
+            {
+              label: 'Acquisitions by year',
+              data: data.map(row => row.count)
+            }
+          ]
+        }
+      }
+    );
+
+    
+  })
+
+  useEffect(() => {
+    const data = [
+      { year: 2010, count: 10 },
+      { year: 2011, count: 20 },
+      { year: 2012, count: 15 },
+      { year: 2013, count: 25 },
+      { year: 2014, count: 22 },
+      { year: 2015, count: 30 },
+      { year: 2016, count: 28 },
+    ];
+
+    new Chart(
+      document.getElementById('4'),
+      {
+        type: 'bar',
+        data: {
+          labels: data.map(row => row.year),
+          datasets: [
+            {
+              label: 'Acquisitions by year',
+              data: data.map(row => row.count)
+            }
+          ]
+        }
+      }
+    );
+
+    
+  })
+
+  useEffect(() => {
+    const data = [
+      { year: 2010, count: 10 },
+      { year: 2011, count: 20 },
+      { year: 2012, count: 15 },
+      { year: 2013, count: 25 },
+      { year: 2014, count: 22 },
+      { year: 2015, count: 30 },
+      { year: 2016, count: 28 },
+    ];
+
+    new Chart(
+      document.getElementById('5'),
+      {
+        type: 'bar',
+        data: {
+          labels: data.map(row => row.year),
+          datasets: [
+            {
+              label: 'Acquisitions by year',
+              data: data.map(row => row.count)
+            }
+          ]
+        }
+      }
+    );
+
+    
+  })
+
+  useEffect(() => {
+    const data = [
+      { year: 2010, count: 10 },
+      { year: 2011, count: 20 },
+      { year: 2012, count: 15 },
+      { year: 2013, count: 25 },
+      { year: 2014, count: 22 },
+      { year: 2015, count: 30 },
+      { year: 2016, count: 28 },
+    ];
+
+    new Chart(
+      document.getElementById('6'),
+      {
+        type: 'bar',
+        data: {
+          labels: data.map(row => row.year),
+          datasets: [
+            {
+              label: 'Acquisitions by year',
+              data: data.map(row => row.count)
+            }
+          ]
+        }
+      }
+    );
+
+    
   })
 
   return (
@@ -67,10 +217,15 @@ const Dashboard = () => {
             <Overview title="Cartão de Crédito" value="0,00" path="#" />
           </div>
 
-          <h3 className="text-3xl my-6">Resultados</h3>
+          <h3 className="text-3xl my-6 font-bold">Resultados</h3>
 
-          <div className="grid grid-cols-3">
-            <div className="w-[800px]"><canvas id="acquisitions"></canvas></div>
+          <div className="grid grid-cols-3 gap-5">
+            <div className="w-full rounded-md bg-white p-5"><canvas id="1"></canvas></div>
+            <div className="w-full rounded-md bg-white p-5"><canvas id="2"></canvas></div>
+            <div className="w-full rounded-md bg-white p-5"><canvas id="3"></canvas></div>
+            <div className="w-full rounded-md bg-white p-5"><canvas id="4"></canvas></div>
+            <div className="w-full rounded-md bg-white p-5"><canvas id="5"></canvas></div>
+            <div className="w-full rounded-md bg-white p-5"><canvas id="6"></canvas></div>
           </div>
 
         </div>
