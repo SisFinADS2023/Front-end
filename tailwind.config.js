@@ -6,6 +6,10 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily:{
+      roboto: 'var(--font-roboto)',
+      league: 'var(--font-league-spartan)'
+    },
     extend: {
       colors: {
         main: '#F3F4F7',

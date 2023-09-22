@@ -1,4 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+:root{
+
+    /* fonts */
+    --font-roboto: 'Roboto', sans-serif;
+    --font-league-spartan: 'League Spartan', sans-serif;
+
+    /* colors */
+    --primary: #AEDE47;
+    --secondary: #000336;
+
+    --primary-click: #8DBE24;
+    --secondary-click: #3D3F6A;
+
+    --bg-light: #fff;
+    --bg-disabled: #E8EEF4;
+
+    --text-primary: #000336;
+    --text-secondary:#fff;
+    --text-disabled: #989898;
+
+    
+
+}
 

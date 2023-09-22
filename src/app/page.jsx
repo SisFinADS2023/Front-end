@@ -34,8 +34,8 @@ export default function Home() {
       </nav>
 
       <section className="h-[400px] w-2/6 mt-40 ml-40">
-        <div className="text-[25px] w-4/6">
-          <p className="text-title  font-semibold">
+        <div className="text-[45px] w-4/6">
+          <p className="text-title font-league ">
             Korem ipsum dolor sit amet, consectetur adipiscing
             <span className="pl-4 font-bold">
               elit<span className="text-logo">.</span>
@@ -46,7 +46,7 @@ export default function Home() {
           </p>
 
         </div>
-        <p className="my-4 text-[20px] text-[#6B767E] ">
+        <p className="my-4 text-[20px] font-roboto text-[#6B767E] ">
           Korem ipsum dolor sit amet, adipiscin
         </p>
         <Button
@@ -58,10 +58,10 @@ export default function Home() {
 
       <section className="bg-[#EAF2FB] h-auto flex flex-col text-center ">
         <div className="mt-10">
-          <h2 className="text-[45px] text-title font-semibold mb-5">
+          <h2 className="text-[45px] font-league text-title font-semibold mb-5">
             Korem ipsum & dolor sit amet 
           </h2>
-          <h3 className="text-[22px] text-title px-20 mb-10">Korem ipsum dolor sit amet, consectetur adipiscing
+          <h3 className="text-[22px] font-roboto text-title px-20 mb-10">Korem ipsum dolor sit amet, consectetur adipiscing
             elit. Nunc. </h3>
             <div className="flex justify-around mb-20"> 
                 <div className="h-[397px] bg-white w-[397px] shadow-md rounded-lg"></div>
@@ -74,7 +74,7 @@ export default function Home() {
       <section className="bg-white p-40">
         <div className="bg-[#EAF2FB] h-auto rounded-xl p-20">
             <div className="">
-              <h2 className="text-[45px] text-title font-semibold mb-5">Korem ipsum & dolor sit amet </h2>
+              <h2 className="text-[45px] text-title font-semibold mb-5 font-league">Korem ipsum & dolor sit amet </h2>
               <div className="bg-white h-[400px] rounded-xl"></div>
             </div>
         </div>
