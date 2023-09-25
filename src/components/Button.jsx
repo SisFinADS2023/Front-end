@@ -4,7 +4,7 @@ export default function Button({className, children}) {
   return (
     <button
     className={`
-         px-6 rounded text-[16px] font-semibold
+         py-1 px-6 rounded text-[16px] font-semibold font-roboto
         ${className}
     `}
     >{children}
