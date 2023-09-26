@@ -8,6 +8,23 @@ import { useState } from "react";
 import Carousel from "@/components/Carousel";
 
 export default function Home() {
+
+  const images = [
+    {
+      imgPath:
+        'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+    },
+    {
+      imgPath:
+        'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+    },
+    {
+      imgPath:
+        'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
+    },
+  ];
+
+
   const [toogleMenu, setToogleMenu] = useState(Boolean)
 
   return (
@@ -58,7 +75,7 @@ export default function Home() {
       </nav>
 
       <section className="flex flex-col gap-5 justify-center px-12 items-center lg:flex-row lg:items-start lg:justify-between">
-        <div className="z-10 flex flex-col gap-5 text-xl font-league  text-center lg:w-5/12 lg:text-5xl lg:mt-28">
+        <div className="z-10 flex flex-col gap-5 text-xl font-league items-center  text-center lg:w-5/12 lg:text-5xl lg:mt-28">
           <p className="text-title font-semibold">
             Korem ipsum dolor sit amet, consectetur adipiscing
             <span className="pl-4 font-bold">
@@ -72,7 +89,7 @@ export default function Home() {
             Korem ipsum dolor sit amet, consectetur adipiscing
           </p>
           <Button
-            className='text-white bg-title py-2 hidden'
+            className='text-white bg-title lg:py-2 lg:w-2/12'
           >
             lorem
           </Button>
@@ -83,16 +100,30 @@ export default function Home() {
       </section>
 
       <section className="bg-[#E5E7EB]">
-        <div className="flex flex-col p-5 items-center">
-          <h2 className="text-xl font-semibold font-league">Korem ipsum & dolor sit amet</h2>
-          <Carousel/>
-          <div>
-            
+        <div className="flex flex-col p-5 items-center mb-2">
+          <h2 className="my-2 text-xl font-semibold font-league lg:text-3xl">Korem ipsum & dolor sit amet</h2>
+          <h3 className="text-xl mb-8 text-[#6B767E] font-sembold hidden lg:block">Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc.</h3>
+          <Carousel
+          images={images}
+          />
+          <div className="justify-around gap-5 hidden lg:flex ">
+            {images.map((image) => (
+              <div>
+                <img className="shadow" src={image.imgPath} alt="" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
+      
+      <section className="bg-white px-4 lg:px-20 lg:py-10">
+        <div className="bg-[#E5E7EB] flex flex-col justify-center rounded-xl items-center py-3 mb-1 ">
+          <h2 className="my-5 px-20 text-center text-xl font-semibold font-league lg:text-3xl">Korem ipsum & dolor sit amet</h2>
+          <div className="bg-white h-56 w-5/6 rounded mb-5 lg:h-96"></div>
+        </div>
+      </section>
 
-
+      <footer className="bg-[#E5E7EB] h-10"></footer>
 
       {/* 
       
