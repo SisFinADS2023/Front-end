@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import {Roboto}from 'next/font/google'
+import { Roboto } from 'next/font/google'
 import Link from 'next/link'
 import { usePathname } from "next/navigation";
 import {
@@ -33,7 +33,7 @@ const MenuLink = ({ Icon, href, text, className }) => {
     const pathname = usePathname();
     return (
         <Link href={href} className={`flex items-center rounded-md w-full py-4 px-2 ${(className || "")} ${pathname === href ? 'bg-logo text-black' : 'hover:text-yellow-400'}`}>
-            <Icon size={20} className="ml-2"/>
+            <Icon size={20} className="ml-2" />
             <span className="ml-6 flex-1 text-base">{text}</span>
         </Link>
     )
@@ -81,13 +81,13 @@ const SideMenu = () => {
     }
 
     return (
-        <div className={roboto.className}>
 
-            <div className='relative w-80 min-h-screen p-4 bg-white border-r-[1px]'>
+        <div className='relative w-80 min-h-screen p-4 bg-white border-r-[1px]'>
+            <div className={roboto.className}>
                 <div className='mx-6'>
 
                     <header>
-                        <Logo src="../logo.svg" alt="Logo with Conic"/>
+                        <Logo src="../logo.svg" alt="Logo with Conic" />
                     </header>
 
                     <nav className='mb-16 flex flex-col gap-y-3'>
