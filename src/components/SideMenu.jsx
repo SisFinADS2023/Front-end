@@ -23,7 +23,7 @@ import {
 
 const Logo = ({ src, alt }) => {
     return (
-        <div className='mb-10'>
+        <div className='mb-10 mt-7'>
             <img src={src} alt={alt} />
         </div>
     )
@@ -32,7 +32,7 @@ const Logo = ({ src, alt }) => {
 const MenuLink = ({ Icon, href, text, className }) => {
     const pathname = usePathname();
     return (
-        <Link href={href} className={`flex items-center rounded-md w-full py-4 px-2 ${(className || "")} ${pathname === href ? 'bg-logo text-black' : 'hover:text-yellow-400'}`}>
+        <Link href={href} className={`flex items-center rounded-md w-full py-4 px-2 ${(className || "")} ${pathname === href ? 'bg-primary-500 text-black' : 'hover:text-primary-500'}`}>
             <Icon size={20} className="ml-2" />
             <span className="ml-6 flex-1 text-base">{text}</span>
         </Link>
@@ -50,7 +50,7 @@ const MenuLinkGroup = ({ Icon, href, text, children }) => {
 
     return (
         <div>
-            <div onClick={dropDown} className={`flex items-center rounded-md pr-2 ${pathname === href ? 'bg-logo text-black' : 'hover:text-yellow-400'}`}>
+            <div onClick={dropDown} className={`flex items-center rounded-md pr-2 ${pathname === href ? 'bg-primary-500 text-black' : 'hover:text-primary-500'}`}>
                 <MenuLink className="my-0" Icon={Icon} href={href} text={text} />
                 {
                     dropDownOn
