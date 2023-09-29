@@ -10,7 +10,7 @@ export default function Carousel({images}) {
         setCurrentIndex(nexIndex)
       }
       const nextSlide = () => {
-        const isLastSlide = currentIndex === images.legth -1
+        const isLastSlide = currentIndex === images.length -1
         const newIndex = isLastSlide ? 0 : currentIndex + 1
         setCurrentIndex(newIndex)
       }
@@ -18,10 +18,15 @@ export default function Carousel({images}) {
       const goToSlide = (imageIndex) => {
         setCurrentIndex(imageIndex)
       }
+
       
   return (
     <div className='max-w-[1400px] h-[25em] w-5/6 m-auto py-16 px-4 relative group lg:hidden'>
-        <div style={{backgroundImage: `url(${images[currentIndex].imgPath})`}} className='w-full h-full rounded-2xl bg-center bg-cover duration-500'></div>
+        <div 
+        style={{backgroundImage: `url(${images[currentIndex].imgPath})`}} 
+        className='w-full h-full rounded-2xl bg-center bg-cover duration-500 bg-white'>
+
+        </div>
         {/* left Arrow */}
         <div className='hidden group-hover:block absolute top-[40%] -translate-x-0 translate-y-[50%] left-5 text-2xl rounded-full p-2 bg-black/30 text-white cursor-pointer'>
             <ArrowLeft2
