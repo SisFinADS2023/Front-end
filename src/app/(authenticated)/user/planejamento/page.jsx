@@ -3,7 +3,7 @@ import Header from "@/components/Header"
 const Planejamento = () => {
     return (
       <>
-        <Header title="Planejamento" avatar="https://avatars.githubusercontent.com/u/102611166?s=70&v=4"/> 
+        <Header title="Carteira" name="Maria de Lurdes"/> 
         <div>Planejamento</div>
       </>
     )

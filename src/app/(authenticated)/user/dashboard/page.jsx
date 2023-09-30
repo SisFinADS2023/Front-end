@@ -200,7 +200,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Header title="Dashboard" avatar="https://avatars.githubusercontent.com/u/102611166?s=70&v=4" />
+      <Header title="Carteira" name="Maria de Lurdes"/>
       <div className="h-full">
 
         <div className="m-8">
