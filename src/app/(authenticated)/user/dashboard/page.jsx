@@ -74,8 +74,6 @@ const Dashboard = () => {
         }
       }
     );
-
-    
   })
 
   useEffect(() => {
@@ -104,8 +102,6 @@ const Dashboard = () => {
         }
       }
     );
-
-    
   })
 
   useEffect(() => {
@@ -134,8 +130,6 @@ const Dashboard = () => {
         }
       }
     );
-
-    
   })
 
   useEffect(() => {
@@ -164,8 +158,6 @@ const Dashboard = () => {
         }
       }
     );
-
-    
   })
 
   useEffect(() => {
@@ -194,13 +186,20 @@ const Dashboard = () => {
         }
       }
     );
-
-    
   })
+
+  const randomColor = () => {
+
+    const colors = ["bg-primary-700", "bg-secondary-700", "bg-tertiary-700"];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    const selectedColor = colors[randomIndex];
+
+  return selectedColor
+}
 
   return (
     <>
-      <Header title="Carteira" name="Maria de Lurdes"/>
+      <Header title="Carteira" name="Maria de Lurdes" cor={randomColor()}/>
       <div className="h-full">
 
         <div className="m-8">

@@ -19,11 +19,7 @@ const league_Spartan = League_Spartan(
     }
 )
 
-const Avatar = ({ name }) => {
-
-    const colors = ["bg-primary-700", "bg-secondary-700", "bg-tertiary-700"];
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    const selectedColor = colors[randomIndex];
+const Avatar = ({ name, cor }) => {
 
     const nameWords = name.split(' ')
 
@@ -32,19 +28,15 @@ const Avatar = ({ name }) => {
 
     const initials = firstInitial + lastInitial;
 
-    const circleStyle = {
-        backgroundColor: selectedColor,
-        color: "text-white",
-    };
-
     return (
         <>
-            <div className={`flex pt-1 items-center justify-center w-10 h-10 rounded-full text-base ${circleStyle.backgroundColor} text-white`}>
+            <div className={`flex pt-1 items-center justify-center w-10 h-10 rounded-full text-base ${cor} text-white`}>
                 {initials}
             </div>
         </>
     )
 }
+
 
 const UserModal = ({ userModal }) => {
     return (
@@ -89,21 +81,21 @@ const NotificationModal = () => {
     return (
         <>
             <div className="absolute top-[75px] right-32 bg-white w-2/12 mr-9 h-2/3 p-3 px-6 rounded-md shadow-md">
-                <MessageNotification title={"Limite próximo de ser alcançado:"} message={"Seu limite está proximo do limite estabelecido, é hora de economizar!"} path={"#"}/>
-                <MessageNotification title={"Limite alcançado:"} message={"Seu limite chegou ao fim, é hora de trabalhar!"} path={"#"}/>
+                <MessageNotification title={"Limite próximo de ser alcançado:"} message={"Seu limite está proximo do limite estabelecido, é hora de economizar!"} path={"#"} />
+                <MessageNotification title={"Limite alcançado:"} message={"Seu limite chegou ao fim, é hora de trabalhar!"} path={"#"} />
             </div>
         </>
     )
 }
 
-const Header = ({ title, name }) => {
+const Header = ({ title, name, cor }) => {
 
     const [toggleMenu, setToggleMenu] = useState(false)
-    const [toggleNotification, setToggleNotificatios] = useState(false)
+    const [toggleNotification, setToggleNotification] = useState(false)
 
     return (
         <div className={league_Spartan.className}>
-            <div className="w-auto bg-white h-[80px] flex justify-between">
+            <div className="w-auto bg-white h-[80px] flex justify-between select-none">
 
                 <div className="text-3xl flex my-auto ml-8 font-bold text-secondary-500 uppercase">
                     <h4>{title}</h4>
@@ -112,21 +104,29 @@ const Header = ({ title, name }) => {
                 <div className="flex items-center gap-4">
 
                     <icon className="flex">
-                        <Notification size={20} onClick={() => setToggleNotificatios(!toggleNotification)} className="cursor-pointer" />
+                        <Notification size={20} onClick={() => {
+                            setToggleNotification(!toggleNotification)
+                            toggleMenu ? setToggleMenu(false) : ""
+                        }
+
+                        }
+                        />
                     </icon>
                     {
                         toggleNotification &&
-                        <>
-                            {
-                                toggleMenu && setToggleMenu(false)
-                            }
-                            <NotificationModal />
-                        </>
+                        <NotificationModal />
+
                     }
 
-                    <div onClick={() => setToggleMenu(!toggleMenu)} className="flex items-center gap-4 w-auto">
+                    <div onClick={() => {
+                        setToggleMenu(!toggleMenu)
+                        toggleNotification ? setToggleNotification(false) : ""
+                    }
+                    }
+
+                        className="flex items-center gap-4 w-auto">
                         <div className="flex cursor-pointer w-auto items-center gap-3 px-4">
-                            <Avatar name={name} />
+                            <Avatar name={name} cor={cor} />
                             <h4 className="text-[16px] text-secondary-500">{name}</h4>
                         </div>
                         <span className="mr-[58px] cursor-pointer">
@@ -138,35 +138,30 @@ const Header = ({ title, name }) => {
                         <div className="flex flex-col">
                             {
                                 toggleMenu &&
-                                <>
-                                    {
-                                        toggleNotification && setToggleNotificatios(false)
+
+                                <UserModal
+                                    userModal={
+                                        [
+                                            {
+                                                "path": "#",
+                                                "icon": <Profile />,
+                                                "title": "Dados do Perfil"
+                                            },
+
+                                            {
+                                                "path": "#",
+                                                "icon": <PasswordCheck />,
+                                                "title": "Atualizar Senha"
+                                            },
+
+                                            {
+                                                "path": "/login",
+                                                "icon": <Logout />,
+                                                "title": "Logout"
+                                            }
+                                        ]
                                     }
-                                    <UserModal
-
-                                        userModal={
-                                            [
-                                                {
-                                                    "path": "#",
-                                                    "icon": <Profile />,
-                                                    "title": "Dados do Perfil"
-                                                },
-
-                                                {
-                                                    "path": "#",
-                                                    "icon": <PasswordCheck />,
-                                                    "title": "Atualizar Senha"
-                                                },
-
-                                                {
-                                                    "path": "#",
-                                                    "icon": <Logout />,
-                                                    "title": "Logout"
-                                                }
-                                            ]
-                                        }
-                                    />
-                                </>
+                                />
                             }
                         </div>
                     </div>
