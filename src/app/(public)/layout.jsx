@@ -1,5 +1,7 @@
 import '@/app/globals.css'
 
+import Banner from '@/components/Banner'
+
 export const metadata = {
     title: 'Coinc',
     description: 'Sla',
@@ -8,10 +10,10 @@ export const metadata = {
   export default function RootLayout({ children }) {
     return (
       <html lang="en">
-        <body className="grid grid-cols-2 divide-x">
-            <div>Info</div>
-            <div>{children}</div>  
-        </body>
+        <body className="flex">
+          <Banner />
+          {children}
+      </body>
       </html>
     )
   }
