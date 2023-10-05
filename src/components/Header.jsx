@@ -104,7 +104,7 @@ const Header = ({ title, name, color }) => {
 
                 <div className="flex items-center gap-4">
 
-                    <div className="flex">
+                    <div className="flex cursor-pointer">
                         <Notification size={20} onClick={() => {
                             setToggleNotification(!toggleNotification)
                             toggleMenu ? setToggleMenu(false) : ""
@@ -144,13 +144,13 @@ const Header = ({ title, name, color }) => {
                                     userModal={
                                         [
                                             {
-                                                "path": "#",
+                                                "path": "/user",
                                                 "icon": <Profile />,
                                                 "title": "Dados do Perfil"
                                             },
 
                                             {
-                                                "path": "#",
+                                                "path": "/user",
                                                 "icon": <PasswordCheck />,
                                                 "title": "Atualizar Senha"
                                             },
