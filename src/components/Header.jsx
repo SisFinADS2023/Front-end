@@ -19,18 +19,17 @@ const league_Spartan = League_Spartan(
     }
 )
 
-const Avatar = ({ name, cor }) => {
+const Avatar = ({ name, color }) => {
 
-    const nameWords = name.split(' ')
+    const initials = name.split(' ')
+        .filter((s, i, a) => i == 0 || i == a.length - 1)
+        .map(s => s.charAt(0).toUpperCase())
+        .reduce((a, s) => a+s, '');
 
-    const firstInitial = nameWords[0]?.charAt(0).toUpperCase() || '';
-    const lastInitial = nameWords[nameWords.length - 1]?.charAt(0).toUpperCase() || '';
-
-    const initials = firstInitial + lastInitial;
 
     return (
         <>
-            <div className={`flex pt-1 items-center justify-center w-10 h-10 rounded-full text-base ${cor} text-white`}>
+            <div className={`flex pt-1 items-center justify-center w-10 h-10 rounded-full text-base ${color} text-white`}>
                 {initials}
             </div>
         </>
@@ -88,13 +87,15 @@ const NotificationModal = () => {
     )
 }
 
-const Header = ({ title, name, cor }) => {
+const Header = ({ title, name, color }) => {
 
     const [toggleMenu, setToggleMenu] = useState(false)
     const [toggleNotification, setToggleNotification] = useState(false)
 
+
     return (
         <div className={league_Spartan.className}>
+
             <div className="w-auto bg-white h-[80px] flex justify-between select-none">
 
                 <div className="text-3xl flex my-auto ml-8 font-bold text-secondary-500 uppercase">
@@ -103,7 +104,7 @@ const Header = ({ title, name, cor }) => {
 
                 <div className="flex items-center gap-4">
 
-                    <icon className="flex">
+                    <div className="flex">
                         <Notification size={20} onClick={() => {
                             setToggleNotification(!toggleNotification)
                             toggleMenu ? setToggleMenu(false) : ""
@@ -111,7 +112,7 @@ const Header = ({ title, name, cor }) => {
 
                         }
                         />
-                    </icon>
+                    </div>
                     {
                         toggleNotification &&
                         <NotificationModal />
@@ -126,7 +127,7 @@ const Header = ({ title, name, cor }) => {
 
                         className="flex items-center gap-4 w-auto">
                         <div className="flex cursor-pointer w-auto items-center gap-3 px-4">
-                            <Avatar name={name} cor={cor} />
+                            <Avatar name={name} color={color} />
                             <h4 className="text-[16px] text-secondary-500">{name}</h4>
                         </div>
                         <span className="mr-[58px] cursor-pointer">

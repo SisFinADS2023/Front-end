@@ -4,7 +4,6 @@ const Contas = () => {
 
     return (
       <>
-        <Header title="Carteira" name="Maria de Lurdes"/>
         <div>Contas</div>
       </>
     )

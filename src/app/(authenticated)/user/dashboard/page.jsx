@@ -3,7 +3,7 @@
 import Header from "@/components/Header"
 import Link from 'next/link'
 import Chart from 'chart.js/auto'
-import { useEffect } from "react"
+import { useEffect, useState, useRef } from "react"
 
 const Overview = ({ title, value, path }) => {
   return (
@@ -18,188 +18,58 @@ const Overview = ({ title, value, path }) => {
   )
 }
 
+function fakeData() {
+  return new Array(10)
+    .fill(0)
+    .map((_, i) => {
+      return {year: 2014 + i,
+        count: 100 * Math.random()
+      }
+    }
+  );
+}
+
 const Dashboard = () => {
 
-  useEffect(() => {
-    const data = [
-      { year: 2010, count: 10 },
-      { year: 2011, count: 20 },
-      { year: 2012, count: 15 },
-      { year: 2013, count: 25 },
-      { year: 2014, count: 22 },
-      { year: 2015, count: 30 },
-      { year: 2016, count: 28 },
-    ];
-
-    new Chart(
-      document.getElementById('1'),
-      {
-        type: 'bar',
-        data: {
-          labels: data.map(row => row.year),
-          datasets: [
-            {
-              label: 'Acquisitions by year',
-              data: data.map(row => row.count)
-            }
-          ]
-        }
-      }
-    );
-  })
+  const charts = [
+    {instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null)},
+    {instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null)},
+    {instance: null, state: useState(() => fakeData()), type: 'pie', label: 'Acquisitions by year', ref: useRef(null)},
+    {instance: null, state: useState(() => fakeData()), type: 'line', label: 'Acquisitions by year', ref: useRef(null)},
+    {instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null)},
+    {instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null)},
+  ]
 
   useEffect(() => {
-    const data = [
-      { year: 2010, count: 10 },
-      { year: 2011, count: 20 },
-      { year: 2012, count: 15 },
-      { year: 2013, count: 25 },
-      { year: 2014, count: 22 },
-      { year: 2015, count: 30 },
-      { year: 2016, count: 28 },
-    ];
-
-    new Chart(
-      document.getElementById('2'),
-      {
-        type: 'bar',
-        data: {
-          labels: data.map(row => row.year),
-          datasets: [
-            {
-              label: 'Acquisitions by year',
-              data: data.map(row => row.count)
+    for (let chart of charts) {
+        chart.instance = new Chart(
+          chart.ref.current,
+          {
+            type: chart.type,
+            data: {
+              labels: chart.state[0].map(row => row.year),
+              datasets: [
+                {
+                  label: chart.label,
+                  data: chart.state[0].map(row => row.count)
+                }
+              ]
             }
-          ]
-        }
+          }
+        );
+    }
+
+    return () => {
+      for (let chart of charts) {
+        chart.instance.destroy();
       }
-    );
+    };
   })
 
-  useEffect(() => {
-    const data = [
-      { year: 2010, count: 10 },
-      { year: 2011, count: 20 },
-      { year: 2012, count: 15 },
-      { year: 2013, count: 25 },
-      { year: 2014, count: 22 },
-      { year: 2015, count: 30 },
-      { year: 2016, count: 28 },
-    ];
 
-    new Chart(
-      document.getElementById('3'),
-      {
-        type: 'bar',
-        data: {
-          labels: data.map(row => row.year),
-          datasets: [
-            {
-              label: 'Acquisitions by year',
-              data: data.map(row => row.count)
-            }
-          ]
-        }
-      }
-    );
-  })
-
-  useEffect(() => {
-    const data = [
-      { year: 2010, count: 10 },
-      { year: 2011, count: 20 },
-      { year: 2012, count: 15 },
-      { year: 2013, count: 25 },
-      { year: 2014, count: 22 },
-      { year: 2015, count: 30 },
-      { year: 2016, count: 28 },
-    ];
-
-    new Chart(
-      document.getElementById('4'),
-      {
-        type: 'bar',
-        data: {
-          labels: data.map(row => row.year),
-          datasets: [
-            {
-              label: 'Acquisitions by year',
-              data: data.map(row => row.count)
-            }
-          ]
-        }
-      }
-    );
-  })
-
-  useEffect(() => {
-    const data = [
-      { year: 2010, count: 10 },
-      { year: 2011, count: 20 },
-      { year: 2012, count: 15 },
-      { year: 2013, count: 25 },
-      { year: 2014, count: 22 },
-      { year: 2015, count: 30 },
-      { year: 2016, count: 28 },
-    ];
-
-    new Chart(
-      document.getElementById('5'),
-      {
-        type: 'bar',
-        data: {
-          labels: data.map(row => row.year),
-          datasets: [
-            {
-              label: 'Acquisitions by year',
-              data: data.map(row => row.count)
-            }
-          ]
-        }
-      }
-    );
-  })
-
-  useEffect(() => {
-    const data = [
-      { year: 2010, count: 10 },
-      { year: 2011, count: 20 },
-      { year: 2012, count: 15 },
-      { year: 2013, count: 25 },
-      { year: 2014, count: 22 },
-      { year: 2015, count: 30 },
-      { year: 2016, count: 28 },
-    ];
-
-    new Chart(
-      document.getElementById('6'),
-      {
-        type: 'bar',
-        data: {
-          labels: data.map(row => row.year),
-          datasets: [
-            {
-              label: 'Acquisitions by year',
-              data: data.map(row => row.count)
-            }
-          ]
-        }
-      }
-    );
-  })
-
-  const randomColor = () => {
-
-    const colors = ["bg-primary-700", "bg-secondary-700", "bg-tertiary-700"];
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    const selectedColor = colors[randomIndex];
-
-  return selectedColor
-}
 
   return (
     <>
-      <Header title="Carteira" name="Maria de Lurdes" cor={randomColor()}/>
       <div className="h-full">
 
         <div className="m-8">
@@ -219,12 +89,7 @@ const Dashboard = () => {
           <h3 className="text-3xl my-6 font-bold">Resultados</h3>
 
           <div className="grid grid-cols-3 gap-5">
-            <div className="w-full rounded-md bg-white p-5"><canvas id="1"></canvas></div>
-            <div className="w-full rounded-md bg-white p-5"><canvas id="2"></canvas></div>
-            <div className="w-full rounded-md bg-white p-5"><canvas id="3"></canvas></div>
-            <div className="w-full rounded-md bg-white p-5"><canvas id="4"></canvas></div>
-            <div className="w-full rounded-md bg-white p-5"><canvas id="5"></canvas></div>
-            <div className="w-full rounded-md bg-white p-5"><canvas id="6"></canvas></div>
+            { charts.map((chart, index) => <div key={index} className="w-full rounded-md bg-white p-5"><canvas ref={chart.ref}></canvas></div>) }
           </div>
 
         </div>
