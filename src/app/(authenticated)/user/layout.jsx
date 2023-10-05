@@ -1,21 +1,33 @@
+'use client'
+
 import SideMenu from "@/components/SideMenu"
 import Header from "@/components/Header"
 import '../../globals.css'
+import { useEffect, useState } from "react"
 
 export const metadata = {
     title: 'Coinc',
     description: 'Sla',
   }
-  
+
   export default function RootLayout({ children }) {
+    const colors = ["bg-primary-700", "bg-secondary-700", "bg-tertiary-700"];
+    const randomColor = () => {
+      const randomIndex = Math.floor(Math.random() * colors.length);
+      const selectedColor = colors[randomIndex];
+      return selectedColor
+    }
+    const [color, setColor] = useState(colors[0]);
+    useEffect(() => {
+        setColor(randomColor());
+    });
     return (
-      <html lang="en">
-        <body className="w-screen flex bg-main">
+        <div className="flex bg-main">
             <SideMenu/>
             <div className="flex flex-col w-full">
+              <Header title="Carteira" name="Maria de Lurdes" color={color}/>
               {children}
             </div>
-        </body>
-      </html>
+        </div>
     )
   }

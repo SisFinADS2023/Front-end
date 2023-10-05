@@ -1,7 +1,6 @@
 const User = () => {
     return(
         <>
-        
         </>
     )
 }
