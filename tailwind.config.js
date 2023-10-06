@@ -73,6 +73,7 @@ module.exports = {
         seaBlue: "#006CC3",
         orange: "#F47100",
         logo: "#EEBD00",
+        lightGray: "#E6E6E6", 
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

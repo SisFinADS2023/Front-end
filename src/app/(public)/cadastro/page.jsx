@@ -1,34 +1,49 @@
-import Link from "next/link"
+import {League_Spartan} from 'next/font/google'
+
+const league_Spartan = League_Spartan(
+    {
+        weight: '700',
+        subsets: ['latin'],
+    }
+)
+
 
 const Cadastro = () => {
-    return (
-      <div>
-          <form>
-              <h1>
-                  Crie sua Conta
-              </h1>
-              <div>
-                  <label>Email</label>
-                  <input type="text"/>
-              </div>
-  
-              <div>
-                  <label>Senha</label>
-                  <input type="password"/>
-              </div>
+  return (
+    <div class="flex justify-center items-center w-[1210px]">
+      <div id="cadastro-card" class="flex flex-col h-auto w-[496px] justify-center">
+        <div id="cadastro-title" class="h-14 ">
+          <div className={league_Spartan.className}>
+          <h2 class="font-sans text-3xl league_Spartan">Crie sua conta</h2>
+          </div>
+        </div>
+        <div id="cadastro-body" class="w-auto">
+          <div id="nome-sobrenome" class="flex flex space-x-4 ">
+            <input type="text" id="name" name="name" value="" placeholder="Nome" class="border rounded-md  pl-3 text-[16px] w-[227px] h-[48px] font-sans"></input>
+            <input type="text" id="name" name="sobrenome" value="" placeholder="Sobrenome" class="border rounded-md pl-3 text-[16px] w-[247px] h-[48px] font-sans"></input>
+          </div>
 
-              <div>
-                  <label>CPF</label>
-                  <input type="text"/>
-              </div>
-              
-              <button>Criar</button>
+          <div id="form-content" class="flex flex-col space-y-6 pt-6">
+            <input type="text" id="name" name="cpf" value="" placeholder="Username" class="border rounded-md pl-3 text-[16px] font-sans font-sans w-[490px] h-[48px]"></input>
+            <input type="text" id="name" name="email" value="" placeholder="E-mail" class="border rounded-md pl-3 text-[16px] font-sans w-[490px] h-[48px]"></input>
+            <input type="text" id="name" name="senha" value="" placeholder="Senha" class="border rounded-md pl-3 text-[16px] font-sans w-[490px] h-[48px]"></input>
+            <input type="text" id="name" name="conf-senha" value="" placeholder="Confirmar Senha " class="border rounded-md pl-3 text-[16px] font-sans w-[490px] h-[48px]"></input>
+          </div>
 
-              <Link href="/"> Voltar</Link>
-  
-          </form>
+          <div id="termos" class="h-16 pt-3 flex ">
+            <input type="checkbox" /><p class="flex text-[14px] align-middle pl-4 pt-4 text-left">Eu li e aceito a política de privacidade do sistema, concordando em compartilhar meus dados conforme descrito nos termos estabelecidos. </p>
+          </div>
+
+          <div id="input" class="pt-9">
+            <button class="border rounded-md w-[496px] h-[45px] bg-lightGray font-sans">Cadastre-se</button>
+          </div>
+        </div>
+        <div class="flex pt-3">
+          <p>Já possui uma conta?</p><a href="../login" class="pl-2 text-green font-sans font-bold">Fazer Login</a>
+        </div>
       </div>
-    )
-  }
-  
-  export default Cadastro
+    </div>
+  )
+}
+
+export default Cadastro
