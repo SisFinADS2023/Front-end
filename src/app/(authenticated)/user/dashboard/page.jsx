@@ -22,16 +22,24 @@ const Overview = ({ title, value, path }) => {
               visible ? (
                 <>
                   <span className="text-3xl font-normal">R${value}</span>
-                  <Eye className="absolute right-[18px] bottom-[13px] text-secondary-200" size={24} onClick={() => setVisible(!visible)}/>
+                  <Eye className="absolute right-[18px] bottom-[13px] text-secondary-200" size={24} onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    setVisible(!visible)
+                  }} />
                 </>
               ) : (
                 <>
                   <div className="flex items-center h-[36px] text-center"><span className="w-[105px] bg-secondary-500 h-[5px] text-center rounded-full"></span></div>
-                  <EyeSlash className="absolute right-[18px] bottom-[13px] text-secondary-200" size={24} onClick={() => setVisible(!visible)}/>
+                  <EyeSlash className="absolute right-[18px] bottom-[13px] text-secondary-200" size={24} onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    setVisible(!visible)
+                  }} />
                 </>
               )
             }
-            
+
           </div>
         </div>
       </Link>
@@ -43,41 +51,42 @@ function fakeData() {
   return new Array(10)
     .fill(0)
     .map((_, i) => {
-      return {year: 2014 + i,
+      return {
+        year: 2014 + i,
         count: 100 * Math.random()
       }
     }
-  );
+    );
 }
 
 const Dashboard = () => {
 
   const charts = [
-    {instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null)},
-    {instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null)},
-    {instance: null, state: useState(() => fakeData()), type: 'pie', label: 'Acquisitions by year', ref: useRef(null)},
-    {instance: null, state: useState(() => fakeData()), type: 'line', label: 'Acquisitions by year', ref: useRef(null)},
-    {instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null)},
-    {instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null)},
+    { instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null) },
+    { instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null) },
+    { instance: null, state: useState(() => fakeData()), type: 'pie', label: 'Acquisitions by year', ref: useRef(null) },
+    { instance: null, state: useState(() => fakeData()), type: 'line', label: 'Acquisitions by year', ref: useRef(null) },
+    { instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null) },
+    { instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null) },
   ]
 
   useEffect(() => {
     for (let chart of charts) {
-        chart.instance = new Chart(
-          chart.ref.current,
-          {
-            type: chart.type,
-            data: {
-              labels: chart.state[0].map(row => row.year),
-              datasets: [
-                {
-                  label: chart.label,
-                  data: chart.state[0].map(row => row.count)
-                }
-              ]
-            }
+      chart.instance = new Chart(
+        chart.ref.current,
+        {
+          type: chart.type,
+          data: {
+            labels: chart.state[0].map(row => row.year),
+            datasets: [
+              {
+                label: chart.label,
+                data: chart.state[0].map(row => row.count)
+              }
+            ]
           }
-        );
+        }
+      );
     }
 
     return () => {
@@ -86,8 +95,6 @@ const Dashboard = () => {
       }
     };
   })
-
-
 
   return (
     <>
@@ -109,7 +116,7 @@ const Dashboard = () => {
           <h3 className="text-3xl my-6 font-bold">Resultados</h3>
 
           <div className="grid grid-cols-3 gap-5">
-            { charts.map((chart, index) => <div key={index} className="w-full rounded-md bg-white p-5"><canvas ref={chart.ref}></canvas></div>) }
+            {charts.map((chart, index) => <div key={index} className="w-full rounded-md bg-white p-5"><canvas ref={chart.ref}></canvas></div>)}
           </div>
 
         </div>
