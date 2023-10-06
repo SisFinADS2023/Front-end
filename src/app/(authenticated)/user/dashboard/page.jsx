@@ -1,8 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import Chart from 'chart.js/auto'
-import { useEffect, useState, useRef } from "react"
+import * as chartjs from 'chart.js/auto'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider, useDrag, useDrop } from 'react-dnd'
+import { useEffect, useState, useRef, useCallback } from "react"
 import {
   Eye,
   EyeSlash,
@@ -24,7 +26,6 @@ const Overview = ({ title, value, path }) => {
                   <span className="text-3xl font-normal">R${value}</span>
                   <Eye className="absolute right-[18px] bottom-[13px] text-secondary-200" size={24} onClick={(e) => {
                     e.preventDefault()
-                    e.stopPropagation()
                     setVisible(!visible)
                   }} />
                 </>
@@ -33,7 +34,6 @@ const Overview = ({ title, value, path }) => {
                   <div className="flex items-center h-[36px] text-center"><span className="w-[105px] bg-secondary-500 h-[5px] text-center rounded-full"></span></div>
                   <EyeSlash className="absolute right-[18px] bottom-[13px] text-secondary-200" size={24} onClick={(e) => {
                     e.preventDefault()
-                    e.stopPropagation()
                     setVisible(!visible)
                   }} />
                 </>
@@ -59,43 +59,93 @@ function fakeData() {
     );
 }
 
-const Dashboard = () => {
+const Chart = ({ chart, index, moveChart }) => {
 
-  const charts = [
-    { instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null) },
-    { instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null) },
-    { instance: null, state: useState(() => fakeData()), type: 'pie', label: 'Acquisitions by year', ref: useRef(null) },
-    { instance: null, state: useState(() => fakeData()), type: 'line', label: 'Acquisitions by year', ref: useRef(null) },
-    { instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null) },
-    { instance: null, state: useState(() => fakeData()), type: 'bar', label: 'Acquisitions by year', ref: useRef(null) },
-  ]
+    useEffect(() => {
+      if (!chart.ref.current) return;
 
-  useEffect(() => {
-    for (let chart of charts) {
-      chart.instance = new Chart(
+      chart.instance = new chartjs.Chart(
         chart.ref.current,
         {
           type: chart.type,
+          options: {
+            maintainAspectRatio: false,
+          },
           data: {
-            labels: chart.state[0].map(row => row.year),
+            labels: chart.data.map(row => row.year),
             datasets: [
               {
                 label: chart.label,
-                data: chart.state[0].map(row => row.count)
+                data: chart.data.map(row => row.count)
               }
             ]
           }
         }
       );
-    }
 
     return () => {
-      for (let chart of charts) {
-        chart.instance.destroy();
-      }
+      chart.instance.destroy();
     };
-  })
+  }, [chart.ref])
 
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: 'chart',
+    item: { index },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    })
+  }))
+
+  const [{ isOver, canDrop }, drop] = useDrop(() => ({
+    accept: 'chart',
+    drop: (item, monitor) => { moveChart(item.index, index) },
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+      canDrop: monitor.canDrop(),
+    })
+  }))
+
+  return (
+    <>
+      <div ref={drop} className={`border-2 rounded-md ${ canDrop ? "border-black" : "border-gray"} ${ isOver ? "border-green" : "border-gray"}`}>
+        <div ref={drag} className={`bg-transparent p-5 relative h-[30vh]`}>
+          <canvas ref={chart.ref}></canvas>
+        </div>
+      </div>
+    </>
+  )
+}
+
+const ChartsList = () => {
+  const [charts, setCharts] = useState([
+    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 0', ref: useRef(null) },
+    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 1', ref: useRef(null) },
+    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 2', ref: useRef(null) },
+    { instance: null, data: fakeData(), type: 'line', label: 'Acquisitions by year 3', ref: useRef(null) },
+    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 4', ref: useRef(null) },
+    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 5', ref: useRef(null) },
+  ]);
+
+  const moveChart = useCallback((source, destination) => {
+    setCharts((prevCharts) => {
+      const newCharts = [ ...prevCharts ];
+      const temp = newCharts[source];
+      newCharts[source] = newCharts[destination];
+      newCharts[destination] = temp;
+      return newCharts;
+  })
+  }, []);
+
+  return (
+    <>
+        <div className="grid grid-cols-3 gap-5">
+          {charts.map((chart, index) => <Chart key={index} chart={chart} index={index} moveChart={moveChart} /> )}
+        </div>
+    </>
+  )
+}
+
+const Dashboard = () => {
   return (
     <>
       <div className="h-full">
@@ -115,9 +165,9 @@ const Dashboard = () => {
 
           <h3 className="text-3xl my-6 font-bold">Resultados</h3>
 
-          <div className="grid grid-cols-3 gap-5">
-            {charts.map((chart, index) => <div key={index} className="w-full rounded-md bg-white p-5"><canvas ref={chart.ref}></canvas></div>)}
-          </div>
+          <DndProvider backend={HTML5Backend}>
+            <ChartsList />
+          </DndProvider>
 
         </div>
       </div>
