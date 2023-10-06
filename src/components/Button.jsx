@@ -5,7 +5,7 @@ export default function Button({className, children, onClick}) {
     <button
     onClick={onClick}
     className={`
-         px-6 rounded text-[16px] font-semibold
+         py-2 px-6 rounded text-[16px] font-semibold font-roboto
         ${className}
     `}
     >{children}
