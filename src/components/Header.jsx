@@ -11,6 +11,9 @@ import {
 } from 'iconsax-react'
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from "next/navigation"
+
+
 
 const league_Spartan = League_Spartan(
     {
@@ -24,7 +27,7 @@ const Avatar = ({ name, color }) => {
     const initials = name.split(' ')
         .filter((s, i, a) => i == 0 || i == a.length - 1)
         .map(s => s.charAt(0).toUpperCase())
-        .reduce((a, s) => a+s, '');
+        .reduce((a, s) => a + s, '');
 
 
     return (
@@ -40,7 +43,7 @@ const Avatar = ({ name, color }) => {
 const UserModal = ({ userModal }) => {
     return (
         <>
-            <div className="absolute top-[75px] right-5 bg-white w-2/12 rounded-md shadow-md">
+            <div className="absolute top-[75px] right-5 bg-white w-2/12 rounded-md shadow-md z-10">
                 <ul className="flex flex-col">
                     {userModal.map((userModal, index) => (
                         <li key={index}>
@@ -79,7 +82,7 @@ const MessageNotification = ({ title, message, path }) => {
 const NotificationModal = () => {
     return (
         <>
-            <div className="absolute top-[75px] right-32 bg-white w-2/12 mr-9 h-2/3 p-3 px-6 rounded-md shadow-md">
+            <div className="absolute top-[75px] right-32 bg-white w-2/12 mr-9 h-2/3 p-3 px-6 rounded-md shadow-md z-10">
                 <MessageNotification title={"Limite próximo de ser alcançado:"} message={"Seu limite está proximo do limite estabelecido, é hora de economizar!"} path={"#"} />
                 <MessageNotification title={"Limite alcançado:"} message={"Seu limite chegou ao fim, é hora de trabalhar!"} path={"#"} />
             </div>
@@ -87,11 +90,57 @@ const NotificationModal = () => {
     )
 }
 
-const Header = ({ title, name, color }) => {
+const HeaderName = () => {
+    let pathName = []
+    pathName = usePathname().split('/')
+    let lastName = pathName[pathName.length - 1]
+
+    switch (lastName) {
+        case 'dashboard':
+            lastName = 'dashboard'
+            break;
+        case 'contas':
+            lastName = 'contas'
+            break;
+        case 'transacoes':
+            lastName = "transações"
+            break;
+        case 'receitas':
+            lastName = 'receitas'
+            break;
+        case 'despesas':
+            lastName = 'despesas'
+            break
+        case 'planejamento':
+            lastName = 'planejamento'
+            break;
+        case 'carteira':
+            lastName = 'carteira'
+            break;
+        case 'relatorios' :
+            lastName = 'relatórios'
+            break;
+        case 'metas' :
+            lastName = 'metas'
+            break;
+        case 'configuracoes' :
+            lastName = 'configurações'
+            break;
+        case 'central-ajuda' :
+            lastName = 'Central de ajuda'
+    }
+
+    return lastName
+
+}
+
+
+const Header = ({ name, color }) => {
 
     const [toggleMenu, setToggleMenu] = useState(false)
     const [toggleNotification, setToggleNotification] = useState(false)
 
+    
 
     return (
         <div className={league_Spartan.className}>
@@ -99,7 +148,7 @@ const Header = ({ title, name, color }) => {
             <div className="w-auto bg-white h-[80px] flex justify-between select-none">
 
                 <div className="text-3xl flex my-auto ml-8 font-bold text-secondary-500 uppercase">
-                    <h4>{title}</h4>
+                    <h4>{HeaderName()}</h4>
                 </div>
 
                 <div className="flex items-center gap-4">
