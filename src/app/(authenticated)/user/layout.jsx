@@ -4,6 +4,7 @@ import SideMenu from "@/components/SideMenu"
 import Header from "@/components/Header"
 import '../../globals.css'
 import { useEffect, useState } from "react"
+import ModalCookie from "@/components/ModalCookie"
 
 export const metadata = {
     title: 'Coinc',
@@ -24,8 +25,10 @@ export const metadata = {
     return (
         <div className="flex bg-main">
             <SideMenu/>
+            <ModalCookie/>
             <div className="flex flex-col w-full">
               <Header title="Carteira" name="Maria de Lurdes" color={color}/>
+              
               {children}
             </div>
         </div>
