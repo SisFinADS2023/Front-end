@@ -16,7 +16,7 @@ export default function ModalCookie() {
     }
 
     return (
-            <div className={`modal-cookie w-[97%] h-auto bg-tertiary-50 fixed bottom-10 rounded-3xl ml-6 px-10  gap-5 items-center s ${cookie} shadow-xl`}>
+            <div className={`modal-cookie w-[97%] h-auto z-10 bg-tertiary-50 fixed bottom-10 rounded-3xl ml-6 px-10  gap-5 items-center s ${cookie} shadow-xl`}>
                 <div className="py-8 flex flex-col gap-3">
                     <div className="flex gap-2">
                         <h2 className="font-semibold text-xl">Mas antes, vamos falar dos cookies </h2>

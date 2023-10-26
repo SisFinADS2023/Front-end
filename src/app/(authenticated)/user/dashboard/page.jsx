@@ -9,6 +9,7 @@ import {
   Eye,
   EyeSlash,
 } from 'iconsax-react'
+import DashboardBanner from '@/components/DashboardBanner'
 
 const Overview = ({ title, value, path }) => {
 
@@ -162,9 +163,7 @@ const Dashboard = () => {
             <Overview title="Despesas" value="0,00" path="/user/transacoes/despesas" />
             <Overview title="Cartão de Crédito" value="0,00" path="#" />
           </div>
-
-          <h3 className="text-3xl my-6 font-bold">Resultados</h3>
-
+          <DashboardBanner/>
           <DndProvider backend={HTML5Backend}>
             <ChartsList />
           </DndProvider>
