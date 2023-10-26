@@ -23,7 +23,7 @@ import {
 
 const Logo = ({ src, alt }) => {
     return (
-        <div className='mb-10 mt-7'>
+        <div className='mb-10 mt-7 select-none'>
             <img src={src} alt={alt} />
         </div>
     )
@@ -32,7 +32,7 @@ const Logo = ({ src, alt }) => {
 const MenuLink = ({ Icon, href, text, className }) => {
     const pathname = usePathname();
     return (
-        <Link href={href} className={`flex items-center rounded-md w-full py-4 px-2 ${(className || "")} ${pathname === href ? 'bg-primary-500 text-black' : 'hover:text-primary-500'}`}>
+        <Link href={href} className={`flex items-center rounded-md w-full select-none py-4 px-2 ${(className || "")} ${pathname === href ? 'bg-primary-500 text-black' : 'hover:text-primary-500'}`}>
             <Icon size={20} className="ml-2" />
             <span className="ml-6 flex-1 text-base">{text}</span>
         </Link>
