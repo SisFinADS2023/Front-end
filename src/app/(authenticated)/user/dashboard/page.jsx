@@ -9,6 +9,7 @@ import {
   Eye,
   EyeSlash,
 } from 'iconsax-react'
+import TransacoesRecentes from './components/TransacaoRecentes'
 
 const Overview = ({ title, value, path }) => {
 
@@ -139,6 +140,7 @@ const ChartsList = () => {
   return (
     <>
         <div className="grid grid-cols-3 gap-5">
+          <TransacoesRecentes/>
           {charts.map((chart, index) => <Chart key={index} chart={chart} index={index} moveChart={moveChart} /> )}
         </div>
     </>
@@ -157,6 +159,7 @@ const Dashboard = () => {
           </div>
 
           <div className="grid grid-cols-4 gap-4">
+
             <Overview title="Saldo Atual" value="0,00" path="#" />
             <Overview title="Receitas" value="0,00" path="/user/transacoes/receitas" />
             <Overview title="Despesas" value="0,00" path="/user/transacoes/despesas" />
