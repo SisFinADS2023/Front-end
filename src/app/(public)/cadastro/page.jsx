@@ -1,6 +1,10 @@
 import React from 'react'
 import {League_Spartan} from 'next/font/google'
 import { Inter } from 'next/font/google'
+import {
+  Eye,
+  EyeSlash
+} from 'iconsax-react'
 
 
 
@@ -25,7 +29,7 @@ const Cadastro = () => {
       <div id="cadastro-card" class="flex flex-col h-auto w-[496px] justify-center">
         <div id="cadastro-title" class="h-14 ">
           <div className={league_Spartan.className}>
-          <h2 class="font-sans text-3xl league_Spartan text-center">Crie sua conta</h2>
+          <h2 class="font-sans text-3xl league_Spartan">Crie sua conta</h2>
           </div>
         </div>
         <div id="cadastro-body" class="w-auto">
