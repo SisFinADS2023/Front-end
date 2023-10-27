@@ -1,13 +1,20 @@
 'use client'
 
+import { DateFilter } from "@/app/(authenticated)/user/dashboard/components/DateFilter.jsx"
+
 import Link from 'next/link'
+
 import * as chartjs from 'chart.js/auto'
+
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider, useDrag, useDrop } from 'react-dnd'
+
 import { useEffect, useState, useRef, useCallback } from "react"
+
 import {
   Eye,
   EyeSlash,
+  Setting4,
 } from 'iconsax-react'
 
 const Overview = ({ title, value, path }) => {
@@ -61,27 +68,27 @@ function fakeData() {
 
 const Chart = ({ chart, index, moveChart }) => {
 
-    useEffect(() => {
-      if (!chart.ref.current) return;
+  useEffect(() => {
+    if (!chart.ref.current) return;
 
-      chart.instance = new chartjs.Chart(
-        chart.ref.current,
-        {
-          type: chart.type,
-          options: {
-            maintainAspectRatio: false,
-          },
-          data: {
-            labels: chart.data.map(row => row.year),
-            datasets: [
-              {
-                label: chart.label,
-                data: chart.data.map(row => row.count)
-              }
-            ]
-          }
+    chart.instance = new chartjs.Chart(
+      chart.ref.current,
+      {
+        type: chart.type,
+        options: {
+          maintainAspectRatio: false,
+        },
+        data: {
+          labels: chart.data.map(row => row.year),
+          datasets: [
+            {
+              label: chart.label,
+              data: chart.data.map(row => row.count)
+            }
+          ]
         }
-      );
+      }
+    );
 
     return () => {
       chart.instance.destroy();
@@ -107,7 +114,7 @@ const Chart = ({ chart, index, moveChart }) => {
 
   return (
     <>
-      <div ref={drop} className={`border-2 rounded-md ${ canDrop ? "border-black" : "border-gray"} ${ isOver ? "border-green" : "border-gray"}`}>
+      <div ref={drop} className={`border-2 rounded-md ${canDrop ? "border-black" : "border-gray"} ${isOver ? "border-green" : "border-gray"}`}>
         <div ref={drag} className={`bg-transparent p-5 relative h-[30vh]`}>
           <canvas ref={chart.ref}></canvas>
         </div>
@@ -118,29 +125,41 @@ const Chart = ({ chart, index, moveChart }) => {
 
 const ChartsList = () => {
   const [charts, setCharts] = useState([
-    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 0', ref: useRef(null) },
-    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 1', ref: useRef(null) },
-    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 2', ref: useRef(null) },
+    { instance: null, data: fakeData(), type: 'bar', label: 'Acquisitions by year 0', ref: useRef(null) },
+    { instance: null, data: fakeData(), type: 'bar', label: 'Acquisitions by year 1', ref: useRef(null) },
+    { instance: null, data: fakeData(), type: 'bar', label: 'Acquisitions by year 2', ref: useRef(null) },
     { instance: null, data: fakeData(), type: 'line', label: 'Acquisitions by year 3', ref: useRef(null) },
-    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 4', ref: useRef(null) },
-    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 5', ref: useRef(null) },
+    { instance: null, data: fakeData(), type: 'bar', label: 'Acquisitions by year 4', ref: useRef(null) },
+    { instance: null, data: fakeData(), type: 'bar', label: 'Acquisitions by year 5', ref: useRef(null) },
   ]);
 
   const moveChart = useCallback((source, destination) => {
     setCharts((prevCharts) => {
-      const newCharts = [ ...prevCharts ];
+      const newCharts = [...prevCharts];
       const temp = newCharts[source];
       newCharts[source] = newCharts[destination];
       newCharts[destination] = temp;
       return newCharts;
-  })
+    })
   }, []);
 
   return (
     <>
-        <div className="grid grid-cols-3 gap-5">
-          {charts.map((chart, index) => <Chart key={index} chart={chart} index={index} moveChart={moveChart} /> )}
+      <div className="grid grid-cols-3 gap-5">
+        {charts.map((chart, index) => <Chart key={index} chart={chart} index={index} moveChart={moveChart} />)}
+      </div>
+    </>
+  )
+}
+
+const GraphicsFilter = () => {
+  return (
+    <>
+      <div className="flex">
+        <div className="flex w-auto px-4 py-[7px] bg-secondary-500 rounded-md items-center h-10">
+          <Setting4 size={20} className="text-white" />
         </div>
+      </div>
     </>
   )
 }
@@ -152,8 +171,17 @@ const Dashboard = () => {
 
         <div className="m-8">
 
-          <div className="flex-start flex-col">
-            <h3 className="font-bold text-5xl mb-3">Overview</h3>
+
+          <div className="grid grid-cols-2">
+
+            <div className="border-l-[6px] border-l-primary-800 h-10 mb-5">
+              <h3 className="flex ml-4 text-3xl font-bold text-primary-800">Visão Geral</h3>
+            </div>
+
+            <div className="flex gap-4 justify-end">
+              <DateFilter />
+              <GraphicsFilter />
+            </div>
           </div>
 
           <div className="grid grid-cols-4 gap-4">
