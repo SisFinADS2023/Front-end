@@ -24,7 +24,7 @@ export const DateFilter = () => {
             <div className="flex cursor-pointer" onClick={() => setToggleFilter(true)}>
                 <div className="flex w-auto ml-auto h-10 py-[7px] bg-secondary-500 rounded-md gap-2 items-center">
                     <Calendar2 size={20} className="text-white ml-4" />
-                    <h4 className="text-white capitalize font-normal text-base w-auto mr-4">{formattedDate}</h4>
+                    <h4 className="text-white capitalize font-normal text-base w-auto mr-4 select-none">{formattedDate}</h4>
                 </div>
             </div>
             {

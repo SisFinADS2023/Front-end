@@ -1,6 +1,9 @@
 'use client'
 
+import Checkbox from '@mui/material/Checkbox';
+
 import { DateFilter } from "@/app/(authenticated)/user/dashboard/components/DateFilter.jsx"
+import { GraphicsFilter } from "@/app/(authenticated)/user/dashboard/components/GraphicsFilter.jsx"
 
 import Link from 'next/link'
 
@@ -147,18 +150,6 @@ const ChartsList = () => {
     <>
       <div className="grid grid-cols-3 gap-5">
         {charts.map((chart, index) => <Chart key={index} chart={chart} index={index} moveChart={moveChart} />)}
-      </div>
-    </>
-  )
-}
-
-const GraphicsFilter = () => {
-  return (
-    <>
-      <div className="flex">
-        <div className="flex w-auto px-4 py-[7px] bg-secondary-500 rounded-md items-center h-10">
-          <Setting4 size={20} className="text-white" />
-        </div>
       </div>
     </>
   )
