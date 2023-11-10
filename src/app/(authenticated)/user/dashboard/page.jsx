@@ -9,7 +9,8 @@ import {
   Eye,
   EyeSlash,
 } from 'iconsax-react'
-import TransacoesRecentes from './components/TransacaoRecentes'
+import TransacoesRecentes from './components/RecentsTransactions'
+import Goals from './components/Goals'
 
 const Overview = ({ title, value, path }) => {
 
@@ -139,8 +140,9 @@ const ChartsList = () => {
 
   return (
     <>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="flex flex-wrap justify-between">
           <TransacoesRecentes/>
+          <Goals/>
           {charts.map((chart, index) => <Chart key={index} chart={chart} index={index} moveChart={moveChart} /> )}
         </div>
     </>
@@ -179,3 +181,5 @@ const Dashboard = () => {
 }
 
 export default Dashboard
+
+
