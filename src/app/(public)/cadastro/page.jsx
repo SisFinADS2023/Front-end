@@ -1,10 +1,9 @@
 import React from 'react'
 import {League_Spartan} from 'next/font/google'
 import { Inter } from 'next/font/google'
-import {
-  Eye,
-  EyeSlash
-} from 'iconsax-react'
+
+import InputSenha from '@/components/InputSenha'
+import InputConfSenha from '@/components/InputConfSenha'
 
 
 
@@ -22,9 +21,34 @@ const inter = Inter(
   }
 )
 
+const ButtonHandle  = () => {
+    document.getElementById("buttonSignUp").disabled = true;
+
+    document.getElementById("input[type='checkbox']").addEventListener("input[type='checkbox']", function(event){
+
+      //busca conteúdo do input
+        var conteudo = document.getElementById("input[type='checkbox']").value;
+    
+        //valida conteudo do input 
+        if (conteudo !== null && conteudo !== '') {
+          //habilita o botão
+          document.getElementById("buttonSignUp").disabled = false;
+        } else {
+          //desabilita o botão se o conteúdo do input ficar em branco
+          document.getElementById("buttonSignUp").disabled = true;
+        }
+    });
+
+}
+
 
 const Cadastro = () => {
+
+
+
   return (
+    <>
+    
     <div class="flex justify-center items-center w-[1210px]">
       <div id="cadastro-card" class="flex flex-col h-auto w-[496px] justify-center">
         <div id="cadastro-title" class="h-14 ">
@@ -34,16 +58,18 @@ const Cadastro = () => {
         </div>
         <div id="cadastro-body" class="w-auto">
           <div id="nome-sobrenome" class="flex flex space-x-4 ">
-            <input type="text" id="name" name="name" value="" placeholder="Nome" class="border rounded-md  pl-3 text-[16px] w-[227px] h-[48px] font-sans"></input>
-            <input type="text" id="name" name="sobrenome" value="" placeholder="Sobrenome" class="border rounded-md pl-3 text-[16px] w-[247px] h-[48px] font-sans"></input>
+            <input type="text" id="name" name="name" value="" placeholder="Nome" class="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10 "></input>
+            <input type="text" id="name" name="sobrenome" value="" placeholder="Sobrenome" class="border-2 text-[#A2A3A4] px-2 font-normal text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input> 
           </div>
 
           <div id="form-content" class="flex flex-col space-y-6 pt-6">
-            <input type="text" id="name" name="cpf" value="" placeholder="Username" class="border rounded-md pl-3 text-[16px] font-sans font-sans w-[490px] h-[48px]"></input>
-            <input type="text" id="name" name="email" value="" placeholder="E-mail" class="border rounded-md pl-3 text-[16px] font-sans w-[490px] h-[48px]"></input>
-            <input type="text" id="name" name="email" value="" placeholder="Confirmar E-mail" class="border rounded-md pl-3 text-[16px] font-sans w-[490px] h-[48px]"></input>
-            <input type="text" id="name" name="senha" value="" placeholder="Senha" class="border rounded-md pl-3 text-[16px] font-sans w-[490px] h-[48px] bg-[url('https://cdn-icons-png.flaticon.com/512/829/829117.png')] bg-no-repeat bg-[length:20px_20px] bg-[calc(100%-10px)]"></input>
-            <input type="text" id="name" name="conf-senha" value="" placeholder="Confirmar Senha " class="border rounded-md pl-3 text-[16px] font-sans w-[490px] h-[48px] bg-[url('https://cdn-icons-png.flaticon.com/512/829/829117.png')] bg-no-repeat bg-[length:20px_20px] bg-[calc(100%-10px)]"></input>
+            <input type="text" id="name" name="cpf" value="" placeholder="Username" class="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+            <input type="text" id="name" name="email" value="" placeholder="E-mail" class="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+            <input type="text" id="name" name="email" value="" placeholder="Confirmar E-mail" class="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+            <div className="h-[126px]">
+            <InputSenha/>
+            <InputConfSenha/>
+            </div>
           </div>
 
           <div id="termos" class="h-16 pt-3 flex ">
@@ -52,7 +78,7 @@ const Cadastro = () => {
 
           <div id="input" class="pt-9">
           <div className={inter.className}>
-            <button class="rounded-md w-[496px] h-[45px] bg-lightGray font-sans text-[#979797] ">Cadastre-se</button>
+            <button id="buttonSignUp"  className="rounded-md w-[496px] h-[45px] bg-lightGray font-sans text-[#979797] ">Cadastre-se</button>
           </div>
           </div>
         </div>
@@ -61,6 +87,7 @@ const Cadastro = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

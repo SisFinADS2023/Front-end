@@ -1,7 +1,8 @@
 import React from 'react'
 import {League_Spartan} from 'next/font/google'
 import { Inter } from 'next/font/google'
-
+import InputSenha from '@/components/InputSenha'
+import InputConfSenha from '@/components/InputConfSenha'
 
 
 const league_Spartan = League_Spartan(
@@ -31,8 +32,10 @@ const NovaSenha = () => {
         <div id="novaSenha-body" class="w-auto h-auto">
 
           <div id="form-content" class="flex flex-col space-y-[30px] pt-6">
-            <input type="text" id="name" name="nova-senha" value="" placeholder="Nova Senha" class="border rounded-md pl-3 text-[16px] font-sans w-[490px] h-[48px] bg-[url('https://cdn-icons-png.flaticon.com/512/829/829117.png')] bg-no-repeat bg-[length:20px_20px] bg-[calc(100%-10px)]"></input>
-            <input type="text" id="name" name="conf-nova-senha" value="" placeholder="Confirmar Nova Senha " class="border rounded-md pl-3 text-[16px] font-sans w-[490px] h-[48px] bg-[url('https://cdn-icons-png.flaticon.com/512/829/829117.png')] bg-no-repeat bg-[length:20px_20px] bg-[calc(100%-10px)]"></input>
+          <div className="h-[126px]">
+           <InputSenha/>
+           <InputConfSenha/>
+           </div>
           </div>
 
           <div id="input" class="pt-[23px]">
