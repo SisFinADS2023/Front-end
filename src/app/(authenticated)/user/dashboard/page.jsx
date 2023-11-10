@@ -16,7 +16,9 @@ import {
   Eye,
   EyeSlash,
 } from 'iconsax-react'
-import TransacoesRecentes from './components/TransacaoRecentes'
+
+import TransacoesRecentes from './components/RecentsTransactions'
+import Goals from './components/Goals'
 
 const Overview = ({ title, value, path }) => {
 
@@ -147,6 +149,8 @@ const Dashboard = () => {
           <ChartsDataContext.Provider value={chartsData}>
             <ChartsDataDispatchContext.Provider value={chartsDataDispatcher}>
               <ChartsList />
+              <TransacoesRecentes/>
+              <Goals/>
             </ChartsDataDispatchContext.Provider>
           </ChartsDataContext.Provider>
           </DndProvider>

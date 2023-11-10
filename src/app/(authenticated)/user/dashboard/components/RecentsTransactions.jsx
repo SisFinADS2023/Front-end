@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Maximize4 } from 'iconsax-react'
 
-export default function DashboardTransacaoRecentes() {
+export default function RecentsTransactions() {
 
   const transacoes = [
     {
@@ -69,17 +69,17 @@ export default function DashboardTransacaoRecentes() {
   const [toggleMax, setToogleMax] = useState(false)
 
   return (
-    <div className={`h-[30vh] ${toggleMax ? "w-screen" : "w-[460px]"} bg-white shadow px-8 py-5 rounded overflow-hidden`}>
-      <div className='flex justify-between'>
+    <div className={`h-[339px] w-[488px] ${toggleMax ? "w-full" : "w-[488px]"}  bg-white  shadow px-8 py-5 rounded overflow-hidden`}>
+      <div className='flex justify-between '>
         <h2 className='text-xl text-secondary-900 font-semibold'>Transações recentes</h2>
-        <button onClick={() => setToogleMax(!toggleMax)}>
+        <button className='transform rotate-45' onClick={() => setToogleMax(!toggleMax)}>
           <Maximize4 />
         </button>
       </div>
       <div className='mt-4 flex flex-col gap-2'>
-        {transacoes.map((transacao) => 
+        {transacoes.map((transacao, index) =>
           (
-          <div className='h-12 flex gap-8 justify-between items-center'>
+          <div key={index} className='h-12 flex gap-8 justify-between items-center'>
             <div className='flex gap-8'>
               <img className='w-12 h-full rounded-lg' src="https://github.com/gvnny.png" alt="" />
               <div className='flex flex-col'>
