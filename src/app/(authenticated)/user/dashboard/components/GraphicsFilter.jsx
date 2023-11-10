@@ -1,5 +1,5 @@
-import { useChartsFilters,
-         useChartsFiltersDispatch,
+import { useChartsData,
+         useChartsDataDispatch,
 } from '@/app/(authenticated)/user/dashboard/Context/Context'
 
 import Checkbox from '@mui/material/Checkbox'
@@ -15,8 +15,8 @@ export const GraphicsFilter = () => {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } }
 
     const [toggleFilter, setToggleFilter] = useState(false);
-    const chartsData = useChartsFilters()
-    const chartsDataDispatch = useChartsFiltersDispatch()
+    const chartsData = useChartsData()
+    const chartsDataDispatch = useChartsDataDispatch()
 
     return (
       <>
@@ -37,8 +37,8 @@ export const GraphicsFilter = () => {
             {
               chartsData
               .map(chart =>
-                <div key={ chart.index } className="flex items-center select-none">
-                  <Checkbox {...label} checked={ chart.visible } onChange={ (event) => { chartsDataDispatch({label: chart.label, visible: event.target.checked }) } }/>
+                <div key={ chart.label } className="flex items-center select-none">
+                  <Checkbox {...label} checked={ chart.visible } onChange={ (event) => { chartsDataDispatch({action: 'toggleVisible', label: chart.label, visible: event.target.checked }) } }/>
                   <h6 className="mr-3">{ chart.label }</h6>
               </div>)
             }

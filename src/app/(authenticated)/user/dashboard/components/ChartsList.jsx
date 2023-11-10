@@ -1,11 +1,11 @@
-import { useChartsFilters } from '@/app/(authenticated)/user/dashboard/Context/Context'
+import { useChartsData, useChartsDataDispatch } from '@/app/(authenticated)/user/dashboard/Context/Context'
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import * as chartjs from 'chart.js/auto'
 
 
 
-const Chart = ({ chart, index, chartRef, moveChart }) => {
+const Chart = ({ chart, chartRef, moveChart }) => {
 
   useEffect(() => {
     if (!chartRef.current) return;
@@ -36,7 +36,7 @@ const Chart = ({ chart, index, chartRef, moveChart }) => {
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'chart',
-    item: { index },
+    item: { index: chart.index },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     })
@@ -44,7 +44,7 @@ const Chart = ({ chart, index, chartRef, moveChart }) => {
 
   const [{ isOver, canDrop }, drop] = useDrop(() => ({
     accept: 'chart',
-    drop: (item, monitor) => { moveChart(item.index, index) },
+    drop: (item, monitor) => { moveChart(item.index, chart.index) },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
@@ -64,18 +64,17 @@ const Chart = ({ chart, index, chartRef, moveChart }) => {
 
 export const ChartsList = () => {
 
-  const chartsData = useChartsFilters()
+  const chartsData = useChartsData()
+  const chartsDataDispatch = useChartsDataDispatch()
 
   const [refs, setRefs] = useState(chartsData.map(_ => useRef(null)));
 
     const moveChart = useCallback((source, destination) => {
-      setCharts((prevCharts) => {
-        const newCharts = [...prevCharts];
-        const temp = newCharts[source];
-        newCharts[source] = newCharts[destination];
-        newCharts[destination] = temp;
-        return newCharts;
-      })
+      chartsDataDispatch({
+        action: 'moveChart',
+        source: source,
+        destination: destination
+      });
     }, []);
 
     return (
@@ -85,7 +84,10 @@ export const ChartsList = () => {
             chartsData
               .map((chart, index) => { chart.index = index; return chart; })
               .filter(chart => chart.visible)
-              .map((chart) => <Chart key={chart.index} chartRef={refs[chart.index]} chart={chart} index={chart.index} moveChart={moveChart} />)
+              .map(chart => <Chart key={Math.random()}
+                                   chartRef={refs[chart.index]}
+                                   chart={chart}
+                                   moveChart={moveChart} />)
           }
         </div>
       </>

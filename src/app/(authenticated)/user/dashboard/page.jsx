@@ -58,17 +58,29 @@ const Overview = ({ title, value, path }) => {
 
 
 import { useReducer} from 'react';
-import { ChartsFiltersDispatchContext, ChartsFiltersContext } from '@/app/(authenticated)/user/dashboard/Context/Context';
+import { ChartsDataDispatchContext, ChartsDataContext } from '@/app/(authenticated)/user/dashboard/Context/Context';
 
-function chartsDataReducer(chartsData, { label, visible }) {
-    return chartsData.map(chart => {
-      if (chart.label == label) {
-        chart.visible = visible;
-        return chart;
-      } else {
-        return chart;
-      }
-    });
+function chartsDataReducer(chartsData, { action, label, visible, source, destination }) {
+    switch (action) {
+      case 'toggleVisible':
+        return chartsData.map(chart => {
+          if (chart.label == label) {
+            chart.visible = visible;
+          }
+          return chart;
+        });
+
+        case 'moveChart':
+          const newCharts = [ ...chartsData ];
+          const temp = newCharts[source];
+          newCharts[source] = newCharts[destination];
+          newCharts[destination] = temp;
+          return newCharts;
+
+        default:
+          console.warn("chartsDataReducer(): action '" + action + "' is not valid");
+          return chartsData;
+    }
 }
 
 function fakeData() {
@@ -92,7 +104,7 @@ const initialChartsData = [
   { instance: null, data: fakeData(), type: 'bar', label: 'Acquisitions by year 5', visible: true, },
 ];
 
-const Dashboard = ( {children} ) => {
+const Dashboard = () => {
 
   const [chartsData, chartsDataDispatcher] = useReducer(
     chartsDataReducer,
@@ -113,11 +125,11 @@ const Dashboard = ( {children} ) => {
 
             <div className="flex gap-4 justify-end">
               <DateFilter />
-              <ChartsFiltersContext.Provider value={chartsData}>
-                <ChartsFiltersDispatchContext.Provider value={chartsDataDispatcher}>
+              <ChartsDataContext.Provider value={chartsData}>
+                <ChartsDataDispatchContext.Provider value={chartsDataDispatcher}>
                   <GraphicsFilter />
-                </ChartsFiltersDispatchContext.Provider>
-              </ChartsFiltersContext.Provider>
+                </ChartsDataDispatchContext.Provider>
+              </ChartsDataContext.Provider>
             </div>
           </div>
 
@@ -132,9 +144,11 @@ const Dashboard = ( {children} ) => {
           <h3 className="text-3xl my-6 font-bold">Resultados</h3>
 
           <DndProvider backend={HTML5Backend}>
-          <ChartsFiltersContext.Provider value={chartsData}>
-            <ChartsList />
-          </ChartsFiltersContext.Provider>
+          <ChartsDataContext.Provider value={chartsData}>
+            <ChartsDataDispatchContext.Provider value={chartsDataDispatcher}>
+              <ChartsList />
+            </ChartsDataDispatchContext.Provider>
+          </ChartsDataContext.Provider>
           </DndProvider>
 
         </div>

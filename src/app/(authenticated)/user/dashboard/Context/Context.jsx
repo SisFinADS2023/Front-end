@@ -1,12 +1,12 @@
 import { createContext, useContext } from 'react';
 
-export const ChartsFiltersContext = createContext(null);
-export const ChartsFiltersDispatchContext = createContext(null);
+export const ChartsDataContext = createContext(null);
+export const ChartsDataDispatchContext = createContext(null);
 
-export function useChartsFilters() {
-    return useContext(ChartsFiltersContext)
+export function useChartsData() {
+    return useContext(ChartsDataContext)
 }
 
-export function useChartsFiltersDispatch() {
-    return useContext(ChartsFiltersDispatchContext)
+export function useChartsDataDispatch() {
+    return useContext(ChartsDataDispatchContext)
 }
