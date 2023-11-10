@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Maximize4 } from 'iconsax-react'
 
-export default function RecentsTransactions() {
+export default function DashboardTransacaoRecentes() {
 
   const transacoes = [
     {
@@ -69,10 +69,10 @@ export default function RecentsTransactions() {
   const [toggleMax, setToogleMax] = useState(false)
 
   return (
-    <div className={`h-[339px] w-[488px] ${toggleMax ? "w-full" : "w-[488px]"}  bg-white  shadow px-8 py-5 rounded overflow-hidden`}>
-      <div className='flex justify-between '>
+    <div className={`h-[30vh] ${toggleMax ? "w-screen" : "w-[460px]"} bg-white shadow px-8 py-5 rounded overflow-hidden`}>
+      <div className='flex justify-between'>
         <h2 className='text-xl text-secondary-900 font-semibold'>Transações recentes</h2>
-        <button className='transform rotate-45' onClick={() => setToogleMax(!toggleMax)}>
+        <button onClick={() => setToogleMax(!toggleMax)}>
           <Maximize4 />
         </button>
       </div>

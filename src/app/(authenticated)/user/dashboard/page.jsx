@@ -16,8 +16,7 @@ import {
   Eye,
   EyeSlash,
 } from 'iconsax-react'
-import TransacoesRecentes from './components/RecentsTransactions'
-import Goals from './components/Goals'
+import TransacoesRecentes from './components/TransacaoRecentes'
 
 const Overview = ({ title, value, path }) => {
 
@@ -102,7 +101,6 @@ const Dashboard = ( {children} ) => {
 
   return (
     <>
-
       <div className="h-full">
 
         <div className="m-8">
@@ -146,5 +144,3 @@ const Dashboard = ( {children} ) => {
 }
 
 export default Dashboard
-
-
