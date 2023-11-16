@@ -140,7 +140,7 @@ const ChartsList = () => {
 
   return (
     <>
-        <div className="flex flex-wrap justify-between">
+        <div className="flex gap-5 flex-wrap justify-between">
           <TransacoesRecentes/>
           <Goals/>
           {charts.map((chart, index) => <Chart key={index} chart={chart} index={index} moveChart={moveChart} /> )}
