@@ -1,0 +1,13 @@
+.rolagem::-webkit-scrollbar {
+    width: 8px;
+}
+
+.rolagem::-webkit-scrollbar-track {
+    background: #9CA3AF;
+    border-radius: 10px;
+}
+
+.rolagem::-webkit-scrollbar-thumb {
+    background-color: #11D07D;
+    border-radius: 10px;
+}

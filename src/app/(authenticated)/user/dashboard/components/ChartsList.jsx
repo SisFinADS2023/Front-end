@@ -2,6 +2,9 @@ import { useChartsData, useChartsDataDispatch } from '@/app/(authenticated)/user
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import * as chartjs from 'chart.js/auto'
+import Goals from './Goals'
+import RecentsTransactions from './RecentsTransactions'
+import ExpenseChart from './ExpenseChart'
 
 
 
@@ -80,6 +83,9 @@ export const ChartsList = () => {
     return (
       <>
         <div className="grid grid-cols-3 gap-5">
+          <Goals/>
+          <RecentsTransactions />
+          <ExpenseChart/>
           {
             chartsData
               .map((chart, index) => { chart.index = index; return chart; })

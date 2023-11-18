@@ -59,30 +59,30 @@ const Overview = ({ title, value, path }) => {
 
 
 
-import { useReducer} from 'react';
+import { useReducer } from 'react';
 import { ChartsDataDispatchContext, ChartsDataContext } from '@/app/(authenticated)/user/dashboard/Context/Context';
 
 function chartsDataReducer(chartsData, { action, label, visible, source, destination }) {
-    switch (action) {
-      case 'toggleVisible':
-        return chartsData.map(chart => {
-          if (chart.label == label) {
-            chart.visible = visible;
-          }
-          return chart;
-        });
+  switch (action) {
+    case 'toggleVisible':
+      return chartsData.map(chart => {
+        if (chart.label == label) {
+          chart.visible = visible;
+        }
+        return chart;
+      });
 
-        case 'moveChart':
-          const newCharts = [ ...chartsData ];
-          const temp = newCharts[source];
-          newCharts[source] = newCharts[destination];
-          newCharts[destination] = temp;
-          return newCharts;
+    case 'moveChart':
+      const newCharts = [...chartsData];
+      const temp = newCharts[source];
+      newCharts[source] = newCharts[destination];
+      newCharts[destination] = temp;
+      return newCharts;
 
-        default:
-          console.warn("chartsDataReducer(): action '" + action + "' is not valid");
-          return chartsData;
-    }
+    default:
+      console.warn("chartsDataReducer(): action '" + action + "' is not valid");
+      return chartsData;
+  }
 }
 
 function fakeData() {
@@ -98,7 +98,7 @@ function fakeData() {
 }
 
 const initialChartsData = [
-  { instance: null, data: fakeData(), type: 'bar', label: 'Acquisitions by year 0', visible: true, },
+  { instance: null, data: fakeData(), type: 'doughnut', label: 'Acquisitions by year 0', visible: true, },
   { instance: null, data: fakeData(), type: 'bar', label: 'Acquisitions by year 1', visible: true, },
   { instance: null, data: fakeData(), type: 'bar', label: 'Acquisitions by year 2', visible: true, },
   { instance: null, data: fakeData(), type: 'line', label: 'Acquisitions by year 3', visible: true, },
@@ -146,13 +146,11 @@ const Dashboard = () => {
           <h3 className="text-3xl my-6 font-bold">Resultados</h3>
 
           <DndProvider backend={HTML5Backend}>
-          <ChartsDataContext.Provider value={chartsData}>
-            <ChartsDataDispatchContext.Provider value={chartsDataDispatcher}>
-              <ChartsList />
-              <TransacoesRecentes/>
-              <Goals/>
-            </ChartsDataDispatchContext.Provider>
-          </ChartsDataContext.Provider>
+            <ChartsDataContext.Provider value={chartsData}>
+              <ChartsDataDispatchContext.Provider value={chartsDataDispatcher}>
+                  <ChartsList />
+              </ChartsDataDispatchContext.Provider>
+            </ChartsDataContext.Provider>
           </DndProvider>
 
         </div>
