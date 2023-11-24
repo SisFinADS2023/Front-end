@@ -6,6 +6,7 @@ import {
 } from 'iconsax-react'
 import { useState } from 'react'
 
+import './checkBoxStyle.css'
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
