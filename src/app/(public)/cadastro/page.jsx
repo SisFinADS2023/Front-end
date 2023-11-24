@@ -6,6 +6,7 @@ import { Inter } from 'next/font/google'
 import InputSenha from '@/components/InputSenha'
 import { useRegisterStore } from '../../../Utils/Stores/userStore'
 import Link from 'next/link'
+import { handleChange } from '@/Utils/Handles/Register/handleChange'
 
 const league_Spartan = League_Spartan(
   {
@@ -22,14 +23,17 @@ const inter = Inter(
 )
 
 const Cadastro = () => {
-
   const { registerUser, setRegisterUser } = useRegisterStore()
 
-  const handleChange = (e, prop) => {
-    setRegisterUser(prop, e.target.value)
+  const handleInputChange = (e, prop) => {
+    console.log('BEFORE', prop, registerUser)
+    handleChange(e, prop, setRegisterUser)
+    console.log('AFTER', prop, registerUser)
+    console.log('~-------------------------')
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     console.log("USER FORM: " + JSON.stringify(registerUser))
   }
 
@@ -48,16 +52,16 @@ const Cadastro = () => {
           <form onSubmit={handleSubmit}>
             <div className="w-auto">
               <div className="flex space-x-4 ">
-                <input onChange={(e) => handleChange(e, 'name')} type="text" name="nome" placeholder="Nome" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10 "></input>
-                <input onChange={(e) => handleChange(e, 'lastName')} type="text" name="sobrenome" placeholder="Sobrenome" className="border-2 text-[#A2A3A4] px-2 font-normal text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                <input onChange={(e) => handleInputChange(e, 'name')} type="text" name="nome" placeholder="Nome" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10 "></input>
+                <input onChange={(e) => handleInputChange(e, 'lastName')} type="text" name="sobrenome" placeholder="Sobrenome" className="border-2 text-[#A2A3A4] px-2 font-normal text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
               </div>
 
               <div className="flex flex-col space-y-6 pt-6">
-                <input onChange={(e) => handleChange(e, 'email')} type="text" name="email" placeholder="E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
-                <input onChange={(e) => handleChange(e, 'confEmail')} type="text" name="Confemail" placeholder="Confirmar E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                <input onChange={(e) => handleInputChange(e, 'email')} type="text" name="email" placeholder="E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                <input onChange={(e) => handleInputChange(e, 'confEmail')} type="text" name="Confemail" placeholder="Confirmar E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
                 <div className="h-[126px]">
-                  <InputSenha type={'password'} />
-                  <InputSenha type={'confPassword'} />
+                  <InputSenha onChange={(e) => handleInputChange(e, 'password')} />
+                  <InputSenha onChange={(e) => handleInputChange(e, 'confPassword')}/>
                 </div>
               </div>
 
