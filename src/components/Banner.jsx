@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 import Logo from '../../public/logo.svg'
-import Analyst from '../../public/financial-analyst.svg'
 import Frame1 from '../../public/Frame1.svg'
 import Frame2 from '../../public/Frame2.svg'
 import Frame3 from '../../public/Frame3.svg'
