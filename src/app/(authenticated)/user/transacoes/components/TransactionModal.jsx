@@ -7,6 +7,13 @@ import {
 import { useState } from 'react'
 
 
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import 'dayjs/locale/pt-br';
+import dayjs from 'dayjs'
+
+
 const hindTituloModal = Hind(
     {
         weight: '500',
@@ -29,6 +36,32 @@ const hindTextCheckboxOp = Hind(
 )
 
 const TransactionModal = () => {
+
+    const [checkBoxDropDownOptions, setCheckBoxDropDownOptions] = useState(false)
+
+    const checkBoxDropDown = () => {
+        setCheckBoxDropDownOptions(!checkBoxDropDownOptions)
+    }    
+
+    const [date, setDate] = useState(dayjs())
+
+    const changeDate = (newDate) => {
+        setDate(newDate)
+    }
+    
+    const dayOfTheWeek = (day) => {
+
+        switch(day) {
+            case 0: return 'o domingo';
+            case 1: return 'a segunda-feira';
+            case 2: return 'a terça-feira';
+            case 3: return 'a quarta-feira';
+            case 4: return 'a quinta-feira';
+            case 5: return 'a sexta-feira';
+            case 6: return 'o sábado';
+        }
+
+    }
 
     return (
 
@@ -55,7 +88,15 @@ const TransactionModal = () => {
                     </div>                
                     <div className="w-[150px] h-[40px] border rounded border-secondary-300 justify-center items-end inline-flex">
                         <div>
-
+                            <LocalizationProvider adapterLocale="pt-br" dateAdapter={AdapterDayjs}>
+                                <DatePicker value={date} onChange={changeDate} slotProps={{ textField: 
+                                    {  
+                                        size: 'small' ,
+                                        focused: false,
+                                        color: 'secondary'
+                                    } 
+                                }}/>
+                            </LocalizationProvider>
                         </div>
                     </div>                        
                 </div>
@@ -74,7 +115,23 @@ const TransactionModal = () => {
                     </div>              
                 </div>
 
-                
+                <div className={`w-[500px] h-[80px] flex flex-col justify-start gap-4 mt-[20px] mb-[32px] ${checkBoxDropDownOptions ? 'flex' : 'hidden'}`}>
+                    <div className='checkbox-container'>
+                        <input className='' type="checkbox" name="everyday"/>
+                        <label className={`${hindTextCheckboxOp.className} text-[16px] text-secondary-500`} />
+                        <span className={`${hindTextCheckboxOp.className} text-[16px] text-secondary-500 ml-5`}>Todos os dias</span>
+                    </div>
+                    <div className='checkbox-container'>
+                        <input className='' type="checkbox" name="everyday"/>
+                        <label className={`${hindTextCheckboxOp.className} text-[16px] text-secondary-500`} />
+                        <span className={`${hindTextCheckboxOp.className} text-[16px] text-secondary-500 ml-5`}>Todas as semanas n{dayOfTheWeek(date.$W)} </span>
+                    </div>                    
+                    <div className='checkbox-container'>
+                        <input className='' type="checkbox" name="everyday"/>
+                        <label className={`${hindTextCheckboxOp.className} text-[16px] text-secondary-500`} />
+                        <span className={`${hindTextCheckboxOp.className} text-[16px] text-secondary-500 ml-5`}>Todos os meses no dia {date.$D}</span>
+                    </div>                                      
+                </div>                
 
                 <div className="w-[508px] mt-[24px] h-[40px] justify-between items-center inline-flex">
                     <div className="w-[184px] h-[40px] px-[32px] py-[7px] bg-[#E8EEF4] rounded-[5px] justify-center items-center gap-2.5 flex cursor-pointer" onClick={() => changeModalIsOpen(false)}>
