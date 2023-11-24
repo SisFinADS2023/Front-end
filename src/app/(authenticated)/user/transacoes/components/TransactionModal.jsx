@@ -36,6 +36,49 @@ const hindTextCheckboxOp = Hind(
     }
 )
 
+const AccountOptions = () => {
+
+    
+
+    const [showAccountOptions, setShowAccountOptions] = useState(false)
+
+    const accountOptionsDropDown = () => {
+        setShowAccountOptions(!showAccountOptions)
+    }
+
+    const accountOptionsList = ['Bradesco', 'Itáu', 'PicPay'];
+
+    const [selectAccountOption, setSelectAccountOption] = useState('Conta')
+
+    const selectAccount = (accountOptionsList) => {
+        setSelectAccountOption(accountOptionsList)
+        accountOptionsDropDown()
+    }
+
+    return (
+        <>
+            <div className="w-[220px] h-[40px]">                    
+                <div className="w-[220px] h-[48px] left-0 top-[7px] absolute justify-center items-center inline-flex">
+                    <div onClick={accountOptionsDropDown} className="flex w-[268px] h-[48px] items-center justify-between border-2 rounded border-secondary-200 cursor-pointer p-[10px]">
+                        <span className={`text-base font-normal ${hindTituloModal.className}  ${selectAccountOption == 'Conta' ? 'text-[#a9a9a9]' : 'text-secondary-500'}`}>{selectAccountOption}</span>
+                        <ArrowDown2 size="20px"/>
+                    </div>
+                </div>                        
+            </div>         
+            <div className={`absolute top-[60px] bg-white w-full rounded-md shadow-md z-10 ${showAccountOptions ? 'flex' : 'hidden'}`}>
+                <ul className="flex flex-col">
+                    {   
+
+                        accountOptionsList.map((accountOptionsList, index) => (
+                            <li onClick={() => selectAccount(accountOptionsList)} key={index} className={` ${hindTituloModal.className} cursor-pointer text-secondary-500`}>{accountOptionsList}</li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </>
+    )
+}
+
 const TransactionModal = () => {
 
     const [checkBoxDropDownOptions, setCheckBoxDropDownOptions] = useState(false)
@@ -112,7 +155,7 @@ const TransactionModal = () => {
                     </div>
                     
                     <div className='flex relative justify-end items-end left-20'>
-                              
+                        <AccountOptions/>                              
                     </div>              
                 </div>
 
