@@ -2,10 +2,9 @@ const Modal = ({ children, isOpen, changeOpen}) => {
 
     if (!isOpen) return (<></>)
     return (
-        <div className="modal bg-secondary-100 w-[256px] h-[156px] rounded-md" >
+        <div id="modal" className="modal bg-white w-[256px] h-[156px] rounded-md right-2 mt-1 fixed" >
             <main>
                 {children}
-                <button onClick={() => {changeOpen(false)}}>Fechar</button>
             </main>
         </div>
     )
