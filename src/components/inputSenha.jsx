@@ -12,7 +12,6 @@ const InputSenha = ({ onChange }) => {
 
 
     const visible = () => {
-        console.log(isVisible)
         setIsVisible(!isVisible)
     }
 

@@ -23,18 +23,79 @@ const inter = Inter(
 )
 
 const Cadastro = () => {
-  const { registerUser, setRegisterUser } = useRegisterStore()
 
-  const handleInputChange = (e, prop) => {
-    console.log('BEFORE', prop, registerUser)
-    handleChange(e, prop, setRegisterUser)
-    console.log('AFTER', prop, registerUser)
-    console.log('~-------------------------')
+  const { registerUser, setRegisterUser, isChecked, setIsChecked } = useRegisterStore()
+  const url = "https://cgtnvhork6.execute-api.us-east-1.amazonaws.com/"
+
+
+  function areAllValuesFilled(obj) {
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key) && (obj[key] === "" || !isChecked)) {
+        return false;
+      }
+    }
+    return true;
   }
 
-  const handleSubmit = (e) => {
+  function compareValues(obj, prop1, prop2) {
+    if (obj.hasOwnProperty(prop1) && obj.hasOwnProperty(prop2)) {
+      return obj[prop1] === obj[prop2];
+    } else {
+      return false;
+    }
+  }
+
+
+
+  const handleInputChange = (e, prop) => {
+    handleChange(e, prop, setRegisterUser)
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
     console.log("USER FORM: " + JSON.stringify(registerUser))
+    console.log("AA: "+registerUser.confPassword)
+
+    if (registerUser.confPassword === registerUser.password && registerUser.confEmail === registerUser.email) {
+      const userRegistrationWithoutConfirmation = { ...registerUser }
+      delete userRegistrationWithoutConfirmation.confEmail
+      delete userRegistrationWithoutConfirmation.confPassword
+      console.log("Novo: Array: "+userRegistrationWithoutConfirmation)
+
+      try {
+        const response = await fetch(`${url}dev/ms-users`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userRegistrationWithoutConfirmation),
+          }
+        )
+  
+        if (response.ok) {
+          window.alert("Usuário criado com sucesso")
+        }
+  
+        if (!response.ok) {
+          const error = await response.json()
+          console.error(error.message)
+          throw new Error('Erro ao enviar a requisição')
+        }
+  
+        const data = await response.json();
+        console.log('Resposta da API:', data);
+  
+      } catch (error) {
+        console.error(error.message)
+      }
+    } else {
+      console.log("CAIU AQUI")
+    }
+
+
+
+
   }
 
   return (
@@ -61,17 +122,25 @@ const Cadastro = () => {
                 <input onChange={(e) => handleInputChange(e, 'confEmail')} type="text" name="Confemail" placeholder="Confirmar E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
                 <div className="h-[126px]">
                   <InputSenha onChange={(e) => handleInputChange(e, 'password')} />
-                  <InputSenha onChange={(e) => handleInputChange(e, 'confPassword')}/>
+                  <InputSenha onChange={(e) => handleInputChange(e, 'confPassword')} />
                 </div>
               </div>
 
               <div className="h-16 pt-3 flex ">
-                <input type="checkbox" /><p className="flex text-[14px] align-middle pl-4 pt-4 text-left text-[#979797]">Eu li e aceito a política de privacidade do sistema, concordando em compartilhar meus dados conforme descrito nos termos estabelecidos. </p>
+                <input onChange={() => setIsChecked(!isChecked)} type="checkbox" /><p className="flex text-[14px] align-middle pl-4 pt-4 text-left text-[#979797]">Eu li e aceito a política de privacidade do sistema, concordando em compartilhar meus dados conforme descrito nos termos estabelecidos. </p>
               </div>
 
               <div className="pt-9">
                 <div className={inter.className}>
-                  <button type="submit" className="rounded-md w-[496px] h-[45px] bg-lightGray font-sans text-[#979797]" >Cadastre-se</button>
+
+                  {
+                    areAllValuesFilled(registerUser) ?
+
+                      <button type="submit" className="rounded-md w-[496px] h-[45px] bg-secondary-500 font-sans text-white" >Cadastre-se</button>
+                      :
+                      <button disabled type="submit" className="rounded-md w-[496px] h-[45px] bg-lightGray font-sans text-[#979797]" >Cadastre-se</button>
+                  }
+
                 </div>
               </div>
             </div>

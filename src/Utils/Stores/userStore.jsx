@@ -10,6 +10,8 @@ export const useRegisterStore = create((set) => ({
         password: "",
         confPassword: "",
     },
-    setRegisterUser: (prop, value) =>
-    set((state) => ({registerUser: {...state.registerUser, [prop]: value}}))
+    isChecked: false,
+    setRegisterUser: (prop, value) => set((state) => ({registerUser: {...state.registerUser, [prop]: value}})),
+    setIsChecked: (value) => set({ isChecked: value }),
 }))
+
