@@ -79,7 +79,7 @@ const AccountOptions = () => {
     )
 }
 
-const TransactionModal = () => {
+const TransactionModal = ({modalIsOpen, changeModalIsOpen}) => {
 
     const [checkBoxDropDownOptions, setCheckBoxDropDownOptions] = useState(false)
 
@@ -106,6 +106,10 @@ const TransactionModal = () => {
         }
 
     }
+
+    if(!modalIsOpen) {
+        return null;
+    }    
 
     return (
 
