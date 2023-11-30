@@ -47,14 +47,14 @@ const Header = ({ title, avatar }) => {
 
 
                 <div className="flex w-[256px] h-[41px] justify-center items-center gap-[16px]">
-                    <Notification size={24} className="cursor-pointer"/>
-                    <div className=" flex w-[180px] my-auto justify-center items-center gap-[10px] cursor-pointer" onClick={() => setModalSignInIsOpen(!modalSignInIsOpen)}> 
+                    <Notification size={24} className="cursor-pointer" />
+                    <div className=" flex w-[180px] my-auto justify-center items-center gap-[10px] cursor-pointer" onClick={() => setModalSignInIsOpen(!modalSignInIsOpen)}>
                         <img className="w-[42px] h-[40px] rounded-full" src={avatar} alt="" />
                         <p className="text-base font-normal text-secondary-500">Maria Lurdes</p>
                         {
                             modalSignInIsOpen
                                 ?
-                                <ArrowUp2 size={16}  />
+                                <ArrowUp2 size={16} />
                                 :
                                 <ArrowDown2 size={16} />
                         }
@@ -65,19 +65,25 @@ const Header = ({ title, avatar }) => {
 
             <Modal isOpen={modalSignInIsOpen} changeOpen={setModalSignInIsOpen}>
 
-                <div className='flex gap-5 w-[256px] h-[52px] justify-start items-center ml-5 text-secondary-500'>
-                    <Profile size={20} onClick={() => { }} />
-                    <p className='text-base font-normal	'>Dados de perfil</p>
+                <div className='flex w-[256px] h-[52px] ml-5 text-secondary-500 cursor-pointer'>
+                    <a href='/user/atualizar-senha' className='flex gap-5 justify-start items-center'>
+                        <Profile size={20} onClick={() => { }} />
+                        <p className='text-base font-normal	'>Dados de perfil</p>
+                    </a>
                 </div>
 
-                <div className='flex gap-5 w-[256px] h-[52px] justify-start items-center ml-5 text-secondary-500'>
-                    <PasswordCheck size={20} onClick={() => { }} />
-                    <p className='text-base font-normal	'>Atualizar Senha</p>
+                <div className='flex w-[256px] h-[52px] ml-5 text-secondary-500 cursor-pointer'>
+                    <a href='/user/atualizar-senha' className='flex gap-5 justify-start items-center'>
+                        <PasswordCheck size={20} onClick={() => { }} />
+                        <p className='text-base font-normal	'>Atualizar Senha</p>
+                    </a>
                 </div>
 
-                <div className='flex gap-5 w-[256px] h-[52px] justify-start items-center ml-5 text-secondary-500'>
-                    <Logout size={20} onClick={() => { }} />
-                    <p className='text-base font-normal	'>Sair</p>
+                <div className='flex w-[256px] h-[52px] ml-5 text-secondary-500 cursor-pointer'>
+                    <a href='/user/atualizar-senha' className='flex gap-5 justify-start items-center'>
+                        <Logout size={20} onClick={() => { }} />
+                        <p className='text-base font-normal	'>Sair</p>
+                    </a>
                 </div>
 
             </Modal>
