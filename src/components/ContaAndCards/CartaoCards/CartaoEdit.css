@@ -1,0 +1,200 @@
+.Background2 {
+    position: fixed;
+    width:100%;
+    height:150%;
+    margin-top: -35%;
+    background-color: rgba(255, 255, 255, 0.5);
+    
+}
+
+.Cartao_Edit {
+    width: 473px;
+    min-height: 160px;
+    max-height: 260px;
+    margin-top: 90px;
+    margin-left: 20%;
+    background-color: #11D07D;
+    border-radius: 20px;
+    position: absolute;
+    
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10);
+    display:flex;
+    
+}
+
+.Cartao_Edit_Content {
+    margin-left: 17px;
+    width: 448px;
+    border-radius: 20px;
+    border-top-left-radius: 0%;
+    border-bottom-left-radius: 0%;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.Cartao_Edit_Input {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 355px;
+    height: 35px;
+    gap: 13px;
+    padding-left: 4px;
+    border: none;
+    border-bottom: 2px solid #374151;
+    color: black;
+    background-color: #11D07D;
+
+}
+
+.Cartao_Edit_Input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;    
+}
+
+.dot2 {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .dot3 {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+.dotsEdit2 {
+    margin-left:20px;
+    margin-top:10px;
+    
+}
+
+.Cartao_Edit_Buttons{
+    display:flex;
+    flex: flex-wrap;
+    margin-left: 10px;
+}
+
+.Cartao_Edit_Button1{
+    margin:10px;
+    margin-left: -10px;
+    width:100px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #E8EEF4;
+    text-align: center;
+    padding-top: 7px;
+    cursor: pointer;
+    
+}
+.Cartao_Edit_Button1:hover{    
+    background-color: #ebf1f7;
+    font-weight: bold;
+    
+}
+
+.Cartao_Edit_Button2{
+    margin:10px;
+    margin-left: 230px;
+    width:100px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #E8EEF4;
+    text-align: center;
+    padding-top: 7px;
+    cursor: pointer;
+    
+}
+
+.Cartao_Edit_Button2:hover{    
+    background-color: #ebf1f7;;
+    font-weight: bold;
+    
+    
+}
+
+.Cartao_Edit_Content_Icons{
+    margin-top: 22px;
+    margin-left: 9px;
+}
+
+.Cartao_Delete{
+    width: 500px;
+    height: 156px;
+    margin-top: 95px;
+    margin-left: 19.4%;
+    background-color: #11D07D;
+    border-radius: 20px;
+    position: absolute;
+    
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10);
+    
+}
+
+.Cartao_Delete_Alert{
+    width: 500px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: center;
+    
+}
+
+
+.Cartao_Delete_Buttons{
+    display:flex;
+    flex: flex-wrap;
+    margin-left: 105px;
+    margin-top: 20px;
+}
+
+.Cartao_Delete_Button1{
+    margin:10px;
+    width:100px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #E8EEF4;
+    text-align: center;
+    padding-top: 7px;
+    cursor: pointer;
+    
+}
+.Cartao_Delete_Button1:hover{    
+    background-color: #ebf1f7;
+    font-weight: bold;
+    
+}
+
+.Cartao_Delete_Button2{
+    margin:10px;
+    margin-left:50px;
+    width:100px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #E8EEF4;
+    text-align: center;
+    padding-top: 7px;
+    cursor: pointer;
+    
+}
+
+.Cartao_Delete_Button2:hover{    
+    background-color: #ebf1f7;;
+    font-weight: bold;
+    
+    
+}

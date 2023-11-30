@@ -1,0 +1,120 @@
+
+
+.Cartao_Card {
+    width: 332px;
+    height: 184px;
+    margin-top: 80px;
+    margin-left: 50px;
+    background-color: #11D07D;
+    border-radius: 20px;
+    display: flex;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10);
+    flex-wrap: wrap;
+}
+
+
+
+.BorderCard2 {
+    width: 332px;
+    height: 184px;
+    margin-top: 80px;
+    margin-left: 50px;
+    border-radius: 20px;
+    border: 4px solid #3C5060;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.BorderCard_Center2 {
+    padding-left: 75px;
+    padding-top: 40px;
+}
+
+.AddSquare2 {
+    margin-left: 70px;
+    margin-top: 30px;
+}
+
+.flexx2 {
+    display:flex;
+    width: 332px;
+    height: 184px;    
+}
+
+
+
+.Cartao_Card_Content {
+    width: 307px;
+    border-radius: 20px;
+    border-top-left-radius: 0%;
+    border-bottom-left-radius: 0%;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+
+
+.Cartao_Card_Content_Tittle {
+    
+    
+    max-width: 250px;
+    min-width: 133px;
+    height: 62px;
+    margin-top: 16px; 
+    margin-left: 10px;
+    gap: 48px;
+    padding-left:10px;
+    padding-top: 10px;  
+}
+
+
+
+.Cartao_Card_Content_Values {
+    margin-left: 30px;
+    display:flex;
+}
+
+.Fonte2 {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0em;
+    color:black
+}
+
+.Fonte22 {
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0em;
+    color:black
+}
+
+.Cartao_Card_Content_Values .Fonte {
+    margin-left: 35px;    
+}
+
+
+.Cartao_Card_Content_Values .Fonte2 {
+    color:black
+}
+
+.EditIcon2 {
+    width: 24px;
+    height: 24px;
+    margin-left:85px;
+    margin-top:10px;
+    cursor: pointer;
+}
+
+.Pointer2{
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
