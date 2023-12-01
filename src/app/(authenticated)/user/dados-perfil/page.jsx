@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from "react"
 import Header from "@/components/Header"
 import {Hind, Inter} from 'next/font/google'
 
@@ -17,6 +20,15 @@ const inter = Inter(
 
 
 const Dados = () => {
+
+  const [isClicked, setClicked] = useState(false)
+
+  const buttonClicked = () => {
+    
+    console.log(isClicked)
+    setClicked(!isClicked)
+  }
+
     return (
       
       <>
@@ -37,13 +49,13 @@ const Dados = () => {
                 <div id="cadastro-body" className="w-[592px] mt-24">
                   <div id="input" className="pt-9 w-[152px] h-[100px] ml-[440px] mb-[35px]">
                   <div className={inter.className}>
-                    <button id="button-editar" className=" rounded-md w-[152px] h-[40px] border-solid border-2 border-secondary-500 font-sans text-secondary-500">Editar Perfil</button>
+                    <button onClick={buttonClicked} id="button-editar" className=" rounded-md w-[152px] h-[40px] border-solid border-2 border-secondary-500 font-sans text-secondary-500">Editar Perfil</button>
                   </div>
                   </div>
                   <div id="form-content" className="flex flex-col space-y-6 pt-6">
-                    <input type="text" name="name" placeholder="Nome" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
-                    <input type="text" name="lastName" placeholder="Sobrenome" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
-                    <input type="text" name="email" placeholder="E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                    <input type="text" disabled  name="name" placeholder="Nome" className=" border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                    <input type="text" disabled  name="lastName" placeholder="Sobrenome" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                    <input type="text" disabled name="email" placeholder="E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
                     <div className="h-[126px]">
                     </div>
                   </div>
