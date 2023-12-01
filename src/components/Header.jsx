@@ -67,21 +67,21 @@ const Header = ({ title, avatar }) => {
 
                 <div className='flex w-[256px] h-[52px] ml-5 text-secondary-500 cursor-pointer'>
                     <a href='/user/atualizar-senha' className='flex gap-5 justify-start items-center'>
-                        <Profile size={20} onClick={() => { }} />
+                        <Profile size={20}/>
                         <p className='text-base font-normal	'>Dados de perfil</p>
                     </a>
                 </div>
 
                 <div className='flex w-[256px] h-[52px] ml-5 text-secondary-500 cursor-pointer'>
                     <a href='/user/atualizar-senha' className='flex gap-5 justify-start items-center'>
-                        <PasswordCheck size={20} onClick={() => { }} />
+                        <PasswordCheck size={20} />
                         <p className='text-base font-normal	'>Atualizar Senha</p>
                     </a>
                 </div>
 
                 <div className='flex w-[256px] h-[52px] ml-5 text-secondary-500 cursor-pointer'>
-                    <a href='/user/atualizar-senha' className='flex gap-5 justify-start items-center'>
-                        <Logout size={20} onClick={() => { }} />
+                    <a href='/' className='flex gap-5 justify-start items-center'>
+                        <Logout size={20} />
                         <p className='text-base font-normal	'>Sair</p>
                     </a>
                 </div>

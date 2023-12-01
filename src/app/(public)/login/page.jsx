@@ -7,7 +7,7 @@ const Login = () => {
                 <h2 className="text-3xl	font-bold text-secondary-500 mb-6">Acesse sua conta</h2>
                 <input className="block mb-6 border-solid border-2 border-gray-900 border-opacity-10 text-[#A2A3A4] pl-2 font-normal text-base h-[48px] rounded" type="text" name='E-mail' placeholder="E-mail"></input>
                 {/* <input className="mb-6 border-solid border-2 border-gray-900 border-opacity-10 text-[#A2A3A4] px-2 font-normal text-base h-[48px] rounded bg-[url(https://cdn-icons-png.flaticon.com/512/829/829117.png)] bg-no-repeat bg-[length:20px_20px] bg-[calc(100%-10px)]" type="text" name='Senha' placeholder="Senha"></input> */}
-                <InputSenha />
+                <InputSenha placeholder="Senha"/>
 
                 <p className='mb-6 text-base font-semibold text-secondary-500'><a href='../recuperar-senha'>Esqueceu a senha? ➜</a></p>
                 <button className='mb-3 bg-secondary-500 rounded text-white h-[45px] text-base font-bold'>Entrar</button>
