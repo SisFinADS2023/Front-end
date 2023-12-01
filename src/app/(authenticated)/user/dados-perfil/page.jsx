@@ -1,6 +1,5 @@
 import Header from "@/components/Header"
 import {Hind, Inter} from 'next/font/google'
-import { useState } from "react"
 
 const hind = Hind(
   {
