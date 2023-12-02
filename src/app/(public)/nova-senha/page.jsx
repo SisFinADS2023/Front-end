@@ -34,7 +34,7 @@ const NovaSenha = () => {
           <div id="form-content" className="flex flex-col space-y-[30px] pt-6">
           <div className="h-[126px]">
             <form>
-           <InputSenha/>
+           <InputSenha placeholder="Nova Senha"/>
            <InputConfSenha/>
            </form>
            </div>

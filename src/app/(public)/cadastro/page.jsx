@@ -50,7 +50,7 @@ const Cadastro = () => {
             <input type="text" name="email" placeholder="E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
             <input type="text" name="email" placeholder="Confirmar E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
             <div className="h-[126px]">
-            <InputSenha/>
+            <InputSenha placeholder="Senha"/>
             <InputConfSenha/>
             </div>
           </div>

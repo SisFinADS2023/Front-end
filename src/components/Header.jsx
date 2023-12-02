@@ -66,7 +66,7 @@ const Header = ({ title, avatar }) => {
             <Modal isOpen={modalSignInIsOpen} changeOpen={setModalSignInIsOpen}>
 
                 <div className='flex w-[256px] h-[52px] ml-5 text-secondary-500 cursor-pointer'>
-                    <a href='/user/atualizar-senha' className='flex gap-5 justify-start items-center'>
+                    <a href='/user/dados-perfil' className='flex gap-5 justify-start items-center'>
                         <Profile size={20}/>
                         <p className='text-base font-normal	'>Dados de perfil</p>
                     </a>
