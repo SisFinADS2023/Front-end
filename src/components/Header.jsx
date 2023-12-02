@@ -46,11 +46,11 @@ const Header = ({ title, avatar }) => {
                 </div>
 
 
-                <div className="flex w-[256px] h-[41px] justify-center items-center gap-[16px]">
+                <div className="flex w-[256px] h-[41px] justify-center items-center gap-[16px] text-secondary-500">
                     <Notification size={24} className="cursor-pointer" />
                     <div className=" flex w-[180px] my-auto justify-center items-center gap-[10px] cursor-pointer" onClick={() => setModalSignInIsOpen(!modalSignInIsOpen)}>
                         <img className="w-[42px] h-[40px] rounded-full" src={avatar} alt="" />
-                        <p className="text-base font-normal text-secondary-500">Maria Lurdes</p>
+                        <p className="text-base font-medium text-secondary-500">Maria Lurdes</p>
                         {
                             modalSignInIsOpen
                                 ?
