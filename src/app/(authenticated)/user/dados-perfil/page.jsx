@@ -23,10 +23,11 @@ const Dados = () => {
 
   const [isClicked, setClicked] = useState(false)
 
-  const buttonClicked = () => {
+  function handleClick(e) {
     
-    console.log(isClicked)
+    e.preventDefault()
     setClicked(!isClicked)
+    console.log(isClicked)
   }
 
     return (
@@ -46,20 +47,41 @@ const Dados = () => {
             </div> 
             <div id="form" className="flex h-[669px] w-[1536px] bg-white justify-center rounded-b-[20px] mt-7 drop-shadow-md">
             <form>
-                <div id="cadastro-body" className="w-[592px] mt-24">
-                  <div id="input" className="pt-9 w-[152px] h-[100px] ml-[440px] mb-[35px]">
-                  <div className={inter.className}>
-                    <button onClick={buttonClicked} id="button-editar" className=" rounded-md w-[152px] h-[40px] border-solid border-2 border-secondary-500 font-sans text-secondary-500">Editar Perfil</button>
-                  </div>
-                  </div>
-                  <div id="form-content" className="flex flex-col space-y-6 pt-6">
-                    <input type="text" disabled  name="name" placeholder="Nome" className=" border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
-                    <input type="text" disabled  name="lastName" placeholder="Sobrenome" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
-                    <input type="text" disabled name="email" placeholder="E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
-                    <div className="h-[126px]">
-                    </div>
-                  </div>
-                </div>
+                   {
+                      isClicked ? (
+                        <div id="cadastro-body" className="w-[592px] mt-24">
+                        <div id="input" className="pt-9 w-[152px] h-[100px] ml-[440px] mb-[35px]">
+                        <div className={inter.className}>
+                          <button disabled className=" rounded-md w-[152px] h-[40px] border-solid border-2 border-secondary-500 bg-secondary-500 font-sans text-neutral-50">Editar Perfil</button>
+                        </div>
+                        </div>
+                        <div id="form-content" className="flex flex-col space-y-6 pt-6">
+                            <input type="text" name="name" placeholder="Nome" className=" border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                            <input type="text" name="lastName" placeholder="Sobrenome" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                            <input type="text" name="email" placeholder="E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                            <input type="text" name="confEmail" placeholder="Confirmar e-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                            <div className="flex flex-row space-x-6">
+                              <button className=" ml-[280px] rounded-md w-[152px] h-[40px] border-solid border-2 border-secondary-500 font-sans text-secondary-500">Cancelar</button>
+                              <button id="salvar" className=" rounded-md w-[152px] h-[40px] border-solid border-2 border-secondary-500 bg-secondary-500 font-sans text-neutral-50">Salvar alterações</button>
+                            </div>
+                        </div>
+                      </div>
+                      ) : 
+                      <div id="cadastro-body" className="w-[592px] mt-24">
+                        <div id="input" className="pt-9 w-[152px] h-[100px] ml-[440px] mb-[35px]">
+                          <div className={inter.className}>
+                            <button onClick={handleClick} className=" rounded-md w-[152px] h-[40px] border-solid border-2 border-secondary-500 font-sans text-secondary-500">Editar Perfil</button>
+                          </div>
+                        </div>
+                        <div id="form-content" className="flex flex-col space-y-6 pt-6">
+                          <input type="text" disabled  name="name" placeholder="Nome" className=" border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                          <input type="text" disabled  name="lastName" placeholder="Sobrenome" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                          <input type="text" disabled name="email" placeholder="E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>     
+                        </div>
+                      </div>
+
+                   }
+
                 </form>
             </div>   
         </div>
