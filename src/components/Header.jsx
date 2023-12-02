@@ -23,7 +23,7 @@ const league_Spartan = League_Spartan(
 
 const hind = Hind(
     {
-        weight: '400',
+        weight: '500',
         subsets: ['latin'],
     }
 )
