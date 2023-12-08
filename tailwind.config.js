@@ -77,12 +77,16 @@ module.exports = {
         seaBlue: "#006CC3",
         orange: "#F47100",
         logo: "#EEBD00",
+        lightGray: "#E6E6E6", 
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      boxShadow: {
+        'shadowSuave': '0px 4px 16px 0px rgba(0, 0, 0, 0.03)'
+      }
     },
   },
   plugins: [],
