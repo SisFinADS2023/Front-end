@@ -38,7 +38,7 @@ const Header = ({ title, avatar }) => {
         <div className={hind.className}>
 
 
-            <div className="relative w-auto bg-white h-[80px] flex justify-between items-center">
+            <div className="relative w-auto max-2xl:w-[1536px]  bg-white h-[80px] flex justify-between items-center">
 
 
                 <div className="text-[40px] flex my-auto ml-8">
