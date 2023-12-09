@@ -36,7 +36,7 @@ const ContaCardAdd = () => {
                 <div className="Conta_Create_Color"></div>
                 <div className="Conta_Create_Content">
 
-                    <input className="Conta_Create_Input" type="text" name="Nome_Da_Conta" Value={defaultValue} style={{color: firstColor}} onClick={() => {setDefaultValue(""), setFirstColor("black")}}></input>
+                    <input className="Conta_Create_Input" type="text" name="Nome_Da_Conta" value={defaultValue} style={{color: firstColor}} onClick={() => {setDefaultValue(""), setFirstColor("black")}}></input>
                     <div className="dots">
                         <div>
                             <span className="dot" style={{ margin: '10px', width: '24px', height: '24px', backgroundColor: '#D12460' }}></span>

@@ -100,7 +100,7 @@ const HeaderName = () => {
             lastName = 'dashboard'
             break;
         case 'contas':
-            lastName = 'contas'
+            lastName = 'contas e cartões'
             break;
         case 'transacoes':
             lastName = "transações"

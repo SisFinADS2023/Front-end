@@ -12,15 +12,15 @@ export default function Home() {
   const images = [
     {
       imgPath:
-        'https://avatars.githubusercontent.com/u/121815223?s=64&v=4',
+        'https://images.pexels.com/photos/3021563/pexels-photo-3021563.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     },
     {
       imgPath:
-        'https://avatars.githubusercontent.com/u/121815223?s=64&v=4',
+        'https://images.pexels.com/photos/1520760/pexels-photo-1520760.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     },
     {
       imgPath:
-        'https://avatars.githubusercontent.com/u/121815223?s=64&v=4',
+        'https://images.pexels.com/photos/9607206/pexels-photo-9607206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     },
   ];
 
@@ -44,12 +44,12 @@ export default function Home() {
 
         <div className="flex gap-7 py-3">
           <Button
-            className='border bg-secondary-500 text-white'
+            className='border bg-secondary-500 text-white z-50'
           >
             <Link href="/login">Entrar</Link>
           </Button>
           <Button
-            className='border hidden lg:block bg-primary-500 text-secondary-500'
+            className='border hidden lg:block bg-primary-500 text-secondary-500 z-50'
           >
             <Link href="/cadastro">Cadastrar-se</Link>
           </Button>
@@ -74,17 +74,17 @@ export default function Home() {
         }
       </nav>
 
-      <section className="flex flex-col gap-5 justify-center px-12 items-center lg:flex-row lg:items-start lg:justify-between z-0">
+      <section className="flex flex-col gap-5 justify-center px-12 items-center min-h-[600px] lg:flex-row lg:items-start lg:justify-between z-0">
         
-        <div className="z-10 flex flex-col gap-5 text-xl font-league items-center  text-center lg:w-4/12 lg:text-5xl lg:mt-28 lg:ml-28 lg:items-start lg:text-start">
+        <div className="z-10 flex flex-col gap-5 text-xl font-league items-center  text-center lg:w-5/12 lg:text-7xl lg:mt-8 lg:ml-28 lg:items-start lg:text-start">
           <p className="font-semibold text-secondary-500">
-            Korem ipsum dolor sit amet, consectetur adipiscing elit.
+            Controle suas finanças
             <span className="pl-4 font-bold text-primary-700">
-              Nunc.
+            com facilidade.
             </span>
           </p>
-          <p className="my-2 text-base font-roboto text-[#6B767E] ">
-            Korem ipsum dolor sit amet, consectetur adipiscing
+          <p className="my-2 text-base font-roboto text-[#6B767E] lg:w-10/12 lg:text-xl">
+          Junte-se ao COINC para uma jornada de controle, compreensão e crescimento financeiro. Comece hoje e libere o potencial dos seus dados financeiros!
           </p>
           <Button
             className='border bg-secondary-500 py-3 text-white hidden lg:flex'
@@ -93,21 +93,33 @@ export default function Home() {
           </Button>
         </div>
         <div>
-          <img className=" z-0 right-0 top-13 lg:h-[600px] " src="../imagemHome.svg" alt="Logo with Conic" />
+          <img className="absolute z-0 right-52 top-10 w-[600px] lg:w-[1300px] lg:right-0 lg:top-0" src="../imagemHome.svg" alt="Coinc" />
         </div>
       </section>
 
-      <section className="bg-[#E5E7EB]">
+      <div className="flex flex-col p-5 items-center mb-2">
+        <h2 className="text-secondary-500 my-2 text-xl font-semibold font-league lg:text-3xl">Transformando dados em
+        <span className="pl-2 text-primary-700">gráficos claros & acessíveis</span>
+        </h2>
+      </div>     
+      <div className="flex flex-col p-5 items-center mb-2">
+        <img className="z-0 right-52 top-10 w-[600px] lg:w-[1300px] lg:right-0 lg:top-0" src="../sobre-nos.svg" alt="Sobre nós" />
+      </div>
+
+      <section className="bg-neutral-100">
         <div className="flex flex-col p-5 items-center mb-2">
-          <h2 className="text-secondary-500 my-2 text-xl font-semibold font-league lg:text-3xl">Korem ipsum & dolor sit amet</h2>
-          <h3 className="text-xl mb-8 text-[#6B767E] font-sembold hidden lg:block">Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc.</h3>
+          <h2 className="text-secondary-500 my-2 text-xl font-semibold font-league lg:text-3xl">Depoimentos</h2>
+          <h3 className="text-xl mb-8 text-[#6B767E] font-sembold hidden lg:block">Veja o que alguns usuários estão falando sobre o Coinc!</h3>
           <Carousel
             images={images}
           />
           <div className="justify-around gap-5 hidden lg:flex ">
             {images.map((image) => (
               <div>
-                <img className="shadow" src={image.imgPath} alt="" />
+                <img className="shadow rounded-full w-52 ml-24" src={image.imgPath} alt="" />
+              <div className="justify-around hidden lg:flex bg-white h-60 w-[400px] mt-[-100px] rounded-xl">
+                <img className="w-7" src="../quota.svg" />
+              </div>
               </div>
             ))}
           </div>

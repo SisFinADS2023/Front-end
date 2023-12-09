@@ -10,7 +10,7 @@ const Login = () => {
                 <InputSenha placeholder="Senha"/>
 
                 <p className='mb-6 text-base font-semibold text-secondary-500'><a href='../recuperar-senha'>Esqueceu a senha? ➜</a></p>
-                <button className='mb-3 bg-secondary-500 rounded text-white h-[45px] text-base font-bold'><a href='../user/dashboard'>Entrar</a></button>
+                <a href='../user/dashboard'><button className='mb-3 bg-secondary-500 rounded text-white h-[45px] text-base font-bold'>Entrar</button></a>
                 <p className='mb-3 flex justify-start text-base font-light text-secondary-500'>Não possui uma conta? <a href='../cadastro' className="text-primary-500 font-semibold ml-1">Cadastre-se agora.</a></p>
 
                 <div id="politica-privacidade" className='flex flex-col justify-center items-center gap-2'>

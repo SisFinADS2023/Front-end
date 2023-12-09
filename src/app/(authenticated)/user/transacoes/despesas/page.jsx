@@ -94,13 +94,12 @@ const hind500 = Hind({
             {/* Barra de Scroll */}
                 <div> 
 
-                <Scroll />
+                  <Scroll />
 
                 </div>
 
           {/* Barra Proximo lance */}
             <div className="pl-24 flex-initial w-16 absolute top-0 right-0 h-16 mt-[122px] pr-auto">
-         
             </div>                   
       </>
     )
