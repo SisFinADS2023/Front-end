@@ -19,7 +19,7 @@ const hind500 = Hind({
     return(
 
         <div className="bg-white w-full h-18 flex scroll-m-0  ">
-              <h1 className={`bg-[#132861] w-full h-1 my-auto flex justify-around ${hind500.className}`}>
+              <h1 className={`bg-[#132861] w-full h-[2px] ml-3 my-auto flex justify-around ${hind500.className}`}>
                 {children}
               </h1>
           </div>
@@ -29,7 +29,7 @@ const hind500 = Hind({
 
   const Scroll = ({children}) => {
     return (
-      <div className="bg-white overflow-x-auto w-full h-6 flex rounded-xl drop-shadow-xl justify-around my-auto touch-auto bg-scroll"> 
+      <div className="bg-white overflow-x-auto w-full h-4 ml-7 flex rounded-xl drop-shadow-xl justify-around my-auto touch-auto bg-scroll"> 
         <h1>  </h1>
       </div>
     )
@@ -51,7 +51,7 @@ const hind500 = Hind({
 
   const ProximoLance = ({children}) => {
     return(
-      <div className="bg-slate-50 w-40 h-32 drop-shadow-xl flex flex-col rounded-lg ">
+      <div className="bg-slate-50 w-40 h-40 drop-shadow-xl flex flex-col rounded-lg">
         <h1 className={`text-[##00032F] text-center flex justify-around text-sm ${hind500.className}`}>Próximo lance </h1>
       <p className={`text-[##00032F] text-center text-2xl ${hind500.className}`}>R$1.200,000</p>
         {children}
@@ -64,7 +64,7 @@ const hind500 = Hind({
     return (
       <>
         <div className="w-full flex">
-          <div className="rounded-xl bg-white shadow-xl w-full h-40 m-7 flex">
+          <div className="rounded-xl bg-white shadow-lg w-full h-40 mt-7 ml-7 mb-0 flex">
               <div className="flex my-auto w-full ">                   
                     <Linha>
                       <DataTempo data="20/08" />
