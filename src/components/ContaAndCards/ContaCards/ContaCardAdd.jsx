@@ -9,16 +9,44 @@ const league_Spartan = League_Spartan(
     {
         weight: '400',
         subsets: ['latin'],
-
     }
 )
 
-const ContaCardAdd = () => {
+const ContaCardAdd = ({ accounts, setAccounts }) => {
     const [showCreate, setShowCreate] = useState(false);
     const [defaultValue, setDefaultValue] = useState("Digite o Nome da Conta");
-    const [firstColor, setFirstColor] = useState("grey");
-    const [firstClick, setFirstClick] = useState(0);
+    const [firstColor, setFirstColor] = useState("grey");   
     
+    const handleCreate = async () => {
+        const Nome_Da_Conta = document.querySelector('.Conta_Create_Input')
+    
+        const createAccount = {
+            userId: 1234567890,
+            name: Nome_Da_Conta.value,
+            balance: 0,
+            color: "#012345"
+        }
+    
+        const response = await fetch('http://localhost:3001/bank-accounts/',
+            {
+                cache: 'no-store',
+                method: 'POST',
+                headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify(createAccount)
+            }
+        )
+    
+        if(response.ok){
+            const result = await response.json()
+            console.log(result)
+            if(result?.code === 200){
+                setAccounts([...accounts, createAccount])
+                setShowCreate(false)
+            }
+        }
+    }
     
     return (
 
@@ -36,7 +64,7 @@ const ContaCardAdd = () => {
                 <div className="Conta_Create_Color"></div>
                 <div className="Conta_Create_Content">
 
-                    <input className="Conta_Create_Input" type="text" name="Nome_Da_Conta" value={defaultValue} style={{color: firstColor}} onClick={() => {setDefaultValue(""), setFirstColor("black")}}></input>
+                    <input className="Conta_Create_Input" type="text" name="Nome_Da_Conta" placeholder={defaultValue} style={{color: firstColor}} onClick={() => {setDefaultValue(""), setFirstColor("black")}}></input>
                     <div className="dots">
                         <div>
                             <span className="dot" style={{ margin: '10px', width: '24px', height: '24px', backgroundColor: '#D12460' }}></span>
@@ -57,7 +85,7 @@ const ContaCardAdd = () => {
                     </div>
                     <div className="Conta_Create_Buttons">
                         <div className="Conta_Create_Button1" onClick={() => {setShowCreate(false), setDefaultValue("Digite o Nome da Conta"), setFirstColor("grey")}}>Cancelar</div>
-                        <div className="Conta_Create_Button2">Adicionar</div>
+                        <div className="Conta_Create_Button2" onClick={() => {handleCreate()}}>Adicionar</div>
                     </div>
                 </div>
             </div>
