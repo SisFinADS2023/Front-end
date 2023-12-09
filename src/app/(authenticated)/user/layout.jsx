@@ -6,11 +6,6 @@ import '../../globals.css'
 import { useEffect, useState } from "react"
 import ModalCookie from "@/components/ModalCookie"
 
-export const metadata = {
-    title: 'Coinc',
-    description: 'Sla',
-  }
-
   export default function RootLayout({ children }) {
     const colors = ["bg-primary-700", "bg-secondary-700", "bg-tertiary-700"];
     const randomColor = () => {
