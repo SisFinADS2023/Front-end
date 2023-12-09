@@ -1,9 +1,9 @@
-import Header from "@/components/Header"
+import Disabled from "@/components/Disabled"
 
 const Configuracoes = () => {
     return (
       <>
-        <div>Configuracoes</div>
+        <Disabled></Disabled>
       </>
     )
   }

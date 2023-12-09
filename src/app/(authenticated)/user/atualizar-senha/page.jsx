@@ -1,12 +1,10 @@
-import Header from "@/components/Header"
 import InputSenha from "@/components/InputSenha"
 
 const atualizarSenha = () => {
     return (
         <>
-            <Header title="Atualizar Senha" avatar="https://avatars.githubusercontent.com/u/102611166?s=70&v=4" />
-            <div className="flex justify-center items-center m-auto">
-                <div className="bg-white w-[1536px] h-[668px] flex justify-center items-center rounded-2xl">
+            <div className="flex justify-center items-center m-8">
+                <div className="bg-white w-[1536px] h-[668px] flex justify-center items-center rounded">
                     <div className="flex flex-col w-[500px] h-[377px] gap-1">
                         <h1 className="text-3xl font-bold text-secondary-500 mb-8">Atualizar senha</h1>
                         <InputSenha placeholder="Senha atual"/>
