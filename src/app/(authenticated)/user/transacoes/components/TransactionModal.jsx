@@ -13,7 +13,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import 'dayjs/locale/pt-br';
 import dayjs from 'dayjs'
-
+import CategoryModal from './CategoryModal';
 
 const hindTituloModal = Hind(
     {
@@ -81,6 +81,8 @@ const AccountOptions = () => {
 
 const TransactionModal = ({modalIsOpen, changeModalIsOpen}) => {
 
+    const [showCategoryModal, setCategoryShowModal] = useState(false)
+
     const [checkBoxDropDownOptions, setCheckBoxDropDownOptions] = useState(false)
 
     const checkBoxDropDown = () => {
@@ -130,9 +132,10 @@ const TransactionModal = ({modalIsOpen, changeModalIsOpen}) => {
                 </div>
 
                 <div className="w-[500px] mt-[32px] justify-between items-end inline-flex">
-                    <div className="w-[328px] h-[40px] border-2 rounded border-secondary-200 flex justify-between items-center cursor-pointer p-[10px]">
+                    <div onClick={() => setCategoryShowModal(true)} className="w-[328px] h-[40px] border-2 rounded border-secondary-200 flex justify-between items-center cursor-pointer p-[10px]">
                         <span className="text-[#a9a9a9] text-base leading-normal" disabled>Categoria</span>
                         <ArrowDown2 size="20px"/>
+
                     </div>                
                     <div className="w-[150px] h-[40px] border rounded border-secondary-300 justify-center items-end inline-flex">
                         <div>
@@ -190,6 +193,8 @@ const TransactionModal = ({modalIsOpen, changeModalIsOpen}) => {
                     </div>
                 </div>                
             </div>
+
+            <CategoryModal categoryModalIsOpen={showCategoryModal} changeCategoryModalIsOpen={setCategoryShowModal}/>
         </div>
     )
 }

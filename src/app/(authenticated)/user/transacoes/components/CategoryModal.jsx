@@ -32,7 +32,7 @@ import {
     Smileys,
 } from 'iconsax-react'
 
-const CategoryModal = () => {
+const CategoryModal = ({categoryModalIsOpen, changeCategoryModalIsOpen}) => {
 
     const listaDeCores = ['bg-[#E12C00]', 'bg-[#EBE900]', 'bg-[#11D17E]', 'bg-[#004EEB]', 'bg-[#D422E1]', 'bg-[#EBE50B]', 
                             'bg-[#8DBE24]', 'bg-[#F76C4C]', 'bg-[#D12460]', 'bg-[#0095CD]', 'bg-[#006CC3]', 'bg-[#00E1BF]'];
@@ -96,6 +96,10 @@ const CategoryModal = () => {
         showIconOptions()
     }
 
+    if(!categoryModalIsOpen) {
+        return null;
+    }   
+
     return (
         <div className="fixed inset-0 bg-black bg-opacity-25 flex justify-center items-center">
 
@@ -111,7 +115,7 @@ const CategoryModal = () => {
                     <div onClick={showColorOptions} className="cursor-pointer">
                         {selectedColorOption}
                     </div>
-                    <div className="cursor-pointer">
+                    <div onClick={() => changeCategoryModalIsOpen(false)} className="cursor-pointer">
                         <ArrowRight color="#000334"/>
                     </div>
                 </div>
