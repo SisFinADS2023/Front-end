@@ -11,7 +11,7 @@ const ListBankAccounts = () => {
     //This is where the GET endpoint should be.
     useEffect(() => {
         const getAccounts = async () => {
-            const response = await fetch('http://localhost:3001/bank-accounts/user/1234567890', {cache: 'no-store'})
+            const response = await fetch('https://cgtnvhork6.execute-api.us-east-1.amazonaws.com/dev/bank-accounts/user/1234567890', {cache: 'no-store'})
             const data = await response.json()
             setAccounts(data.bankAccounts)
         }

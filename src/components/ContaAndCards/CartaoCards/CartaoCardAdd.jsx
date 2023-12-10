@@ -38,13 +38,13 @@ const CartaoCardAdd = () => {
                 <div className="Cartao_Create_Content">
 
                     <div style={{marginTop: '4px', marginRight:'-15px'}}>Nome: </div>
-                    <input className="Cartao_Create_Input" type="text" name="Nome_Do_Cartao" Value={defaultValue1} style={{color: 'black', width: '75%'}} onClick={() => {setDefaultValue1("")}}></input>
+                    <input className="Cartao_Create_Input" type="text" name="Nome_Do_Cartao" placeholder={defaultValue1} style={{color: 'black', width: '75%'}} onClick={() => {setDefaultValue1("")}}></input>
 
                     <div style={{marginTop: '4px', marginRight:'-15px'}}>Número: </div>
-                    <input className="Cartao_Create_Input" type="text" name="Num_Do_Cartao" Value={defaultValue2} style={{color: 'black', width: '70%'}} onClick={() => {setDefaultValue2("")}}></input>
+                    <input className="Cartao_Create_Input" type="text" name="Num_Do_Cartao" placeholder={defaultValue2} style={{color: 'black', width: '70%'}} onClick={() => {setDefaultValue2("")}}></input>
 
                     <div style={{marginTop: '4px', marginRight:'-15px'}}>Limite: R$ </div>
-                    <input className="Cartao_Create_Input" type="text" name="Limite_Do_Cartao" Value={defaultValue3} style={{color: 'black', width: '68%'}} onClick={() => {setDefaultValue3("")}}></input>
+                    <input className="Cartao_Create_Input" type="text" name="Limite_Do_Cartao" placeholder={defaultValue3} style={{color: 'black', width: '68%'}} onClick={() => {setDefaultValue3("")}}></input>
                     
                     <span className="dot3" style={{ margin: '-5px', marginTop: '10px', width: '35px', height: '35px', backgroundColor: '#E6E6EB', }}
                                  onClick={() => {if(showDebEdit=='C'){setShowDebEdit('D')} else {setShowDebEdit('C')}}}>

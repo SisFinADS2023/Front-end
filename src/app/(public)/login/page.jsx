@@ -1,4 +1,5 @@
 import InputSenha from "@/components/InputSenha"
+import Link from 'next/link'
 
 const Login = () => {
     return (
@@ -10,7 +11,9 @@ const Login = () => {
                 <InputSenha placeholder="Senha"/>
 
                 <p className='mb-6 text-base font-semibold text-secondary-500'><a href='../recuperar-senha'>Esqueceu a senha? ➜</a></p>
-                <a href='../user/dashboard'><button className='mb-3 bg-secondary-500 rounded text-white h-[45px] text-base font-bold'>Entrar</button></a>
+                <Link className='mb-3 text-center bg-secondary-500 rounded text-white h-[45px] text-base font-bold' href="../user/dashboard">
+                    <button className='mb-3 bg-secondary-500 rounded text-white h-[45px] text-base font-bold'>Entrar</button>
+                </Link>
                 <p className='mb-3 flex justify-start text-base font-light text-secondary-500'>Não possui uma conta? <a href='../cadastro' className="text-primary-500 font-semibold ml-1">Cadastre-se agora.</a></p>
 
                 <div id="politica-privacidade" className='flex flex-col justify-center items-center gap-2'>

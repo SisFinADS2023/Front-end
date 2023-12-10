@@ -27,7 +27,7 @@ const ContaCardAdd = ({ accounts, setAccounts }) => {
             color: "#012345"
         }
     
-        const response = await fetch('http://localhost:3001/bank-accounts/',
+        const response = await fetch('https://cgtnvhork6.execute-api.us-east-1.amazonaws.com/dev/bank-accounts/',
             {
                 cache: 'no-store',
                 method: 'POST',
