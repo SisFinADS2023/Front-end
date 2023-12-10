@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Maximize4 } from 'iconsax-react'
+import Image from 'next/image'
 
 export default function DashboardTransacaoRecentes() {
 
@@ -81,7 +82,7 @@ export default function DashboardTransacaoRecentes() {
           (
           <div className='h-12 flex gap-8 justify-between items-center'>
             <div className='flex gap-8'>
-              <img className='w-12 h-full rounded-lg' src="https://github.com/gvnny.png" alt="" />
+              <Image className='w-12 h-full rounded-lg' src="https://github.com/gvnny.png" alt="" />
               <div className='flex flex-col'>
                 <h2 className='text-lg font-bold text-secondary-500'>{transacao.nome}</h2>
                 <h3 className='text-secondary-300 text-sm'>{transacao.data}</h3>

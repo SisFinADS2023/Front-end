@@ -6,6 +6,7 @@ import '@/app/globals.css'
 import { HambergerMenu } from 'iconsax-react'
 import { useState } from "react";
 import Carousel from "@/components/Carousel";
+import Image from 'next/image'
 
 export default function Home() {
 
@@ -31,7 +32,7 @@ export default function Home() {
     <div className="bg-white flex flex-col gap-10">
       <nav className="pt-2 flex justify-around items-center">
         <div>
-          <img className="h-12" src="../logo.svg" alt="Logo with Conic" />
+          <Image className="h-12" width={500} height={500} src="../logo.svg" alt="Logo with Conic" />
         </div>
 
         <ul className="hidden gap-14 font-roboto lg:flex text-secondary-500 font-semibold">
@@ -93,7 +94,7 @@ export default function Home() {
           </Button>
         </div>
         <div>
-          <img className="absolute z-0 right-52 top-10 w-[600px] lg:w-[1300px] lg:right-0 lg:top-0" src="../imagemHome.svg" alt="Coinc" />
+          <Image className="absolute z-0 right-52 top-10 w-[600px] lg:w-[1300px] lg:right-0 lg:top-0" src="../imagemHome.svg" width={600} height={600} alt="Coinc" />
         </div>
       </section>
 
@@ -103,7 +104,7 @@ export default function Home() {
         </h2>
       </div>     
       <div className="flex flex-col p-5 items-center mb-2">
-        <img className="z-0 right-52 top-10 w-[600px] lg:w-[1300px] lg:right-0 lg:top-0" src="../sobre-nos.svg" alt="Sobre nós" />
+        <Image className="z-0 right-52 top-10 w-[600px] lg:w-[1300px] lg:right-0 lg:top-0" src="../sobre-nos.svg" width={600} height={600} alt="Sobre nós" />
       </div>
 
       <section className="bg-neutral-100">
@@ -116,9 +117,9 @@ export default function Home() {
           <div className="justify-around gap-5 hidden lg:flex ">
             {images.map((image) => (
               <div>
-                <img className="shadow rounded-full w-52 ml-24" src={image.imgPath} alt="" />
+                <Image className="shadow rounded-full w-52 ml-24" src={image.imgPath} width={500} height={500} alt="" />
               <div className="justify-around hidden lg:flex bg-white h-60 w-[400px] mt-[-100px] rounded-xl">
-                <img className="w-7" src="../quota.svg" />
+                <Image className="w-7" src="../quota.svg" width={70} height={70} />
               </div>
               </div>
             ))}
