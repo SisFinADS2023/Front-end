@@ -67,7 +67,6 @@ export default function RecentsTransactions() {
     }
   ];
 
-  const [toggleMax, setToogleMax] = useState(false)
 
   return (
     <div className={`h-[30vh] ${toggleMax ? "w-screen" : "w-[460px]"} bg-white shadow px-8 py-5 rounded overflow-hidden`}>
@@ -77,10 +76,10 @@ export default function RecentsTransactions() {
           <Maximize4 />
         </button>
       </div>
-      <div className='mt-4 flex flex-col gap-2'>
+      <div className='mt-4 flex flex-col gap-2 h-5/6 overflow-y-scroll rolagem'>
         {transacoes.map((transacao) => 
           (
-          <div className='h-12 flex gap-8 justify-between items-center'>
+          <div className='h-12 flex gap-8 justify-between items-center mr-5'>
             <div className='flex gap-8'>
               <Image className='w-12 h-full rounded-lg' src="https://github.com/gvnny.png" alt="" />
               <div className='flex flex-col'>
