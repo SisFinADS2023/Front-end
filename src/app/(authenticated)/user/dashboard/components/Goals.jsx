@@ -16,7 +16,7 @@ const Goal = ({ goal }) => {
             <div
                 className='relative h-2 w-full bg-black/10 rounded-full mb-4 cursor-pointer '>
                 {mouseEnter &&
-                    <span className='absolute top-3 px-2 py-1 rounded-md text-black bg-zinc-200 font-semibold text-sm' style={{ left: ` ${goal.valorAtual > goal.valorTotal ? '90' : (goal.valorAtual * 100 / goal.valorTotal) - 5}%` }}>{`${goal.valorAtual >= goal.valorTotal ? 'Concluído' : "R$" + goal.valorAtual}`}</span>
+                    <span key={goal.valorAtual} className='absolute top-3 px-2 py-1 rounded-md text-black bg-zinc-200 font-semibold text-sm' style={{ left: ` ${goal.valorAtual > goal.valorTotal ? '90' : (goal.valorAtual * 100 / goal.valorTotal) - 5}%` }}>{`${goal.valorAtual >= goal.valorTotal ? 'Concluído' : "R$" + goal.valorAtual}`}</span>
                 }
                 <span
                     onMouseEnter={() => setMouseEnter(!mouseEnter)}

@@ -6,12 +6,12 @@ import * as chartjs from 'chart.js/auto'
 
 
 const Chart = ({ chart, chartRef, moveChart }) => {
-
+  const chartReference = useRef(null);
   useEffect(() => {
-    if (!chartRef.current) return;
+    if (!chartReference.current) return;
 
     chart.instance = new chartjs.Chart(
-      chartRef.current,
+      chartReference.current,
       {
         type: chart.type,
         options: {
@@ -83,7 +83,7 @@ export const ChartsList = ({chart}) => {
               .map((chart, index) => { chart.index = index; return chart; })
               .filter(chart => chart.visible)
               .map(chart => <Chart key={Math.random()}
-                                   chartRef={useRef(null)}
+                                   chartRef={null}
                                    chart={chart}
                                    moveChart={moveChart} />)
           }

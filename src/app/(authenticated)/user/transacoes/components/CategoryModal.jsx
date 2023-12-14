@@ -101,6 +101,7 @@ const CategoryModal = ({categoryModalIsOpen, changeCategoryModalIsOpen}) => {
     }   
 
     return (
+        <>
         <div className="fixed inset-0 bg-black bg-opacity-25 flex justify-center items-center">
 
             <div className={`w-[480px] bg-white rounded-[15px] ${colorOptions ? 'h-[200px]' : 'h-[100px]'}  ${iconOptions ? 'h-[280px]' : 'h-[100px]'}`}>
@@ -123,7 +124,7 @@ const CategoryModal = ({categoryModalIsOpen, changeCategoryModalIsOpen}) => {
                     <div className="bg-white grid grid-cols-6 gap-[12px] place-items-center">
                         {
                             listaDeCores.map((lista) => (
-                                <div onClick={() => selectColor(<div className={`cursor-pointer rounded-full ${lista} w-[32px] h-[32px]`}/>)} className={`cursor-pointer rounded-full ${lista} w-[32px] h-[32px]`} />
+                                <div key={lista} onClick={() => selectColor(<div className={`cursor-pointer rounded-full ${lista} w-[32px] h-[32px]`}/>)} className={`cursor-pointer rounded-full ${lista} w-[32px] h-[32px]`} />
                             ))
                         }
                     </div>
@@ -132,7 +133,7 @@ const CategoryModal = ({categoryModalIsOpen, changeCategoryModalIsOpen}) => {
                     <div className="grid grid-cols-6 gap-[10px] place-items-center">
                         {
                             listaDeIcones.map((lista) => (
-                            <div onClick={() => selectIcon(lista.icon)} className="cursor-pointer">
+                            <div key={lista.name} onClick={() => selectIcon(lista.icon)} className="cursor-pointer">
                                 {lista.icon}
                             </div>
 
@@ -143,6 +144,7 @@ const CategoryModal = ({categoryModalIsOpen, changeCategoryModalIsOpen}) => {
             </div>
 
         </div>
+        </>
     )
 }
 
