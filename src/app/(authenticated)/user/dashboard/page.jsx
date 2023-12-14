@@ -8,13 +8,13 @@ import Link from 'next/link'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
 
-import { useState } from "react"
-
+import { useState} from "react"
 import {
   Eye,
   EyeSlash,
 } from 'iconsax-react'
 import RecentsTransactions from './components/RecentsTransactions'
+import Goals from "./components/Goals"
 
 const Overview = ({ title, value, path }) => {
 
@@ -53,33 +53,34 @@ const Overview = ({ title, value, path }) => {
   )
 }
 
-
-
 import { useReducer} from 'react';
 import { ChartsDataDispatchContext, ChartsDataContext } from '@/app/(authenticated)/user/dashboard/Context/Context';
+import { ChartsList } from "./components/ChartsList"
+import DoughnutChart from "./components/Doughnut"
 
 function chartsDataReducer(chartsData, { action, label, visible, source, destination }) {
-    switch (action) {
-      case 'toggleVisible':
-        return chartsData.map(chart => {
-          if (chart.label == label) {
-            chart.visible = visible;
-          }
-          return chart;
-        });
+  switch (action) {
+    case 'toggleVisible':
+      return chartsData.map(chart => {
+        if (chart.label == label) {
+          chart.visible = visible;
+        }
+        return chart;
+      });
 
-        case 'moveChart':
-          const newCharts = [ ...chartsData ];
-          const temp = newCharts[source];
-          newCharts[source] = newCharts[destination];
-          newCharts[destination] = temp;
-          return newCharts;
+      case 'moveChart':
+        const newCharts = [ {...chartsData }];
+        const temp = newCharts[source];
+        newCharts[source] = newCharts[destination];
+        newCharts[destination] = temp;
+        return newCharts;
 
-        default:
-          console.warn("chartsDataReducer(): action '" + action + "' is not valid");
-          return chartsData;
-    }
+      default:
+        console.warn("chartsDataReducer(): action '" + action + "' is not valid");
+        return chartsData;
+  }
 }
+
 
 function fakeData() {
   return new Array(10)
@@ -93,93 +94,14 @@ function fakeData() {
     );
 }
 
-const Chart = ({ chart, index, moveChart }) => {
-
-    useEffect(() => {
-      if (!chart.ref.current) return;
-
-      chart.instance = new chartjs.Chart(
-        chart.ref.current,
-        {
-          type: chart.type,
-          options: {
-            maintainAspectRatio: false,
-          },
-          data: {
-            labels: chart.data.map(row => row.year),
-            datasets: [
-              {
-                label: chart.label,
-                data: chart.data.map(row => row.count)
-              }
-            ]
-          }
-        }
-      );
-
-    return () => {
-      chart.instance.destroy();
-    };
-  }, [chart.ref])
-
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: 'chart',
-    item: { index },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    })
-  }))
-
-  const [{ isOver, canDrop }, drop] = useDrop(() => ({
-    accept: 'chart',
-    drop: (item, monitor) => { moveChart(item.index, index) },
-    collect: (monitor) => ({
-      isOver: monitor.isOver(),
-      canDrop: monitor.canDrop(),
-    })
-  }))
-
-  return (
-    <>
-      <div ref={drop} className={`border-2 rounded-md ${ canDrop ? "border-black" : "border-gray"} ${ isOver ? "border-green" : "border-gray"}`}>
-        <div ref={drag} className={`bg-transparent p-5 relative h-[30vh]`}>
-          <canvas ref={chart.ref}></canvas>
-        </div>
-      </div>
-    </>
-  )
-}
-
-const ChartsList = () => {
-  const [charts, setCharts] = useState([
-    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 0', ref: useRef(null) },
-    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 1', ref: useRef(null) },
-    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 2', ref: useRef(null) },
-    { instance: null, data: fakeData(), type: 'line', label: 'Acquisitions by year 3', ref: useRef(null) },
-    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 4', ref: useRef(null) },
-    { instance: null, data: fakeData(), type: 'bar',  label: 'Acquisitions by year 5', ref: useRef(null) },
-  ]);
-
-  const moveChart = useCallback((source, destination) => {
-    setCharts((prevCharts) => {
-      const newCharts = [ ...prevCharts ];
-      const temp = newCharts[source];
-      newCharts[source] = newCharts[destination];
-      newCharts[destination] = temp;
-      return newCharts;
-  })
-  }, []);
-
-  return (
-    <>
-        <div className="flex gap-5 flex-wrap justify-between">
-          <TransacoesRecentes/>
-          <Goals/>
-          {charts.map((chart, index) => <Chart key={index} chart={chart} index={index} moveChart={moveChart} /> )}
-        </div>
-    </>
-  )
-}
+const initialChartsData = [
+  { instance: null, data: fakeData(), type: 'bar', label: 'Acquisitions by year 0', visible: true, },
+  { instance: null, data: fakeData(), type: 'bar', label: 'Acquisitions by year 1', visible: true, },
+  { instance: null, data: fakeData(), type: 'bar', label: 'Acquisitions by year 2', visible: true, },
+  { instance: null, data: fakeData(), type: 'line', label: 'Acquisitions by year 3', visible: true, },
+  { instance: null, data: fakeData(), type: 'bar', label: 'Acquisitions by year 4', visible: true, },
+  { instance: null, data: fakeData(), type: 'bar', label: 'Acquisitions by year 5', visible: true, },
+];
 
 const Dashboard = () => {
 
@@ -218,15 +140,21 @@ const Dashboard = () => {
           </div>
 
           <h3 className="text-3xl my-6 font-bold">Resultados</h3>
-
+          <div className="grid grid-cols-3 mb-2 gap-[25px]">
+          <Goals/>
+          <RecentsTransactions/>
+          <DoughnutChart/>
+          </div>
+          
+          <div className="grid grid-cols-1">
           <DndProvider backend={HTML5Backend}>
           <ChartsDataContext.Provider value={chartsData}>
             <ChartsDataDispatchContext.Provider value={chartsDataDispatcher}>
-              <ChartsList />
+              <ChartsList chart={initialChartsData}/>
             </ChartsDataDispatchContext.Provider>
           </ChartsDataContext.Provider>
           </DndProvider>
-
+          </div>
         </div>
       </div>
     </>

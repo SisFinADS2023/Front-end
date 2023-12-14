@@ -53,7 +53,7 @@ const Chart = ({ chart, chartRef, moveChart }) => {
 
   return (
     <>
-      <div ref={drop} className={`border-2 rounded-md ${canDrop ? "border-black" : "border-gray"} ${isOver ? "border-green" : "border-gray"}`}>
+      <div ref={drop} className={`border-2 bg-white rounded-md ${canDrop ? "border-black" : "border-gray"} ${isOver ? "border-green" : "border-gray"}`}>
         <div ref={drag} className={`bg-transparent p-5 relative h-[30vh]`}>
           <canvas ref={chartRef}></canvas>
         </div>
@@ -62,12 +62,12 @@ const Chart = ({ chart, chartRef, moveChart }) => {
   )
 }
 
-export const ChartsList = () => {
-
+export const ChartsList = ({chart}) => {
+  
   const chartsData = useChartsData()
   const chartsDataDispatch = useChartsDataDispatch()
 
-  const [refs, setRefs] = useState(chartsData.map(_ => useRef(null)));
+  const [refs, setRefs] = useState(chart.map(_ => useRef(null)));
 
     const moveChart = useCallback((source, destination) => {
       chartsDataDispatch({
@@ -81,7 +81,7 @@ export const ChartsList = () => {
       <>
         <div className="grid grid-cols-3 gap-5">
           {
-            chartsData
+            chart
               .map((chart, index) => { chart.index = index; return chart; })
               .filter(chart => chart.visible)
               .map(chart => <Chart key={Math.random()}

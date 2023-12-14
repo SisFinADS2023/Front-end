@@ -20,6 +20,7 @@ export default function Home() {
 
   const images = [
     {
+      id: 0,
       imgPath:
         'https://images.pexels.com/photos/3021563/pexels-photo-3021563.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       text:'As notificações são incríveis! Recebo lembretes sobre contas a pagar, vencimentos e até sugestões de economia. Isso me mantém sempre informada e no controle.',
@@ -27,6 +28,7 @@ export default function Home() {
       profLocal:'Social Media, Rio de Janeiro - RJ'
     },
     {
+      id: 1,
       imgPath:
         'https://images.pexels.com/photos/1520760/pexels-photo-1520760.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       text:'O suporte ao cliente é rápido, eficiente e sempre disposto a ajudar. Qualquer dúvida ou problema é resolvido com prontidão, o que é crucial ao lidar com questões financeiras.',
@@ -34,6 +36,7 @@ export default function Home() {
       profLocal:'Arquiteta, São Paulo - SP'
     },
     {
+      id: 2,
       imgPath:
         'https://images.pexels.com/photos/9607206/pexels-photo-9607206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       text:'O COINC possui uma interface extremamente intuitiva, facilitando a navegação e tornando o controle das finanças uma tarefa simples e agradável.',
@@ -42,10 +45,10 @@ export default function Home() {
     },
   ];
 
-
   const [toogleMenu, setToogleMenu] = useState(Boolean)
 
   return (
+    <>
     <div className="bg-white flex flex-col gap-10" id="locationHeader">
       <nav className="pt-2 flex justify-around items-center">
         <div>
@@ -131,7 +134,9 @@ export default function Home() {
             images={images}
           />
           <div className="justify-around gap-5 hidden lg:flex ">
+            <ul className="list-none flex gap-5">
             {images.map((image) => (
+              <li className="" key={image.id}>
               <div>
                 <Image className="shadow rounded-full w-52 ml-24" src={image.imgPath} width={500} height={500} alt="" />
               <div className="justify-around hidden lg:flex bg-white h-60 w-[400px] mt-[-100px] rounded-xl">
@@ -151,7 +156,9 @@ export default function Home() {
               </div>
 
               </div>
+              </li>
             ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -159,33 +166,33 @@ export default function Home() {
       <section className="bg-white">
       <div className="flex flex-col p-5 items-center mb-2 h-[900px]">
         <h2 className="text-secondary-500 my-2 text-xl font-semibold font-league lg:text-3xl mb-7">Quem somos?</h2>
-        <div class="w-[1243px] h-[460px] p-8 bg-emerald-500 rounded-[20px] shadow flex-col justify-center items-start gap-6 inline-flex">
-        <div class="text-white text-2xl font-semibold leading-loose">Nossa companhia</div>
-        <div class="w-[904px] text-white text-xl font-medium leading-7">Somos a empresa líder em tecnologia financeira, destacando-se pela inovação em uma aplicação web para gestão pessoal de finanças. Nossa plataforma fundada em 2023 oferece uma experiência intuitiva e recursos poderosos, permitindo aos usuários controlar despesas, planejar orçamentos e monitorar investimentos de maneira eficaz e acessível. A segurança é uma prioridade, assegurando a proteção dos dados financeiros dos usuários, e a personalização da experiência do usuário permite a adaptação da aplicação às necessidades específicas de cada indivíduo.</div>
-        <div class="w-[904px] h-[108px] justify-start items-center gap-6 inline-flex">
-          <div class="grow shrink basis-0 flex-col justify-center items-center gap-2.5 inline-flex">
-            <div class="text-white text-xl font-medium leading-7">Missão</div>
-            <div class="w-[246px] text-center text-white text-base font-normal leading-normal">Disponibilizar a melhor experiência de usuário para o controle financeiro.</div>
+        <div className="w-[1243px] h-[460px] p-8 bg-emerald-500 rounded-[20px] shadow flex-col justify-center items-start gap-6 inline-flex">
+        <div className="text-white text-2xl font-semibold leading-loose">Nossa companhia</div>
+        <div className="w-[904px] text-white text-xl font-medium leading-7">Somos a empresa líder em tecnologia financeira, destacando-se pela inovação em uma aplicação web para gestão pessoal de finanças. Nossa plataforma fundada em 2023 oferece uma experiência intuitiva e recursos poderosos, permitindo aos usuários controlar despesas, planejar orçamentos e monitorar investimentos de maneira eficaz e acessível. A segurança é uma prioridade, assegurando a proteção dos dados financeiros dos usuários, e a personalização da experiência do usuário permite a adaptação da aplicação às necessidades específicas de cada indivíduo.</div>
+        <div className="w-[904px] h-[108px] justify-start items-center gap-6 inline-flex">
+          <div className="grow shrink basis-0 flex-col justify-center items-center gap-2.5 inline-flex">
+            <div className="text-white text-xl font-medium leading-7">Missão</div>
+            <div className="w-[246px] text-center text-white text-base font-normal leading-normal">Disponibilizar a melhor experiência de usuário para o controle financeiro.</div>
           </div>
-          <div class="grow shrink basis-0 flex-col justify-center items-center gap-2.5 inline-flex">
-            <div class="text-white text-xl font-medium leading-7">Visão</div>
-            <div class="self-stretch text-center text-white text-base font-normal leading-normal">Naturalizar responsabilidade financeira melhorando a qualidade de vida dos usuários.</div>
+          <div className="grow shrink basis-0 flex-col justify-center items-center gap-2.5 inline-flex">
+            <div className="text-white text-xl font-medium leading-7">Visão</div>
+            <div className="self-stretch text-center text-white text-base font-normal leading-normal">Naturalizar responsabilidade financeira melhorando a qualidade de vida dos usuários.</div>
           </div>
-          <div class="grow shrink basis-0 flex-col justify-center items-center gap-2.5 inline-flex">
-            <div class="text-white text-xl font-medium leading-7">Valores</div>
-            <div class="w-[226px] text-center text-white text-base font-normal leading-normal">Facilidade de acesso, segurança de dados sensíveis, e usabilidade.</div>
+          <div className="grow shrink basis-0 flex-col justify-center items-center gap-2.5 inline-flex">
+            <div className="text-white text-xl font-medium leading-7">Valores</div>
+            <div className="w-[226px] text-center text-white text-base font-normal leading-normal">Facilidade de acesso, segurança de dados sensíveis, e usabilidade.</div>
           </div>
         </div>
       </div>
-      <div class="w-[926px] h-[226px] justify-start items-start gap-8 inline-flex mt-[20px] mr-[320px]">
-        <div class=" flex-col justify-start items-start gap-2.5 inline-flex">
-          <img class="w-[287.33px] h-[226px] rounded-[20px]" src="../peopletalking1.svg" />
+      <div className="w-[926px] h-[226px] justify-start items-start gap-8 inline-flex mt-[20px] mr-[320px]">
+        <div className=" flex-col justify-start items-start gap-2.5 inline-flex">
+          <img className="w-[287.33px] h-[226px] rounded-[20px]" src="../peopletalking1.svg" />
         </div>
-        <img class="w-[287.33px] h-[226px] rounded-[20px]" src="../peopletalking2.svg" />
-        <img class="w-[287.33px] h-[226px] rounded-[20px]" src="../peopletalking3.svg" />
+        <img className="w-[287.33px] h-[226px] rounded-[20px]" src="../peopletalking2.svg" />
+        <img className="w-[287.33px] h-[226px] rounded-[20px]" src="../peopletalking3.svg" />
       </div>
-      <div class="w-[501px] h-[662px] absolute ml-[1180px] mt-32 bg-gradient-to-b from-green-950 to-white rounded-[20px]">
-        <img class="w-[501px] h-[662px] rounded-[20px]" src="../image4.svg" />
+      <div className="w-[501px] h-[662px] absolute ml-[1180px] mt-32 bg-gradient-to-b from-green-950 to-white rounded-[20px]">
+        <img className="w-[501px] h-[662px] rounded-[20px]" src="../image4.svg" />
       </div>
       </div>
       </section>
@@ -229,19 +236,19 @@ export default function Home() {
             <div className="w-[1008px] h-[74px] justify-center items-center inline-flex">
               <div className="w-[1008px] h-[74px] relative flex-col justify-start items-start flex">
                 <div>
-                  <input type="text" id="first_name" class="bg-white border border-gray-500 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-[1000px] p-2.5 mb-[25px]" placeholder="Insira seu nome" required/>
+                  <input type="text" id="first_name" className="bg-white border border-gray-500 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-[1000px] p-2.5 mb-[25px]" placeholder="Insira seu nome" required/>
                 </div>
-                <div class="relative mb-6">
-                  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
+                <div className="relative mb-6">
+                  <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                    <svg className="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
                         <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"/>
                         <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"/>
                     </svg>
                   </div>
-                  <input type="text" id="input-group-1" class="bg-white border border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[1000px] ps-10 p-2.5" placeholder="name@email.com"/>
+                  <input type="text" id="input-group-1" className="bg-white border border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[1000px] ps-10 p-2.5" placeholder="name@email.com"/>
                 </div>
                 <div>
-                <textarea id="message" rows="4" class="block p-2.5 w-[1000px] text-sm text-gray-900 bg-white rounded-lg border border-gray-500 focus:ring-blue-500 focus:border-blue-500" placeholder="Escreva aqui"></textarea>                
+                <textarea id="message" rows="4" className="block p-2.5 w-[1000px] text-sm text-gray-900 bg-white rounded-lg border border-gray-500 focus:ring-blue-500 focus:border-blue-500" placeholder="Escreva aqui"></textarea>                
                 </div>
                 <div className="pl-[908px] mt-5">
                 <Button
@@ -262,5 +269,6 @@ export default function Home() {
         <h3 className="text-white my-2 text-lg mt-5 font-league">Desenvolvido por <span className="text-indigo-950">COINC TEAM</span></h3>
       </footer>
     </div>
+    </>
   )
 }

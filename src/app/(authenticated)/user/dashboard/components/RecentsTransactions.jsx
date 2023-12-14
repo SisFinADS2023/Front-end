@@ -67,21 +67,20 @@ export default function RecentsTransactions() {
     }
   ];
 
+  const [toggleMax, setToogleMax] = useState(false)
 
   return (
-    <div className={`h-[30vh] ${toggleMax ? "w-screen" : "w-[460px]"} bg-white shadow px-8 py-5 rounded overflow-hidden`}>
-      <div className='flex justify-between'>
+    <div className={`h-[30vh] p-5 relative  bg-white  shadow px-8 py-5 rounded overflow-hidden`}>
+      <div className='flex justify-between '>
         <h2 className='text-xl text-secondary-900 font-semibold'>Transações recentes</h2>
-        <button onClick={() => setToogleMax(!toggleMax)}>
-          <Maximize4 />
-        </button>
       </div>
-      <div className='mt-4 flex flex-col gap-2 h-5/6 overflow-y-scroll rolagem'>
-        {transacoes.map((transacao) => 
+      <div className=' h-5/6 overflow-y-scroll rolagem content p-3 m-5'>
+      <div className='mt-4 flex flex-col gap-2'>
+        {transacoes.map((transacao, index) => 
           (
-          <div className='h-12 flex gap-8 justify-between items-center mr-5'>
+          <div key={index} className='h-12 flex gap-8 justify-between items-center'>
             <div className='flex gap-8'>
-              <Image className='w-12 h-full rounded-lg' src="https://github.com/gvnny.png" alt="" />
+              <Image className='w-12 h-full mt-[10px] rounded-lg' width={500} height={500} src="../logo.svg" alt="" />
               <div className='flex flex-col'>
                 <h2 className='text-lg font-bold text-secondary-500'>{transacao.nome}</h2>
                 <h3 className='text-secondary-300 text-sm'>{transacao.data}</h3>
@@ -92,6 +91,7 @@ export default function RecentsTransactions() {
           )
         )}
       </div>
+    </div>
     </div>
   )
 }

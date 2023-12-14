@@ -22,6 +22,7 @@ const inter = Inter(
 
 const NovaSenha = () => {
   return (
+    <>
     <div className="flex justify-center items-center w-[1210px]">
       <div id="novaSenha-card" className="flex flex-col h-auto w-[496px] justify-center">
         <div id="novaSenha-title" className="h-[36px]">
@@ -53,6 +54,7 @@ const NovaSenha = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

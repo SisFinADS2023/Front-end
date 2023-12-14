@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 const Login = () => {
     return (
+        <>
         <div id="cadastro-area" className="flex flex-col flex-1 justify-center items-center">
             <div className='flex flex-col w-[492px] h-[514.87px] px-0 pt-[53px] pb-[32px]'>
                 <h2 className="text-3xl	font-bold text-secondary-500 mb-6">Acesse sua conta</h2>
@@ -23,6 +24,7 @@ const Login = () => {
 
             </div>
         </div>
+        </>
     )
 }
 
