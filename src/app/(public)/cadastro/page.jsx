@@ -14,12 +14,13 @@ const league_Spartan = League_Spartan(
     subsets: ['latin'],
   }
 
+
+)
 const inter = Inter(
   {
     weight: '600',
     subsets: ['latin']
-  }
-)
+  })
 
 const Cadastro = () => {
 
