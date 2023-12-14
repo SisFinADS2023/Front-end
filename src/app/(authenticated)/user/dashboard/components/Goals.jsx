@@ -46,7 +46,7 @@ export default function Goals() {
             </div>
             <div className=' h-5/6 overflow-y-scroll rolagem content p-3 m-5'>
                 {Goals.map((goal) => (
-                    <Goal goal={goal} />
+                    <Goal key={goal.id} goal={goal} />
                 ))}
             </div>
         </div>
