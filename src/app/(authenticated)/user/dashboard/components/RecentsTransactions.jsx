@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Maximize4 } from 'iconsax-react'
 import Image from 'next/image'
 
-export default function DashboardTransacaoRecentes() {
+export default function RecentsTransactions() {
 
   const transacoes = [
     {

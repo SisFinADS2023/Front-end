@@ -16,7 +16,7 @@ import {
   Eye,
   EyeSlash,
 } from 'iconsax-react'
-import TransacoesRecentes from './components/TransacaoRecentes'
+import RecentsTransactions from './components/RecentsTransactions'
 
 const Overview = ({ title, value, path }) => {
 
