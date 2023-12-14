@@ -56,17 +56,17 @@ const Dados = () => {
                   <div id="input" className="pt-9 w-[152px] h-[100px] ml-[440px] mb-[35px]">
                   <label class="relative inline-flex items-center cursor-pointer right-[440px] top-10">
                     <input type="checkbox" value="" class="sr-only peer"/>
-                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Notificações</span>
+                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white peer-checked:after:bg-black after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+                    <span class="ms-3 text-sm font-medium text-gray-900">Notificações</span>
                   </label>
                   <div className={inter.className}>
                     <button onClick={buttonClicked} id="button-editar" className=" rounded-md w-[152px] h-[40px] border-solid border-2 border-secondary-500 font-sans text-secondary-500">Editar Perfil</button>
                   </div>
                   </div>
                   <div id="form-content" className="flex flex-col space-y-6 pt-6">
-                    <input type="text" disabled  name="name" placeholder="Nome" className=" border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
-                    <input type="text" disabled  name="lastName" placeholder="Sobrenome" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
-                    <input type="text" disabled name="email" placeholder="E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                    <input type="text" name="name" placeholder="Nome" className=" border-2 text-slate-950 px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                    <input type="text" name="lastName" placeholder="Sobrenome" className="border-2 text-slate-950 px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                    <input type="text" name="email" placeholder="E-mail" className="border-2 text-slate-950 px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
                     <div className="h-[126px]">
                     </div>
                   </div>

@@ -15,6 +15,7 @@ import {
 } from 'iconsax-react'
 import RecentsTransactions from './components/RecentsTransactions'
 import Goals from "./components/Goals"
+import Image from "next/image"
 
 const Overview = ({ title, value, path }) => {
 
@@ -29,7 +30,7 @@ const Overview = ({ title, value, path }) => {
             {
               visible ? (
                 <>
-                  <span className="text-3xl font-normal">R${value}</span>
+                  <span className="text-3xl font-normal lg:text-lg ">R${value}</span>
                   <Eye className="absolute right-[18px] bottom-[13px] text-secondary-200" size={24} onClick={(e) => {
                     e.preventDefault()
                     setVisible(!visible)
@@ -37,8 +38,10 @@ const Overview = ({ title, value, path }) => {
                 </>
               ) : (
                 <>
-                  <div className="flex items-center h-[36px] text-center"><span className="w-[105px] bg-secondary-500 h-[5px] text-center rounded-full"></span></div>
-                  <EyeSlash className="absolute right-[18px] bottom-[13px] text-secondary-200" size={24} onClick={(e) => {
+                  <div className="flex items-center h-[36px] text-center">
+                    <span className="w-[105px] bg-secondary-500 h-[5px] text-center rounded-full"></span>
+                  </div>
+                  <EyeSlash className="absolute right-[18px] bottom-[13px] text-secondary-200 md:mt-2" size={24} onClick={(e) => {
                     e.preventDefault()
                     setVisible(!visible)
                   }} />
@@ -138,8 +141,9 @@ const Dashboard = () => {
             <Overview title="Despesas" value="0,00" path="/user/transacoes/despesas" />
             <Overview title="Cartão de Crédito" value="0,00" path="#" />
           </div>
-
-          <h3 className="text-3xl my-6 font-bold">Resultados</h3>
+          <div className="ml-[-16px] mr-[-15px]">
+            <Image className="z-[60] w-full h-full mt-2 " width={1700} height={300} src="../vida-financeira.svg" />
+          </div>
           <div className="grid grid-cols-3 mb-2 gap-[25px]">
           <Goals/>
           <RecentsTransactions/>

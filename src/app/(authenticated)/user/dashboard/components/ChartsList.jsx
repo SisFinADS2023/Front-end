@@ -79,7 +79,7 @@ export const ChartsList = ({chart}) => {
 
     return (
       <>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-3 gap-5 mt-3">
           {
             chart
               .map((chart, index) => { chart.index = index; return chart; })

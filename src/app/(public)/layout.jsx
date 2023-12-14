@@ -1,8 +1,6 @@
 import '@/app/globals.css'
 import { Banner } from '../../components/Banner'
 
-import Banner from '@/components/Banner'
-
 export const metadata = {
   title: 'Coinc',
   description: 'Sla',

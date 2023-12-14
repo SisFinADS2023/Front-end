@@ -49,13 +49,13 @@ export default function Home() {
 
   return (
     <>
-    <div className="bg-white flex flex-col gap-10" id="locationHeader">
-      <nav className="pt-2 flex justify-around items-center">
+    <div className="bg-white flex flex-col gap-10 items-center" id="locationHeader">
+      <nav className="bg-white z-[99] w-full pt-2 flex justify-around items-center fixed">
         <div>
-          <Image className="h-12" width={500} height={500} src="../logo.svg" alt="Logo with Conic" />
+          <Image className="h-12" width={200} height={500} src="../logo.svg" alt="Logo with Conic" />
         </div>
 
-        <ul className=" z-[99] hidden gap-14 font-roboto lg:flex text-secondary-500 font-semibold">
+        <ul className="hidden gap-14 font-roboto lg:flex text-secondary-500 font-semibold">
           <li> <a onClick={() => window.scrollTo(100, 0)}>Início</a></li>
           <li> <a onClick={() => window.scrollTo(100, 600)}>Sobre</a></li>
           <li> <a onClick={() => window.scrollTo(100, 1400)}>Depoimentos</a></li>
@@ -95,10 +95,10 @@ export default function Home() {
         }
       </nav>
 
-      <section className="flex flex-col gap-5 justify-center px-12 items-center min-h-[600px] lg:flex-row lg:items-start lg:justify-between z-0">
+      <section className="flex flex-col gap-5 justify-center  px-12 pt-32 items-center min-h-[600px] lg:flex-row lg:items-start lg:justify-between z-0">
         
-        <div className="z-10 flex flex-col gap-5 text-xl font-league items-center  text-center lg:w-5/12 lg:text-7xl lg:mt-8 lg:ml-28 lg:items-start lg:text-start">
-          <p className="font-semibold text-secondary-500">
+        <div className="z-10 flex flex-col gap-5 text-xl font-league items-center text-center lg:w-5/12 lg:text-7xl lg:mt-8 lg:ml-28 lg:items-start lg:text-start">
+          <p className="font-semibold text-secondary-500 lg:mt-10 lg:text-5xl lg:w-10/12 sm:text-3xl sm:mt-0">
             Controle suas finanças
             <span className="pl-4 font-bold text-primary-700">
             com facilidade.
@@ -114,7 +114,7 @@ export default function Home() {
           </Button>
         </div>
         <div>
-          <Image className="absolute z-0 right-52 top-10 w-[600px] lg:w-[1300px] lg:right-0 lg:top-0" src="../imagemHome.svg" width={600} height={600} alt="Coinc" />
+          <Image className="absolute z-0 top-10 w-[1000px] ml-[-1100px] lg:top-10 lg:block sm:hidden" src="../imagemHome.svg" width={600} height={600} alt="Coinc" />
         </div>
       </section>
 
@@ -265,7 +265,7 @@ export default function Home() {
       </div>
       </section>
 
-      <footer className="bg-green h-16 mt-[-40px] text-center">
+      <footer className="bg-green h-16 mt-[-40px] text-center w-full">
         <h3 className="text-white my-2 text-lg mt-5 font-league">Desenvolvido por <span className="text-indigo-950">COINC TEAM</span></h3>
       </footer>
     </div>
