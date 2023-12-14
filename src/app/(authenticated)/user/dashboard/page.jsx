@@ -1,7 +1,5 @@
 'use client'
 
-import { ChartsList } from "@/app/(authenticated)/user/dashboard/components/ChartsList"
-
 import { DateFilter } from "@/app/(authenticated)/user/dashboard/components/DateFilter.jsx"
 import { GraphicsFilter } from "@/app/(authenticated)/user/dashboard/components/GraphicsFilter.jsx"
 
@@ -186,8 +184,7 @@ const ChartsList = () => {
 const Dashboard = () => {
 
   const [chartsData, chartsDataDispatcher] = useReducer(
-    chartsDataReducer,
-    initialChartsData
+    chartsDataReducer
   )
 
   return (
