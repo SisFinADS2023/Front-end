@@ -1,0 +1,81 @@
+'use client'
+
+import { useState } from "react"
+import {Hind, Inter} from 'next/font/google'
+
+const hind = Hind(
+  {
+      weight: '500',
+      subsets: ['latin'],
+  }
+)
+
+const inter = Inter(
+  {
+    weight: '600',
+    subsets: ['latin']
+  }
+)
+
+const name = "Maria Lurdes"
+const initials = name.split(' ')
+    .filter((s, i, a) => i == 0 || i == a.length - 1)
+    .map(s => s.charAt(0).toUpperCase())
+    .reduce((a, s) => a + s, '');
+
+
+const Dados = () => {
+
+  const [isClicked, setClicked] = useState(false)
+
+  const buttonClicked = () => {
+    
+    console.log(isClicked)
+    setClicked(!isClicked)
+  }
+
+    return (
+      
+      <>
+        <div id="frame" className=" flex flex-col justify-center items-center">
+            <div id="avatar-name" className="flex justify-start h-24 w-[1536px] bg-white rounded-xl mt-7 shadow-shadowSuave">
+            <div className="flex rounded-full bg-gray-500 w-[75px] h-[75px] mt-2.5 ml-[25px] ">
+            <div className={`flex pt-8 pl-8 items-center justify-center w-10 h-10 rounded-full text-2xl  text-white`}>
+                {initials}
+            </div>
+            </div>
+            <div className="flex my-auto ml-[25px]">
+            <div className={hind.className}>
+                <h1 className="text-4xl text-secondary-500">Maria de Lurdes</h1>
+            </div>
+            </div>
+            </div> 
+            <div id="form" className="flex h-[669px] w-[1536px] bg-white justify-center rounded-xl mt-5 shadow-shadowSuave">
+            <form>
+                <div id="cadastro-body" className="w-[592px] mt-24">
+                  <div id="input" className="pt-9 w-[152px] h-[100px] ml-[440px] mb-[35px]">
+                  <label class="relative inline-flex items-center cursor-pointer right-[440px] top-10">
+                    <input type="checkbox" value="" class="sr-only peer"/>
+                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                    <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Notificações</span>
+                  </label>
+                  <div className={inter.className}>
+                    <button onClick={buttonClicked} id="button-editar" className=" rounded-md w-[152px] h-[40px] border-solid border-2 border-secondary-500 font-sans text-secondary-500">Editar Perfil</button>
+                  </div>
+                  </div>
+                  <div id="form-content" className="flex flex-col space-y-6 pt-6">
+                    <input type="text" disabled  name="name" placeholder="Nome" className=" border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                    <input type="text" disabled  name="lastName" placeholder="Sobrenome" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                    <input type="text" disabled name="email" placeholder="E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
+                    <div className="h-[126px]">
+                    </div>
+                  </div>
+                </div>
+                </form>
+            </div>   
+        </div>
+      </>
+    )
+  }
+
+  export default Dados

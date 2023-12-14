@@ -20,11 +20,12 @@ import {
     CardSend
 
 } from 'iconsax-react'
+import Image from 'next/image'
 
 const Logo = ({ src, alt }) => {
     return (
         <div className='mb-10 mt-7 select-none'>
-            <img src={src} alt={alt} />
+            <Image src={src} alt={alt} width={500} height={500}  />
         </div>
     )
 }

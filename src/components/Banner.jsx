@@ -5,7 +5,6 @@ import Frame1 from '../../public/Frame1.svg'
 import Frame2 from '../../public/Frame2.svg'
 import Frame3 from '../../public/Frame3.svg'
 
-
 export const Banner = () => {
   return (
     <div id="sidebar-tela-login" className="relative h-screen w-[710px] bg-gradient-to-t from-[#E9F1FB] rounded-br-[50px]">

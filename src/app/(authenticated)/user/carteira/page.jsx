@@ -1,9 +1,10 @@
+import Disabled from "@/components/Disabled"
 import Header from "@/components/Header"
 
 const Carteira = () => {
   return (
     <>
-      <div>Carteira</div>
+      <Disabled/>
     </>
   )
 }

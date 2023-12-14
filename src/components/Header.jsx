@@ -23,7 +23,7 @@ const league_Spartan = League_Spartan(
 )
 
 const Avatar = ({ name, color }) => {
-
+    name = "Maria Lurdes"
     const initials = name.split(' ')
         .filter((s, i, a) => i == 0 || i == a.length - 1)
         .map(s => s.charAt(0).toUpperCase())
@@ -100,7 +100,7 @@ const HeaderName = () => {
             lastName = 'dashboard'
             break;
         case 'contas':
-            lastName = 'contas'
+            lastName = 'contas e cartões'
             break;
         case 'transacoes':
             lastName = "transações"
@@ -128,6 +128,8 @@ const HeaderName = () => {
             break;
         case 'central-ajuda' :
             lastName = 'Central de ajuda'
+        case 'dados-perfil' :
+            lastName = 'Dados do perfil'
     }
 
     return lastName
@@ -193,13 +195,13 @@ const Header = ({ name, color }) => {
                                     userModal={
                                         [
                                             {
-                                                "path": "/user",
+                                                "path": "/user/dados-perfil",
                                                 "icon": <Profile />,
                                                 "title": "Dados do Perfil"
                                             },
 
                                             {
-                                                "path": "/user",
+                                                "path": "/user/atualizar-senha",
                                                 "icon": <PasswordCheck />,
                                                 "title": "Atualizar Senha"
                                             },

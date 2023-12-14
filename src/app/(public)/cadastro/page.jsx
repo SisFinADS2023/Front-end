@@ -13,7 +13,6 @@ const league_Spartan = League_Spartan(
     weight: '700',
     subsets: ['latin'],
   }
-)
 
 const inter = Inter(
   {
