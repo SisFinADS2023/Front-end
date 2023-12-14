@@ -67,8 +67,6 @@ export const ChartsList = ({chart}) => {
   const chartsData = useChartsData()
   const chartsDataDispatch = useChartsDataDispatch()
 
-  const [refs, setRefs] = useState(chart.map(_ => useRef(null)));
-
     const moveChart = useCallback((source, destination) => {
       chartsDataDispatch({
         action: 'moveChart',
@@ -85,7 +83,7 @@ export const ChartsList = ({chart}) => {
               .map((chart, index) => { chart.index = index; return chart; })
               .filter(chart => chart.visible)
               .map(chart => <Chart key={Math.random()}
-                                   chartRef={refs[chart.index]}
+                                   chartRef={useRef(null)}
                                    chart={chart}
                                    moveChart={moveChart} />)
           }
