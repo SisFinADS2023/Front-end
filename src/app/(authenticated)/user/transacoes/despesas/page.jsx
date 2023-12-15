@@ -3,9 +3,11 @@
 import Header from "@/components/Header"
 import TransactionModal from "../components/TransactionModal"
 import CategoryModal from "../components/CategoryModal"
+import RecentTransactions from "../components/RecentTransactions"
+import TransactionSection from "../components/TransactionSection"
 import { Hind } from "next/font/google"
-import { ArrowDown2, Data, GalleryAdd } from "iconsax-react"
-import React, { useState } from 'react';
+import { ArrowDown2 } from "iconsax-react"
+import React from 'react';
 
 const getData = async () =>{
   const despesas = await fetch('https://jxoxl80c91.execute-api.us-east-1.amazonaws.com/dev/transactions', { cache: 'no-store' })
@@ -32,25 +34,14 @@ const hind500 = Hind({
     )
   }
 
-  const RecentTransactions = ({children}) => {
-    return (
-      <div className="bg-white overflow-x-auto w-auto mr-56 h-auto ml-7 flex flex-col rounded-xl drop-shadow-xl touch-auto bg-scroll"> 
-        <h1 className={`${hind500.className} text-3xl mr-auto ml-8 mt-8`}>Recentes</h1>
-        <div className="flex mt-16 mx-8 mb-8 flex-wrap gap-y-8">
-          {children}
-        </div>
-      </div>
-    )
-  }
-
   const DataTempo = (props) => {
     return(    
-        <div className="w-2 h-1 mt-3  ">
+        <div className="w-2 h-1 mt-3">
           <div className="absolute top-[130px] flex flex-col ">
-          <h1 className="text-[20px]">Teste</h1>
-          <ArrowDown2 className="mx-auto" size="24" color="green"  />
+          <h1 className="text-[20px] text-red">R$ {props.value}</h1>
+          <ArrowDown2 className="mx-auto" size="24" color="red"  />
           </div>
-          <h1 className="">
+          <h1 className="flex ml-6">
           {props.data}
           </h1>
         </div>
@@ -64,26 +55,6 @@ const hind500 = Hind({
         <p className={`text-[##00032F] text-center text-2xl ${hind500.className}`}>R$1.200,000</p>
         {children}
       </div>
-    )
-  }
-
-  const CategorySection = ({ transaction }) => {
-    return(
-      <>
-        <div className="bg-white w-full h-24 drop-shadow-xl flex flex-row rounded-lg border-[1px]">
-          <div>
-            <h1 className={`ml-8 mt-4 text-2xl ${hind500.className}`}> {transaction.name} </h1>
-            <h1 className={`ml-8 text-xl text-gray-500 ${hind500.className}`}> {transaction.category} </h1>
-          </div>
-          <div className="ml-auto mr-10 flex flex-col">
-            <h1 className={`text-[#00032F] ml-auto mt-4 text-2xl font-semibold`}>{transaction.value}</h1>
-            <h1 className={`text-xl text-gray-500`}>{transaction.date}</h1>
-          </div>
-          <div className={`h-full bg-seaBlue w-[84px] rounded-r-lg flex cursor-pointer`}>
-            <GalleryAdd size="36" color="#FFFFFF" className="mx-auto my-auto"/>
-          </div>
-        </div>
-      </>
     )
   }
 
@@ -125,16 +96,10 @@ const hind500 = Hind({
           <div className="rounded-xl bg-white shadow-lg w-full h-40 mt-7 ml-7 mb-0 flex">
               <div className="flex my-auto w-full ">                   
                     <Linha>
-                      <DataTempo data="20/08" />
-                      <DataTempo data="21/08" />
-                      <DataTempo data="22/08" />
-                      <DataTempo data="23/08" />
-                      <DataTempo data="24/08" />
-                      <DataTempo data="25/08" />
-                      <DataTempo data="26/08" />
-                      <DataTempo data="27/08" />
-                      <DataTempo data="28/08" />
-                      <DataTempo data="29/08" />
+                      <DataTempo data="05/08" value="34,99"/>
+                      <DataTempo data="15/08" value="1200,00"/>
+                      <DataTempo data="15/08" value="135,95"/>
+                      <DataTempo data="20/08" value="20,54"/>
                     </Linha>
 
                     <button type="button" className="cursor-pointer right-0 top-0 appearance-none pointer-events-auto text-base text-[#33355D]">Ultimos 10 dias
@@ -155,7 +120,7 @@ const hind500 = Hind({
                   <RecentTransactions>
                     {
                       transactions.map((transaction, index) => (
-                        <CategorySection key={index} transaction={transaction}></CategorySection>
+                        <TransactionSection key={index} transaction={transaction}></TransactionSection>
                       ))
                     }
                   </RecentTransactions>
