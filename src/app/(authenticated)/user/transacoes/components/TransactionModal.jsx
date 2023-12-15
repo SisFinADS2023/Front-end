@@ -1,3 +1,5 @@
+"use client"
+
 import { Hind, Inter} from 'next/font/google'
 import {
     ArrowDown2,
