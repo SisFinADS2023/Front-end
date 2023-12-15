@@ -1,4 +1,4 @@
-import '@/app/globals.css'
+import 'tailwindcss/tailwind.css';
 import { Banner } from '../../components/Banner'
 
 export const metadata = {

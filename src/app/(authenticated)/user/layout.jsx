@@ -2,7 +2,7 @@
 
 import SideMenu from "@/components/SideMenu"
 import Header from "@/components/Header"
-import '../../globals.css'
+import 'tailwindcss/tailwind.css';
 import { useEffect, useState } from "react"
 import ModalCookie from "@/components/ModalCookie"
 

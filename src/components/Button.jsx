@@ -1,4 +1,4 @@
-import '@/app/globals.css'
+import 'tailwindcss/tailwind.css';
 
 export default function Button({className, children, onClick}) {
   return (

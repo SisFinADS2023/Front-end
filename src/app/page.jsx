@@ -2,12 +2,12 @@
 
 import Button from "@/components/Button";
 import Link from "next/link";
-import '@/app/globals.css'
 import { HambergerMenu } from 'iconsax-react'
 import { useState } from "react";
 import Carousel from "@/components/Carousel";
 import Image from 'next/image'
 import {Hind, Inter} from 'next/font/google'
+import 'tailwindcss/tailwind.css';
 
 const hind = Hind(
   {
