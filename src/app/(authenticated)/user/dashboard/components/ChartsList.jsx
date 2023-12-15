@@ -6,13 +6,13 @@ import * as chartjs from 'chart.js/auto'
 
 
 
-const Chart = ({ chart, chartRef, moveChart }) => {
+const Chart = ({ chart, elements, moveChart }) => {
 
   useEffect(() => {
-    if (!chartRef.current) return;
+    if (!elements.current[chart.index]) return;
 
     chart.instance = new chartjs.Chart(
-      chartRef.current,
+      elements.current[chart.index],
       {
         type: chart.type,
         options: {
@@ -33,7 +33,7 @@ const Chart = ({ chart, chartRef, moveChart }) => {
     return () => {
       chart.instance.destroy();
     };
-  }, [chart.ref])
+  }, [elements])
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'chart',
@@ -57,7 +57,7 @@ const Chart = ({ chart, chartRef, moveChart }) => {
     <Tooltip id="chart-tooltip" />
       <div data-tooltip-id="chart-tooltip" data-tooltip-content="Clique e arraste para reordenar" data-tooltip-delay-show="500" ref={drop} className={`border-2 bg-white rounded-md ${canDrop ? "border-black" : "border-gray"} ${isOver ? "border-green" : "border-gray"}`}>
         <div ref={drag} alt="lalala" className={`cursor-grab bg-transparent p-5 relative h-[30vh]`}>
-          <canvas ref={chartRef}></canvas>
+          <canvas ref={r => elements.current[chart.index] = r}></canvas>
         </div>
       </div>
     </>
@@ -69,7 +69,7 @@ export const ChartsList = () => {
   const chartsData = useChartsData()
   const chartsDataDispatch = useChartsDataDispatch()
 
-  const [refs, setRefs] = useState(chartsData.map(_ => useRef(null)))
+  const elements = useRef(new Array(chartsData.length))
 
     const moveChart = useCallback((source, destination) => {
       chartsDataDispatch({
@@ -87,7 +87,7 @@ export const ChartsList = () => {
               .map((chart, index) => { chart.index = index; return chart; })
               .filter(chart => chart.visible)
               .map(chart => <Chart key={Math.random()}
-                                   chartRef={refs[chart.index]}
+                                   elements={elements}
                                    chart={chart}
                                    moveChart={moveChart} />)
           }
