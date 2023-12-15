@@ -8,6 +8,7 @@ import TransactionSection from "../components/TransactionSection"
 import { Hind } from "next/font/google"
 import { ArrowDown2 } from "iconsax-react"
 import React from 'react';
+import AddTransactionButton from "../components/AddTransactionButton"
 
 const getData = async () =>{
   const despesas = await fetch('https://jxoxl80c91.execute-api.us-east-1.amazonaws.com/dev/transactions', { cache: 'no-store' })
@@ -125,6 +126,10 @@ const hind500 = Hind({
                     }
                   </RecentTransactions>
 
+                </div>
+
+                <div className="fixed bottom-[30px] right-[70px]">
+                  <AddTransactionButton />
                 </div>
 
           {/* Barra Proximo lance */}
