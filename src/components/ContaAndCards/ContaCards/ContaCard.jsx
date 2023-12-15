@@ -35,7 +35,7 @@ const ContaCard = ({ data }) => {
         }
         console.log("#########################" + objAccount.id)
         
-        const response = await fetch(`https://cgtnvhork6.execute-api.us-east-1.amazonaws.com/dev/bank-accounts/${objAccount.id}`,
+        const response = await fetch(`https://cm6skfzcne.execute-api.us-east-1.amazonaws.com/dev/bank-accounts/${objAccount.id}`,
         {
             cache: 'no-store',
             method: 'DELETE',
