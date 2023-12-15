@@ -154,8 +154,8 @@ const hind500 = Hind({
 
                   <RecentTransactions>
                     {
-                      transactions.map((transaction) => (
-                        <CategorySection transaction={transaction}></CategorySection>
+                      transactions.map((transaction, index) => (
+                        <CategorySection key={index} transaction={transaction}></CategorySection>
                       ))
                     }
                   </RecentTransactions>
