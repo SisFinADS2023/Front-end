@@ -1,3 +1,4 @@
+import { useRegisterStore } from "@/Utils/Stores/userStore";
 
 const handleCreateAccount = async (e) => {
   const { registerUser, isChecked, setRegisterUser, setIsChecked } = useRegisterStore();
