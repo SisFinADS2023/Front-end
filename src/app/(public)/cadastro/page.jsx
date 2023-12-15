@@ -1,13 +1,10 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import { League_Spartan } from 'next/font/google'
 import { Inter } from 'next/font/google'
 import InputSenha from '@/components/InputSenha'
-import { useRegisterStore } from '../../../Utils/Stores/userStore'
 import Link from 'next/link'
-import { handleChange } from '@/Utils/Handles/Register/handleChange'
-import handleCreateAccount from './CreateAccount'
 
 
 const league_Spartan = League_Spartan(
@@ -25,22 +22,22 @@ const inter = Inter(
 
 const Cadastro = () => {
 
-  const { registerUser, isChecked, setRegisterUser, setIsChecked } = useRegisterStore()
+  // const { registerUser, isChecked, setRegisterUser, setIsChecked } = useRegisterStore()
 
-  function areAllValuesFilled(obj) {
-    for (const key in obj) {
-      if (obj.hasOwnProperty(key) && (obj[key] === "" || !isChecked)) {
-        return true;
-      }
-    }
-    return true;
-  }
+  // function areAllValuesFilled(obj) {
+  //   for (const key in obj) {
+  //     if (obj.hasOwnProperty(key) && (obj[key] === "" || !isChecked)) {
+  //       return true;
+  //     }
+  //   }
+  //   return true;
+  // }
 
 
-  const handleInputChange = (e, prop) => {
-    console.log(prop)
-    handleChange(e, prop, setRegisterUser)
-  }
+  // const handleInputChange = (e, prop) => {
+  //   console.log(prop)
+  //   handleChange(e, prop, setRegisterUser)
+  // }
 
   return (
     <>
@@ -54,7 +51,7 @@ const Cadastro = () => {
             </div>
           </div>
 
-          <form onSubmit={handleCreateAccount}>
+          <form>
             <div className="w-auto">
               <div className="flex space-x-4 ">
                 <input onChange={(e) => handleInputChange(e, 'firstName')} id="firstName" type="text" name="nome" placeholder="Nome" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10 "></input>
@@ -66,7 +63,7 @@ const Cadastro = () => {
                 <input onChange={(e) => handleInputChange(e, 'confEmail')} id="confEmail" type="text" name="Confemail" placeholder="Confirmar E-mail" className="border-2 text-[#A2A3A4] px-2 font-sans text-base h-[48px] rounded w-[100%] border-gray-900 border-opacity-10"></input>
                 <div className="h-[126px]">
                   <InputSenha id="passwordInput" onChange={(e) => handleInputChange(e, 'password')} />
-                  {/* <InputSenha id="confPasswordInput" onChange={(e) => handleInputChange(e, 'confPassword')} /> */}
+                  <InputSenha id="confPasswordInput" onChange={(e) => handleInputChange(e, 'confPassword')} />
                 </div>
               </div>
 
@@ -77,14 +74,8 @@ const Cadastro = () => {
               <div className="pt-9">
                 <div className={inter.className}>
 
-                  {
-                    areAllValuesFilled(registerUser) ?
-
-                      <button type="submit" className="rounded-md w-[496px] h-[45px] bg-secondary-500 font-sans text-white" >Cadastre-se</button>
-                      :
-                      <button disabled type="submit" className="rounded-md w-[496px] h-[45px] bg-lightGray font-sans text-[#979797]" >Cadastre-se</button>
-                  }
-
+                <button type="submit" className="rounded-md w-[496px] h-[45px] bg-secondary-500 font-sans text-white" >Cadastre-se</button>
+    
                 </div>
               </div>
             </div>
