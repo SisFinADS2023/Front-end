@@ -7,8 +7,12 @@ const Contas = () => {
 
   return (
     <>
-      
-      <div style={{ display: "inline-flex", flexWrap: "wrap" }}>
+    <div className="m-10 mb-[-25px] pt-5">
+    <div className="border-l-[6px] border-l-primary-800 h-10 mb-5">
+      <h3 className="flex ml-4 text-3xl font-bold text-primary-800">Cartões</h3>
+    </div>
+    </div>
+      <div className=" ml-[-10px]" style={{ display: "inline-flex", flexWrap: "wrap" }}>
         <ListBankAccounts />
 
       </div>

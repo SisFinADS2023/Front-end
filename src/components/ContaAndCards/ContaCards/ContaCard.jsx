@@ -35,7 +35,7 @@ const ContaCard = ({ data }) => {
         }
         console.log("#########################" + objAccount.id)
         
-        const response = await fetch(`https://cgtnvhork6.execute-api.us-east-1.amazonaws.com/dev/bank-accounts/${objAccount.id}`,
+        const response = await fetch(`https://cm6skfzcne.execute-api.us-east-1.amazonaws.com/dev/bank-accounts/`,
         {
             cache: 'no-store',
             method: 'DELETE',
@@ -64,7 +64,7 @@ const ContaCard = ({ data }) => {
             name: Nome_Da_Conta.value,
         }
 
-        const response = await fetch(`https://cgtnvhork6.execute-api.us-east-1.amazonaws.com/dev/bank-accounts/${editAccount.id}`,
+        const response = await fetch(`https://cm6skfzcne.execute-api.us-east-1.amazonaws.com/dev/bank-accounts/`,
             {
                 cache: 'no-store',
                 method: 'PUT',

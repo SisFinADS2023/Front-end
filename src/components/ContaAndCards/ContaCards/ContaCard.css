@@ -28,12 +28,12 @@
 }
 
 .BorderCard_Center {
-    padding-left: 75px;
+    padding-left: 90px;
     padding-top: 40px;
 }
 
 .AddSquare {
-    margin-left: 70px;
+    margin-left: 55px;
     margin-top: 30px;
 }
 
@@ -68,7 +68,7 @@
 
     max-width: 250px;
     min-width: 133px;
-    height: 62px;
+    height: 72px;
     margin-top: 16px; 
     margin-left: 12px;
     gap: 48px;
@@ -89,7 +89,7 @@
 }
 
 .Fonte {
-    font-size: 32px;
+    font-size: 25px;
     font-weight: 400;
     line-height: 29px;
     letter-spacing: 0em;
