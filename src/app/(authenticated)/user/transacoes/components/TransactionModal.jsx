@@ -1,3 +1,5 @@
+"use client"
+
 import { Hind, Inter} from 'next/font/google'
 import {
     ArrowDown2,
@@ -46,7 +48,7 @@ const AccountOptions = () => {
         setShowAccountOptions(!showAccountOptions)
     }
 
-    const accountOptionsList = ['Bradesco', 'Itáu', 'PicPay'];
+    const accountOptionsList = ['Santander', 'Itáu', 'Nubank'];
 
     const [selectAccountOption, setSelectAccountOption] = useState('Conta')
 
@@ -118,7 +120,7 @@ const TransactionModal = ({modalIsOpen, changeModalIsOpen}) => {
         <div className="fixed inset-0 bg-black bg-opacity-25 flex justify-center items-center">
             <div className={`w-[540px] bg-white rounded-[20px] flex-col justify-start items-center inline-flex ${checkBoxDropDownOptions ? 'h-[520px]' : 'h-[380px]'}`}>
                 <div className="mt-2 w-[500px] h-[44px] flex-col justify-start items-start gap-5 inline-flex">
-                    <p className={`mt-3 text-center text-secondary-500 text-xl ${hindTituloModal.className}`}>Nova receita</p>
+                    <p className={`mt-3 text-center text-secondary-500 text-xl ${hindTituloModal.className}`}>Nova transação</p>
                     <span className="w-[500px] h-[0px] border-b border-secondary-500"></span>
                 </div>
 
@@ -155,13 +157,13 @@ const TransactionModal = ({modalIsOpen, changeModalIsOpen}) => {
                 <div className='w-[500px] h-[56px] mt-[24px] flex'>
                     <div onClick={checkBoxDropDown} className='flex justify-start items-center gap-3 cursor-pointer'>
                         <Calendar size="28px" color="#000334"/>
-                        <p className={`text-secondary-500 text-xl font-normal ${hindTituloModal.className}`}>Repetir receita</p>
+                        <p className={`text-secondary-500 text-xl font-normal ${hindTituloModal.className}`}>Repetir transação</p>
                         {
                             checkBoxDropDownOptions ? <ArrowUp2 /> : <ArrowDown2 />
                         }
                     </div>
                     
-                    <div className='flex relative justify-end items-end left-20'>
+                    <div className='flex relative justify-end items-end left-10'>
                         <AccountOptions/>                              
                     </div>              
                 </div>

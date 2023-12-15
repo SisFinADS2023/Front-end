@@ -94,7 +94,7 @@ const SideMenu = () => {
                     <nav className='mb-16 flex flex-col gap-y-3'>
                         <MenuLink Icon={Category} href="/user/dashboard" text="Dashboard" />
                         <MenuLink Icon={Card} href="/user/contas" text="Contas" />
-                        <MenuLinkGroup Icon={ArrangeHorizontal} href="/user/transacoes" text="Transações">
+                        <MenuLinkGroup Icon={ArrangeHorizontal} href="#" text="Transações">
                             <MenuLink Icon={CardSend} href="/user/transacoes/receitas" text="Receitas" />
                             <MenuLink Icon={CardReceive} href="/user/transacoes/despesas" text="Despesas" />
                         </MenuLinkGroup>
