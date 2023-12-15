@@ -36,8 +36,8 @@ const Login = () => {
         if(response.ok){
             const result = await response.json()
             console.log(result);
-            alert('Sucesso.')
-            router.push('/user/dashboard')
+            alert("Login realizado com sucesso!"); 
+            router.push('/user/dashboard');
         }else{
             alert('Email ou senha incorretos! Tente novamente.')
         }

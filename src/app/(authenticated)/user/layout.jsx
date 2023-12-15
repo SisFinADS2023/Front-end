@@ -22,7 +22,7 @@ import ModalCookie from "@/components/ModalCookie"
             <SideMenu/>
             <ModalCookie/>
             <div className="flex flex-col w-full">
-              <Header title="Carteira" name="Maria de Lurdes" color={color}/>
+              <Header title="Carteira" name="Roger Keithi" color={color}/>
               
               {children}
             </div>

@@ -17,7 +17,7 @@ const inter = Inter(
   }
 )
 
-const name = "Maria Lurdes"
+const name = "Roger Keithi"
 const initials = name.split(' ')
     .filter((s, i, a) => i == 0 || i == a.length - 1)
     .map(s => s.charAt(0).toUpperCase())
@@ -46,7 +46,7 @@ const Dados = () => {
             </div>
             <div className="flex my-auto ml-[25px]">
             <div className={hind.className}>
-                <h1 className="text-4xl text-secondary-500">Maria de Lurdes</h1>
+                <h1 className="text-4xl text-secondary-500">Roger Keithi</h1>
             </div>
             </div>
             </div> 
