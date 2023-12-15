@@ -10,8 +10,6 @@ import "./ContaEdit.css";
 import { League_Spartan } from 'next/font/google';
 import { useState } from 'react';
 
-
-
 const league_Spartan = League_Spartan(
     {
         weight: '400',
@@ -20,7 +18,6 @@ const league_Spartan = League_Spartan(
 )
 
 const ContaCard = ({ data }) => {
-    
     const [showCard, setShowCard] = useState(true)
     const [showValue, setShowValue] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
@@ -96,7 +93,7 @@ const ContaCard = ({ data }) => {
                         <div className="Conta_Card_Color" style={{ backgroundColor: data.color }}></div>
                         <div className="Conta_Card_Content">
                             <div className="Conta_Card_Content_Tittle">
-                                <div className="Fonte">{data.name}</div>
+                                <div className="Fonte"><span className='font-bold from-neutral-950'>{data.name}</span></div>
                             </div>
                             <div className="EditIcon"  >
                                 <Edit color="#697689" onClick={() => setShowEdit(true)} />
@@ -104,15 +101,15 @@ const ContaCard = ({ data }) => {
                             <div className="Conta_Card_Content_Values">
                                 {showValue ?
                                     <>
-                                        <Eye size="32" color="#697689" className="Pointer" onClick={() => setShowValue(false)} />
+                                        <Eye size="24" color="#697689" className="Pointer" onClick={() => setShowValue(false)} />
                                         <div style={{ width: '20px' }} />
-                                        <div className="Fonte2">R${data.balance}</div>
+                                        <div className="Fonte2 mt-[-3px] ">R${data.balance}</div>
                                     </>
                                     :
                                     <>
-                                        <EyeSlash size="32" color="#697689" className="Pointer" onClick={() => setShowValue(true)} />
+                                        <EyeSlash size="24" color="#697689" className="Pointer" onClick={() => setShowValue(true)} />
                                         <div style={{ width: '20px' }} />
-                                        <div className="Fonte2">---------</div>
+                                        <div className="Fonte2 opacity-30 mt-[-3px] ">R$➖</div>
                                     </>
                                 }
                             </div>

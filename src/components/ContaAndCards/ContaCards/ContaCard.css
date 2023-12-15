@@ -1,12 +1,12 @@
 
 
 .Conta_Card {
-    width: 332px;
-    height: 184px;
+    width: 432px;
+    height: 144px;
     margin-top: 40px;
     margin-left: 50px;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 5px;
     display: flex;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10);
     flex-wrap: wrap;
@@ -15,12 +15,12 @@
 
 
 .BorderCard {
-    width: 332px;
-    height: 184px;
+    width: 432px;
+    height: 144px;
     margin-top: 40px;
     margin-left: 50px;
-    border-radius: 20px;
-    border: 4px solid #3C5060;
+    border-radius: 5px;
+    border: 1px solid #50505051;
     cursor: pointer;
     display: flex;
     flex-wrap: wrap;
@@ -28,33 +28,33 @@
 }
 
 .BorderCard_Center {
-    padding-left: 90px;
-    padding-top: 40px;
+    padding-left: 145px;
+    padding-top: 30px;
 }
 
 .AddSquare {
-    margin-left: 55px;
-    margin-top: 30px;
+    margin-left: 47px;
+    margin-top: 20px;
 }
 
 .flexx {
     display:flex;
-    width: 332px;
-    height: 184px;    
+    width: 432px;
+    height: 144px;
 }
 
 .Conta_Card_Color {
-    width: 25px;
+    width: 15px;
     height: 100%;
     overflow: hidden;
     border-bottom-left-radius: 20%;
-    border-radius: 20px;
+    border-radius: 5px;
     border-top-right-radius: 0%;
     border-bottom-right-radius: 0%
 }
 
 .Conta_Card_Content {
-    width: 307px;
+    width: 407px;
     border-radius: 20px;
     border-top-left-radius: 0%;
     border-bottom-left-radius: 0%;
@@ -80,10 +80,10 @@
 
 
 .Conta_Card_Content_Values {
-    margin-left: 10px;
+    margin-left: 20px;
     display:flex;
 
-    margin-top: 120px;
+    margin-top: 90px;
     position: absolute;
     overflow: hidden;
 }
@@ -110,13 +110,14 @@
 
 
 .Conta_Card_Content_Values .Fonte2 {
-    color:black
+    color:rgb(77, 77, 77);
+    font-size: 20px;
 }
 
 .EditIcon {
     width: 24px;
     height: 24px;
-    margin-left:270px;
+    margin-left:380px;
     margin-top:10px;
     cursor: pointer;
     position: absolute;

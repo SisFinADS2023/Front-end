@@ -26,8 +26,8 @@ const CartaoCardAdd = () => {
         <>
         <div className="BorderCard2"  onClick={() => setShowCreate(true)}>
             <div className="BorderCard_Center2">
-                <div className="Fonte2">Novo Cartão</div>
-                <AddSquare className="AddSquare2" size="32" color="#3C5060" />
+                <div className="Fonte2 opacity-40">Novo cartão</div>
+                <AddSquare className="AddSquare2 opacity-40" size="32" color="#3C5060" />
             </div>
 
         </div>

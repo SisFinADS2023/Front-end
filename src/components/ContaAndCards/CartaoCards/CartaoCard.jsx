@@ -37,12 +37,10 @@ const CartaoCard = ({ title, hidden, deb, num }) => {
             <div className="Cartao_Card">
                 <div className="flexx2">
                     <div className="Cartao_Card_Content">
-                        <span className="dot2" style={{ marginTop: '20px', marginLeft: '20px', width: '35px', height: '35px', backgroundColor: '#E6E6EB', }}>
+                        <span className="dot2" style={{ borderRadius: '7px', marginTop: '20px', marginLeft: '20px', width: '35px', height: '35px', backgroundColor: '#E6E6EB', }}>
                             <div style={{ textAlign: 'center', fontSize: '25px', marginTop: '-3px', marginLeft: '-1px' }}>{deb}</div>
-
-
                         </span>
-                        <div className="Cartao_Card_Content_Tittle">
+                        <div className="Cartao_Card_Content_Tittle text-white">
                             <div className="Fonte2">{title}</div>
                         </div>
                         <div className="EditIcon2"  >
@@ -51,15 +49,15 @@ const CartaoCard = ({ title, hidden, deb, num }) => {
                         <div className="Cartao_Card_Content_Values">
                             {showValue ?
                                 <>
-                                    <Eye size="32" color="black" className="Pointer2" onClick={() => setShowValue(false)} />
+                                    <Eye size="24" color="white" className="Pointer2" onClick={() => setShowValue(false)} />
                                     <div style={{ width: '20px' }} />
-                                    <div className="Fonte22">{hidden}</div>
+                                    <div className="Fonte22 opacity-80 mt-[-3px] from-neutral-950">{hidden}</div>
                                 </>
                                 :
                                 <>
-                                    <EyeSlash size="32" color="black" className="Pointer2" onClick={() => setShowValue(true)} />
+                                    <EyeSlash size="24" color="white" className="Pointer2" onClick={() => setShowValue(true)} />
                                     <div style={{ width: '20px' }} />
-                                    <div className="Fonte22">---------</div>
+                                    <div className="Fonte22 opacity-60 mt-[-3px] ">R$➖</div>
                                 </>
                             }
                         </div>
@@ -77,11 +75,11 @@ const CartaoCard = ({ title, hidden, deb, num }) => {
 
                             <input className="Cartao_Edit_Input" type="text" name="Nome_Do_Cartao" defaultValue={title} style={{ color: 'black' }}></input>
                             <div className="Cartao_Edit_Content_Icons">
-                                <Trash size="24" color="black" className="Pointer2" onClick={() => setShowDelete(true)} />
+                                {/* <Trash size="24" color="black" className="Pointer2" onClick={() => setShowDelete(true)} /> */}
                             </div>
                             <input className="Cartao_Edit_Input" type="text" name="Num_Do_Cartao" defaultValue={num} style={{ color: 'black', marginTop: '-1px', marginBottom: '-5px' }}></input>
 
-                            <span className="dot3" style={{ marginTop: '5px', marginLeft: '5px', width: '35px', height: '35px', backgroundColor: '#E6E6EB', }}
+                            <span className="dot3" style={{ marginTop: '-8px', marginLeft: '10px', width: '35px', height: '35px', backgroundColor: '#E6E6EB', }}
                                 onClick={() => { if (showDebEdit == 'C') { setShowDebEdit('D') } else { setShowDebEdit('C') } }}>
                                 <div style={{ textAlign: 'center', fontSize: '25px', marginTop: '-3px', marginLeft: '-1px' }}>{showDebEdit}</div>
                             </span>
@@ -101,7 +99,7 @@ const CartaoCard = ({ title, hidden, deb, num }) => {
                     {showDelete ?
                         <>
                             <div className="Background2">
-                                <div className="Cartao_Delete">
+                                <div className="Cartao_Delete mt-[-300px]">
                                     <div className="Cartao_Delete_Alert">Você deseja mesmo apagar esse cartão?</div>
                                     <div className="Cartao_Delete_Buttons">
                                         <div className="Cartao_Delete_Button1" onClick={() => { setShowDelete(false) }}>Cancelar</div>

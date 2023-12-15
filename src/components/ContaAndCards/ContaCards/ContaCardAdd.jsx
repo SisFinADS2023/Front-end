@@ -44,6 +44,7 @@ const ContaCardAdd = ({ accounts, setAccounts }) => {
             if(result?.code === 200){
                 setAccounts([...accounts, createAccount])
                 setShowCreate(false)
+                window.location.reload(true);
             }
         }
     }
@@ -51,10 +52,10 @@ const ContaCardAdd = ({ accounts, setAccounts }) => {
     return (
 
         <>
-        <div className="BorderCard"  onClick={() => setShowCreate(true)}>
+        <div className="BorderCard shadow-md"  onClick={() => setShowCreate(true)}>
             <div className="BorderCard_Center">
-                <div className="Fonte">Nova Conta</div>
-                <AddSquare className="AddSquare" size="32" color="#3C5060" />
+                <div className="Fonte opacity-30">Nova Conta</div>
+                <AddSquare className="AddSquare opacity-30" size="32" color="#3C5060" />
             </div>
 
         </div>

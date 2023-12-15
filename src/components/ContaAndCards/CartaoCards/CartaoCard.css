@@ -1,31 +1,32 @@
 .Cartao_Card {
-    width: 332px;
-    height: 184px;
+    width: 432px;
+    height: 234px;
     margin-top: 40px;
+    margin-bottom: 60px;
     margin-left: 50px;
     background-color: #11D07D;
-    border-radius: 20px;
+    border-radius: 7px;
     display: flex;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10);
     flex-wrap: wrap;
 }
 
 .BorderCard2 {
-    width: 332px;
-    height: 184px;
+    width: 432px;
+    height: 234px;
     margin-top: 40px;
     margin-left: 50px;
-    border-radius: 20px;
-    border: 4px solid #3C5060;
+    border-radius: 7px;
+    border: 1px solid #50505051;
     cursor: pointer;
     display: flex;
     flex-wrap: wrap;
-
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10);
 }
 
 .BorderCard_Center2 {
-    padding-left: 90px;
-    padding-top: 40px;
+    padding-left: 135px;
+    padding-top: 60px;
 }
 
 .AddSquare2 {
@@ -45,6 +46,7 @@
     border-radius: 20px;
     border-top-left-radius: 0%;
     border-bottom-left-radius: 0%;
+    margin-top: 20px;
     display:flex;
     flex-wrap: wrap;
 }
@@ -54,18 +56,19 @@
     min-width: 133px;
     height: 62px;
     margin-top: 16px; 
-    margin-left: 10px;
+    margin-left: 20px;
     gap: 48px;
     padding-left:10px;
     padding-top: 10px;  
     overflow: hidden;
+    
 }
 
 .Cartao_Card_Content_Values {
     margin-left: 30px;
     display:flex;
 
-    margin-top: 120px;
+    margin-top: 150px;
     position: absolute;
     overflow: hidden;
 }
@@ -75,7 +78,8 @@
     font-weight: 400;
     line-height: 29px;
     letter-spacing: 0em;
-    color:black
+    color: white;
+    margin-top: -5px;
 }
 
 .Fonte22 {
@@ -83,7 +87,7 @@
     font-weight: 400;
     line-height: 29px;
     letter-spacing: 0em;
-    color:black
+    color: white;
 }
 
 .Cartao_Card_Content_Values .Fonte {
@@ -92,16 +96,18 @@
 
 
 .Cartao_Card_Content_Values .Fonte2 {
-    color:black
+    color:white
 }
 
 .EditIcon2 {
     width: 24px;
     height: 24px;
-    margin-left:294px;
-    margin-top:10px;
+    margin-left:374px;
+    margin-top:25px;
     cursor: pointer;
     position: absolute;
+    border-radius: 9px;
+    background-color: white
 }
 
 .Pointer2{

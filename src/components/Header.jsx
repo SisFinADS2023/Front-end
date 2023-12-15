@@ -43,7 +43,7 @@ const Avatar = ({ name, color }) => {
 const UserModal = ({ userModal }) => {
     return (
         <>
-            <div className="absolute top-[75px] right-5 bg-white w-2/12 rounded-md shadow-md z-10">
+            <div className="absolute top-[75px] right-72 mr-5 bg-white w-2/12 rounded-md shadow-md z-99">
                 <ul className="flex flex-col">
                     {userModal.map((userModal, index) => (
                         <li key={index}>
@@ -145,15 +145,14 @@ const Header = ({ name, color }) => {
     
 
     return (
-        <div className={league_Spartan.className}>
-
-            <div className="w-auto bg-white h-[80px] flex justify-between select-none">
-
+        <div className={league_Spartan.className} >
+            <div className='bg-white h-[80px] w-full z-[99]'>
+            <div className=" bg-white h-[80px] w-full flex justify-between select-none fixed z-[99]">
                 <div className="text-3xl flex my-auto ml-8 font-bold text-secondary-500 uppercase">
                     <h4>{HeaderName()}</h4>
                 </div>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-6 ">
 
                     <div className="flex cursor-pointer">
                         <Notification size={20} onClick={() => {
@@ -176,7 +175,7 @@ const Header = ({ name, color }) => {
                     }
                     }
 
-                        className="flex items-center gap-4 w-auto">
+                        className="flex items-center gap-14 w-[600px]">
                         <div className="flex cursor-pointer w-auto items-center gap-3 px-4">
                             <Avatar name={name} color={color} />
                             <h4 className="text-[16px] text-secondary-500">{name}</h4>
@@ -187,7 +186,7 @@ const Header = ({ name, color }) => {
                             }
                         </span>
 
-                        <div className="flex flex-col">
+                        <div className="flex flex-col mr-[-20px]">
                             {
                                 toggleMenu &&
 
@@ -218,6 +217,7 @@ const Header = ({ name, color }) => {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     )
