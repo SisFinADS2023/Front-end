@@ -23,7 +23,7 @@ const league_Spartan = League_Spartan(
 )
 
 const Avatar = ({ name, color }) => {
-    name = "Maria Lurdes"
+    name = "Roger Keithi"
     const initials = name.split(' ')
         .filter((s, i, a) => i == 0 || i == a.length - 1)
         .map(s => s.charAt(0).toUpperCase())
