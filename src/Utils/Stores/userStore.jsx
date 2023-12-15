@@ -1,9 +1,11 @@
 import { create } from 'zustand'
+import { v4 as uuid} from 'uuid'
 
 export const useRegisterStore = create((set) => ({
 
     registerUser: {
-        name: "",
+        userId: uuid(),
+        firstName: "",
         lastName: "",
         email: "",
         confEmail: "",
