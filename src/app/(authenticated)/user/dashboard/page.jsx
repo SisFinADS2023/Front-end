@@ -72,7 +72,7 @@ function chartsDataReducer(chartsData, { action, label, visible, source, destina
       });
 
       case 'moveChart':
-        const newCharts = [ {...chartsData }];
+        const newCharts = [ ...chartsData ];
         const temp = newCharts[source];
         newCharts[source] = newCharts[destination];
         newCharts[destination] = temp;
@@ -109,7 +109,8 @@ const initialChartsData = [
 const Dashboard = () => {
 
   const [chartsData, chartsDataDispatcher] = useReducer(
-    chartsDataReducer
+    chartsDataReducer,
+    initialChartsData
   )
 
   return (
@@ -149,12 +150,12 @@ const Dashboard = () => {
           <RecentsTransactions/>
           <DoughnutChart/>
           </div>
-          
+
           <div className="grid grid-cols-1">
           <DndProvider backend={HTML5Backend}>
           <ChartsDataContext.Provider value={chartsData}>
             <ChartsDataDispatchContext.Provider value={chartsDataDispatcher}>
-              <ChartsList chart={initialChartsData}/>
+              <ChartsList />
             </ChartsDataDispatchContext.Provider>
           </ChartsDataContext.Provider>
           </DndProvider>

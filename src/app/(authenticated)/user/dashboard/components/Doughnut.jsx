@@ -47,15 +47,15 @@ const Doughnut = ({ data }) => {
 export default function DoughnutChart() {
 
     const chartData = {
-        labels: ['Label 1', 'Label 2', 'Label 3'],
-        values: [25, 50, 25],
+        labels: ['Roupas', 'Alimentação', 'Transporte'],
+        values: [25, 20, 25],
       };
 
     return (
         <>
         <div className=" p-5 relative h-[30vh] rounded-md bg-white py-4 px-4 overflow-hidden shadow" >
             <div className='flex justify-between mb-5 px-4'>
-                <h2 className="text-xl text-secondary-900 font-semibold ">Rosquinha</h2>
+                <h2 className="text-xl text-secondary-900 font-semibold ">Gastos por categoria</h2>
             </div>
             <div className=' h-5/6 overflow-y-scroll rolagem content p-3 m-5'>
                 <Doughnut data={chartData}/>
