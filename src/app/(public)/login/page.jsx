@@ -22,7 +22,7 @@ const Login = () => {
         }
         console.log(objLogin);
         
-        const response = await fetch(`https://nw1t7aelje.execute-api.us-east-1.amazonaws.com/dev/auth/login`,
+        const response = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/auth/login`,
         {
             cache: 'no-store',
             method: 'POST',
