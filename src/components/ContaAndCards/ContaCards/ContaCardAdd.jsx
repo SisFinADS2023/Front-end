@@ -40,7 +40,7 @@ const ContaCardAdd = ({ accounts, setAccounts }) => {
     
         if(response.ok){
             const result = await response.json()
-            console.log(result)
+            
             if(result?.code === 200){
                 setAccounts([...accounts, createAccount])
                 setShowCreate(false)

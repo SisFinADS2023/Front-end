@@ -11,7 +11,6 @@ const Login = () => {
     const router = useRouter()
 
     const visible = () => {
-        console.log(isVisible)
         setIsVisible(!isVisible)
     }
 
@@ -20,7 +19,6 @@ const Login = () => {
             email : email,
             password : password,
         }
-        console.log(objLogin);
         
         const response = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/auth/login`,
         {
@@ -35,16 +33,22 @@ const Login = () => {
     
         if(response.ok){
             const result = await response.json()
-            console.log(result);
-            alert("Login realizado com sucesso!"); 
+            localStorage.setItem('actk', JSON.stringify(result));
             router.push('/user/dashboard');
         }else{
             alert('Email ou senha incorretos! Tente novamente.')
         }
     }
 
+    const onKeyDown = (e) => {
+        if(e.keyCode === 13){
+            submitValue();
+          }
+      }
+
     return (
         <>
+        <form className="flex flex-col flex-1 justify-center items-center" onKeyDown={onKeyDown}>
         <div id="cadastro-area" className="flex flex-col flex-1 justify-center items-center">
             <div className='flex flex-col w-[492px] h-[514.87px] px-0 pt-[53px] pb-[32px]'>
                 <h2 className="text-3xl	font-bold text-secondary-500 mb-6">Acesse sua conta</h2>
@@ -61,8 +65,8 @@ const Login = () => {
                     }
                 </div>
                 <p className='mb-6 text-base font-semibold text-secondary-500'><a href='../recuperar-senha'>Esqueceu a senha? ➜</a></p>
-                <Link className='mb-3 text-center bg-secondary-500 rounded text-white h-[45px] text-base font-bold' href={'#'}>
-                    <button className='mb-3 bg-secondary-500 rounded text-white h-[45px] text-base font-bold' onClick={submitValue}>Entrar</button>
+                <Link className='mb-3 text-center bg-secondary-500 rounded text-white h-[45px] text-base font-bold' onClick={submitValue} href={'#'}>
+                    <button className='mb-3 bg-secondary-500 rounded text-white h-[45px] text-base font-bold'>Entrar</button>
                 </Link>
                 <p className='mb-3 flex justify-start text-base font-light text-secondary-500'>Não possui uma conta? <a href='../cadastro' className="text-primary-500 font-semibold ml-1">Cadastre-se agora.</a></p>
 
@@ -73,6 +77,7 @@ const Login = () => {
 
             </div>
         </div>
+        </form>
         </>
     )
 }

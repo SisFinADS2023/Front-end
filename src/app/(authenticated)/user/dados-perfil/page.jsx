@@ -1,7 +1,9 @@
 'use client'
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {Hind, Inter} from 'next/font/google'
+import { useRouter } from "next/navigation"
+import { jwtDecode } from "jwt-decode"
 
 const hind = Hind(
   {
@@ -17,20 +19,51 @@ const inter = Inter(
   }
 )
 
-const name = "Roger Keithi"
-const initials = name.split(' ')
-    .filter((s, i, a) => i == 0 || i == a.length - 1)
-    .map(s => s.charAt(0).toUpperCase())
-    .reduce((a, s) => a + s, '');
-
-
 const Dados = () => {
 
+  const router = useRouter();
   const [isClicked, setClicked] = useState(false)
+  const [initials, setInitials] = useState(null)
+  const [userName, setUserName] = useState(null)
+
+  useEffect(() => {
+      const userCompleteName = async () => {
+          try{
+          if(localStorage.getItem('actk') != null){
+              const tokensJson = JSON.parse(localStorage.getItem('actk'));
+              const token = tokensJson.access_token;
+              
+              const decoded = jwtDecode(token);
+      
+              const user = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/user/${decoded.userId}`,
+              {
+                  cache: 'no-store',
+                  method: 'GET',
+                  headers: {
+                  "Content-Type": "application/json",
+                  }
+              }
+              )
+              const response =  await user.json();
+              const name =  response.firstName + " " + response.lastName
+              setUserName(name);
+              const initials = name.split(' ')
+                  .filter((s, i, a) => i == 0 || i == a.length - 1)
+                  .map(s => s.charAt(0).toUpperCase())
+                  .reduce((a, s) => a + s, '');
+      
+              setInitials(initials);
+          }else{
+              router.push('../login');
+          }
+      } catch(e){
+        router.push('../login');
+      }
+      }
+          userCompleteName();
+      },[]);
 
   const buttonClicked = () => {
-    
-    console.log(isClicked)
     setClicked(!isClicked)
   }
 
@@ -46,7 +79,7 @@ const Dados = () => {
             </div>
             <div className="flex my-auto ml-[25px]">
             <div className={hind.className}>
-                <h1 className="text-4xl text-secondary-500">Roger Keithi</h1>
+                <h1 className="text-4xl text-secondary-500">{userName}</h1>
             </div>
             </div>
             </div> 

@@ -13,8 +13,6 @@ import AddTransactionButton from "../components/AddTransactionButton"
 const getData = async () =>{
   const despesas = await fetch('https://jxoxl80c91.execute-api.us-east-1.amazonaws.com/dev/transactions', { cache: 'no-store' })
   const data = await despesas.json()
-
-  console.log(data)
 }
 
 const hind500 = Hind({

@@ -11,10 +11,7 @@ const InputSenha = ({placeholder}) => {
     const [isVisible, setIsVisible] = useState(false)
 
     const visible = () => {
-        console.log(isVisible)
         setIsVisible(!isVisible)
-
-
     }
 
     return (

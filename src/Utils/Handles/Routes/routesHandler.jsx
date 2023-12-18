@@ -6,10 +6,12 @@ const RoutesHandler = ({ children }) => {
   const router = useRouter();
 
     const myFunction = async () => {
+      try{
+        const refreshToken = JSON.parse(localStorage.getItem('actk'));
         const refreshTokenObject = {
-            refreshToken : '',
+            refreshToken : refreshToken.access_token,
         }
-        const response = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/auth/verify-refresh-token`,
+        const userIsAuthenticated = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/auth/verify-refresh-token`,
         {
             cache: 'no-store',
             method: 'POST',
@@ -19,19 +21,19 @@ const RoutesHandler = ({ children }) => {
             body: JSON.stringify(refreshTokenObject)
         }
         )
-    
-        console.log(response)
-    
-        const userIsAuthenticated = /* Sua lógica de autenticação aqui */ false;
-    
-        if (!userIsAuthenticated) {
+        const response =  await userIsAuthenticated.json();
+        
+        if (!response.isValid) {
           router.push('../login');
         }
+      }catch(e){
+        router.push('../login');
+      }
     };
 
     useEffect(() => {
         myFunction();
-    });
+    },[]);
 
   return children;
 };

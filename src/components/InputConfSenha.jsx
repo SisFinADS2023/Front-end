@@ -11,10 +11,7 @@ const InputConfSenha = () => {
     const [isVisible, setIsVisible] = useState(false)
 
     const visible = () => {
-        console.log(isVisible)
         setIsVisible(!isVisible)
-
-
     }
 
     return (

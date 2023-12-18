@@ -1,8 +1,5 @@
 "use client"
 
-import Header from "@/components/Header"
-import TransactionModal from "../components/TransactionModal"
-import CategoryModal from "../components/CategoryModal"
 import RecentTransactions from "../components/RecentTransactions"
 import TransactionSection from "../components/TransactionSection"
 import { Hind } from "next/font/google"
@@ -13,8 +10,6 @@ import AddTransactionButton from "../components/AddTransactionButton"
 const getData = async () =>{
   const receitas = await fetch('https://jxoxl80c91.execute-api.us-east-1.amazonaws.com/dev/transactions', { cache: 'no-store' })
   const data = await receitas.json()
-
-  console.log(data)
 }
 
 const hind500 = Hind({

@@ -9,9 +9,10 @@ import {
     PasswordCheck,
     Profile
 } from 'iconsax-react'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
+import { jwtDecode } from 'jwt-decode';
 
 
 
@@ -23,12 +24,44 @@ const league_Spartan = League_Spartan(
 )
 
 const Avatar = ({ name, color }) => {
-    name = "Roger Keithi"
-    const initials = name.split(' ')
-        .filter((s, i, a) => i == 0 || i == a.length - 1)
-        .map(s => s.charAt(0).toUpperCase())
-        .reduce((a, s) => a + s, '');
-
+    const router = useRouter();
+    const [initials, setUserName] = useState(null);
+  
+    useEffect(() => {
+        const userCompleteName = async () => {
+            try{
+            if(localStorage.getItem('actk') != null){
+                const tokensJson = JSON.parse(localStorage.getItem('actk'));
+                const token = tokensJson.access_token;
+                
+                const decoded = jwtDecode(token);
+        
+                const user = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/user/${decoded.userId}`,
+                {
+                    cache: 'no-store',
+                    method: 'GET',
+                    headers: {
+                    "Content-Type": "application/json",
+                    }
+                }
+                )
+                const response =  await user.json();
+                const name =  response.firstName + " " + response.lastName
+                const initials = name.split(' ')
+                    .filter((s, i, a) => i == 0 || i == a.length - 1)
+                    .map(s => s.charAt(0).toUpperCase())
+                    .reduce((a, s) => a + s, '');
+        
+                setUserName(initials);
+            }else{
+                router.push('../login');
+            }
+        } catch(e){
+            router.push('../login')
+        }
+        }
+            userCompleteName();
+        },[]);
 
     return (
         <>
@@ -206,7 +239,7 @@ const Header = ({ name, color }) => {
                                             },
 
                                             {
-                                                "path": "/login",
+                                                "path": "/user/logout",
                                                 "icon": <Logout />,
                                                 "title": "Logout"
                                             }
