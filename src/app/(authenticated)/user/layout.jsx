@@ -5,6 +5,7 @@ import Header from "@/components/Header"
 import 'tailwindcss/tailwind.css';
 import { useEffect, useState } from "react"
 import ModalCookie from "@/components/ModalCookie"
+import RoutesHandler from "@/Utils/Handles/Routes/routesHandler";
 
   export default function RootLayout({ children }) {
     const colors = ["bg-primary-700", "bg-secondary-700", "bg-tertiary-700"];
@@ -23,8 +24,9 @@ import ModalCookie from "@/components/ModalCookie"
             <ModalCookie/>
             <div className="flex flex-col w-full">
               <Header title="Carteira" name="Roger Keithi" color={color}/>
-              
-              {children}
+              <RoutesHandler>
+                {children}
+              </RoutesHandler>
             </div>
         </div>
     )
