@@ -3,15 +3,23 @@
 import {useState, useEffect} from 'react'
 import ContaCard from '../ContaCards/ContaCard'
 import ContaCardAdd from '../ContaCards/ContaCardAdd'
+import { jwtDecode } from 'jwt-decode'
 
 const ListBankAccounts = () => {
     const [accounts, setAccounts] = useState([])
+    let decoded = '';
     // const [isModalSignUpOpen, setIsModalSignUpOpen] = useState(false)
 
     //This is where the GET endpoint should be.
     useEffect(() => {
         const getAccounts = async () => {
-            const response = await fetch('https://cm6skfzcne.execute-api.us-east-1.amazonaws.com/dev/bank-accounts/user/1234567890', {cache: 'no-store'})
+            if(localStorage.getItem('actk') != null){
+                const tokensJson = JSON.parse(localStorage.getItem('actk'));
+                const token = tokensJson.access_token;
+                
+                decoded = jwtDecode(token);
+            }
+            const response = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/bank-accounts/user/${decoded.userId}`, {cache: 'no-store'})
             const data = await response.json()
             setAccounts(data.bankAccounts)
         }
@@ -22,8 +30,9 @@ const ListBankAccounts = () => {
         <>
             {
             accounts.map((account) => {
+                console.log(account)
                 return (
-                    <ContaCard key={account._id} data={account} />
+                    <ContaCard key={account.id} data={account} />
                 )
             })
             }

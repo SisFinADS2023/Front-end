@@ -25,13 +25,14 @@ const ContaCard = ({ data }) => {
     const [showColor, setShowColor] = useState(false);
     const [firstColor, setFirstColor] = useState("grey");
     const [editColor, setEditColor] = useState(data.color)
+    const [newName, setName] = useState(data.name)
 
     const handleDelete = async (idAccount) => {
         const objAccount = {
             id: idAccount
         }
         
-        const response = await fetch(`https://cm6skfzcne.execute-api.us-east-1.amazonaws.com/dev/bank-accounts/`,
+        const response = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/bank-accounts/`,
         {
             cache: 'no-store',
             method: 'DELETE',
@@ -44,7 +45,8 @@ const ContaCard = ({ data }) => {
     
         if(response.ok){
             const result = await response.json()
-            if(result?.code === 200){
+            console.log(result)
+            if(result?.deletedCount === 1){
                 setShowCard(false)
                 setShowDelete(false)
                 setShowEdit(false)
@@ -53,14 +55,13 @@ const ContaCard = ({ data }) => {
     }
 
     const handleEdit = async (idAccount) => {
-        const Nome_Da_Conta = document.querySelector('.Conta_Edit_Input')
 
         const editAccount = {
             id: idAccount,
-            name: Nome_Da_Conta.value,
+            name: newName,
         }
 
-        const response = await fetch(`https://cm6skfzcne.execute-api.us-east-1.amazonaws.com/dev/bank-accounts/`,
+        const response = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/bank-accounts/`,
             {
                 cache: 'no-store',
                 method: 'PUT',
@@ -70,11 +71,12 @@ const ContaCard = ({ data }) => {
                 body: JSON.stringify(editAccount)
             }
         )
-
+        console.log(response)
         if(response.ok){
             const result = await response.json()
-            if(result?.code === 200){
-                data.name = Nome_Da_Conta.value
+            console.log(result)
+            if(result?.status === 200){
+                data.name = newName
                 setShowEdit(false)
                 setShowColor(false)
                 setFirstColor("grey")
@@ -121,10 +123,10 @@ const ContaCard = ({ data }) => {
                 <>
                     <div className="Background">
                         <div className="Conta_Edit">
-                            <div className="Conta_Edit_Color" style={{ backgroundColor: editColor }}></div>
+                            <div className="Conta_Edit_Color" style={{ backgroundColor: data.color }}></div>
                             <div className="Conta_Edit_Content">
 
-                                <input className="Conta_Edit_Input" type="text" name="Nome_Da_Conta" defaultValue={data.name} style={{ color: firstColor }} onClick={() => setFirstColor("black")}></input>
+                                <input className="Conta_Edit_Input" type="text" name="Nome_Da_Conta" defaultValue={data.name} style={{ color: data.color }} onChange={e => setName(e.target.value)} ></input>
                                 <div className="Conta_Edit_Content_Icons">
                                     {showColor ?
                                     <Colorfilter size="24" color={editColor} className="Pointer" onClick={() => setShowColor(false)}/>
@@ -162,7 +164,7 @@ const ContaCard = ({ data }) => {
                                 }
                                 <div className="Conta_Edit_Buttons">
                                     <div className="Conta_Edit_Button1" onClick={() => {setShowEdit(false), setFirstColor("grey"), setShowColor(false), setEditColor(data.color)}}>Cancelar</div>
-                                    <div className="Conta_Edit_Button2" onClick={() => handleEdit(data?._id)}>Editar</div>
+                                    <div className="Conta_Edit_Button2" onClick={() => handleEdit(data?.id)}>Editar</div>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +177,7 @@ const ContaCard = ({ data }) => {
                                 <div className="Conta_Delete_Alert">Você deseja mesmo apagar essa conta?</div>
                                 <div className="Conta_Delete_Buttons">
                                     <div className="Conta_Delete_Button1" onClick={() => setShowDelete(false)}>Cancelar</div>
-                                    <div className="Conta_Delete_Button2" onClick={() => handleDelete(data?._id)}>Apagar</div>
+                                    <div className="Conta_Delete_Button2" onClick={() => handleDelete(data?.id)}>Apagar</div>
                                 </div>
                             </div>
                         </div>

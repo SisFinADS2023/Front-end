@@ -13,7 +13,7 @@ const Contas = () => {
     </div>
     </div>
       <div className=" ml-[-10px]" style={{ display: "inline-flex", flexWrap: "wrap" }}>
-        <ListBankAccounts />
+        <ListBankAccounts/>
 
       </div>
     <div className="m-10 mb-[-25px] pt-5">
