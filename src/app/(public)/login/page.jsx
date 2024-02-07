@@ -20,7 +20,7 @@ const Login = () => {
             password : password,
         }
         
-        const response = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/auth/login`,
+        const response = await fetch(`https://coinc-backend.onrender.com/auth/login`,
         {
             cache: 'no-store',
             method: 'POST',
