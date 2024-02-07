@@ -35,7 +35,7 @@ const Dados = () => {
               
               const decoded = jwtDecode(token);
       
-              const user = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/user/${decoded.userId}`,
+              const user = await fetch(`https://coinc-backend.onrender.com/user/${decoded.userId}`,
               {
                   cache: 'no-store',
                   method: 'GET',
