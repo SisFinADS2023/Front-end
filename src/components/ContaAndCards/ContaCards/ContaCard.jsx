@@ -32,7 +32,7 @@ const ContaCard = ({ data }) => {
             id: idAccount
         }
         
-        const response = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/bank-accounts/`,
+        const response = await fetch(`https://coinc-backend.onrender.com/bank-accounts/`,
         {
             cache: 'no-store',
             method: 'DELETE',
@@ -61,7 +61,7 @@ const ContaCard = ({ data }) => {
             name: newName,
         }
 
-        const response = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/bank-accounts/`,
+        const response = await fetch(`https://coinc-backend.onrender.com/bank-accounts/`,
             {
                 cache: 'no-store',
                 method: 'PUT',
