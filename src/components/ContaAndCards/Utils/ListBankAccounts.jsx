@@ -19,7 +19,7 @@ const ListBankAccounts = () => {
                 
                 decoded = jwtDecode(token);
             }
-            const response = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/bank-accounts/user/${decoded.userId}`, {cache: 'no-store'})
+            const response = await fetch(`https://coinc-backend.onrender.com/bank-accounts/user/${decoded.userId}`, {cache: 'no-store'})
             const data = await response.json()
             setAccounts(data.bankAccounts)
         }
