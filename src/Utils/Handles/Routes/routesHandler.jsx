@@ -11,7 +11,7 @@ const RoutesHandler = ({ children }) => {
         const refreshTokenObject = {
             refreshToken : refreshToken.access_token,
         }
-        const userIsAuthenticated = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/auth/verify-refresh-token`,
+        const userIsAuthenticated = await fetch(`https://coinc-backend.onrender.com/auth/verify-refresh-token`,
         {
             cache: 'no-store',
             method: 'POST',
