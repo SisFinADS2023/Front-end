@@ -42,7 +42,7 @@ const Cadastro = () => {
         password : password,
     }
     
-    const response = await fetch(`https://coinc-backend-8d1196b671ee.herokuapp.com/user/`,
+    const response = await fetch(`https://coinc-backend.onrender.com/user/`,
     {
         cache: 'no-store',
         method: 'POST',
